@@ -32,7 +32,7 @@
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-between">
                                 <h2>
-                                    Table Order
+                                    Table Orders
                                 </h2>
                                 <a href="/admin/order/create" class="btn btn-primary">Create a Order</a>
                             </div>
@@ -43,7 +43,6 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
                                     <th scope="col">Total Price</th>
                                 </tr>
                                 </thead>
