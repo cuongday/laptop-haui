@@ -1,5 +1,6 @@
 package com.ndc.laptopvn.domain;
 
+import com.ndc.laptopvn.service.validator.StrongPassword;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
