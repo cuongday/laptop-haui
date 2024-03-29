@@ -16,15 +16,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Email(message = "Email không hợp lệ", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @Email(message = "Email invalid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
 
     @NotNull
-    @Size(min = 3, message = "Password phải có tối thiểu 3 ký tự")
+    @Size(min = 3, message = "Password must be at least 3 characters")
     private String password;
 
     @NotNull
-    @Size(min = 2, message = "Full name phải có tối thiểu 2 ký tự")
+    @Size(min = 2, message = "Full name must be at least 2 characters")
     private String fullName;
     private String address;
     private String phoneNumber;
