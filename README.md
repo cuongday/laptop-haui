@@ -1,6 +1,6 @@
 # laptop-haui
 - Clone project về máy  
-  `git clone https://github.com/cuongday/laptop-haui.git
+  `git clone https://github.com/cuongday/laptop-haui.git`
 - Checkout sang nhánh **_dev_**  
   `git checkout dev`
 - Từ nhánh **_dev_** checkout sang nhánh của mình  

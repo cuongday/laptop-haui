@@ -52,9 +52,8 @@ public class HomePageController {
                                     BindingResult  registerUserbindingResult
                                  ) {
 
-        List<FieldError> errors = registerUserbindingResult.getFieldErrors();
-        for (FieldError error : errors ) {
-            System.out.println (error.getField() + " - " + error.getDefaultMessage());
+        if (registerUserbindingResult.hasErrors()) {
+            return "/client/auth/register";
         }
 
         User user = this.userService.registerDTOtoUser(registerDTO);
