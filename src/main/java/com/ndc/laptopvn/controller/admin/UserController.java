@@ -42,13 +42,13 @@ public class UserController {
         model.addAttribute("id", id);
         User user = this.userService.getUserById(id);
         model.addAttribute("user", user);
-        return "/admin/user/detail";
+        return "admin/user/detail";
     }
 
     @GetMapping("/admin/user/create")
     public String getCreateUserPage(Model model) {
         model.addAttribute("newUser", new User());
-        return "/admin/user/create";
+        return "admin/user/create";
     }
 
     @PostMapping("/admin/user/create")
@@ -64,7 +64,7 @@ public class UserController {
         }
 
         if (newUserbindingResult.hasErrors()) {
-            return "/admin/user/create";
+            return "admin/user/create";
         }
 
 
@@ -82,7 +82,7 @@ public class UserController {
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser);
         model.addAttribute("id", id);
-        return "/admin/user/update";
+        return "admin/user/update";
     }
 
     @PostMapping("/admin/user/update")
