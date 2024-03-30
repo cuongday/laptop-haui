@@ -37,7 +37,7 @@
                     <li class="breadcrumb-item"><a
                             style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item active">User</li>
+                    <li class="breadcrumb-item active">Product</li>
 
                 </ol>
 
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mb-3 col-12 mx-auto">
                             <h2>
-                                Update Product
+                                Create Product
                             </h2>
                             <hr>
                             <form:form class="row g-3" method="post" action="/admin/product/create"
