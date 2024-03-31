@@ -11,7 +11,7 @@
         <div class="">
             <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
             <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
-            <span style="color: white;">Welcome, Quản trị viên hệ thống</span>
+            <span style="color: white;">Welcome, <%=request.getUserPrincipal().getName().toString()%></span>
         </div>
     </form>
 
@@ -21,9 +21,14 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li>
+                    <form method="post" action="/logout">
+                        <input type="hidden" name="${_csrf.parameterName}"
+                               value="${_csrf.token}"/>
+                        <button class="dropdown-item" href="#">Logout</button>
+                    </form>
+                </li>
             </ul>
         </li>
     </ul>
