@@ -38,8 +38,8 @@
                             </div>
 
                             <hr>
-
-                            <table class="table table-bordered table-hover">
+                            <%-- desgin this table more vibrant and beautiful--%>
+                            <table class="table table-striped table-hover table-responsive-md">
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
