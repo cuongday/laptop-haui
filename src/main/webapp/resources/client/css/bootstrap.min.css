@@ -1093,7 +1093,8 @@ progress {
 
     .col-md-6 {
         flex: 0 0 auto;
-        width: 50%
+        width: 50%;
+        display: flex
     }
 
     .col-md-7 {
@@ -7586,7 +7587,7 @@ textarea.form-control-lg {
 }
 
 .pt-5 {
-    padding-top: 3rem !important
+    padding-top: 0rem !important
 }
 
 .pe-0 {
@@ -7781,9 +7782,11 @@ textarea.form-control-lg {
     word-wrap: break-word !important;
     word-break: break-word !important
 }
-
+.para-text{
+    color: #b7f7e1 !important
+}
 .text-primary {
-    color: #81c408 !important
+    color: #81c410 !important;
 }
 
 .text-secondary {
@@ -7867,7 +7870,8 @@ textarea.form-control-lg {
 }
 
 .bg-dark {
-    background-color: #45595b !important
+    background-color: #00ab6f !important
+
 }
 
 .bg-body {
