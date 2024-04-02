@@ -1,6 +1,7 @@
 package com.ndc.laptopvn.service;
 
 import com.ndc.laptopvn.domain.Cart;
+import com.ndc.laptopvn.domain.CartDetail;
 import com.ndc.laptopvn.domain.Product;
 import com.ndc.laptopvn.domain.User;
 import com.ndc.laptopvn.repository.CartDetailRepository;
@@ -59,7 +60,7 @@ public class ProductService {
                 otherCart.setUser(user);
                 otherCart.setSum(1);
 
-                this.cartRepository.save(otherCart);
+                cart = this.cartRepository.save(otherCart);
             }
 
             //lưu cart-detail
@@ -68,8 +69,13 @@ public class ProductService {
             if(productOptional.isPresent()){
                 Product realProduct = productOptional.get();
                 //check xem product đã có trong cart chưa
-                //nếu có rồi thì tăng số lượng lên 1
-                //nếu chưa thì tạo mới
+
+                CartDetail cd =  new CartDetail();
+                cd.setCart(cart);
+                cd.setProduct(realProduct);
+                cd.setPrice(realProduct.getPrice());
+                cd.setQuantity(1);
+                this.cartDetailRepository.save(cd);
             }
         }
 
