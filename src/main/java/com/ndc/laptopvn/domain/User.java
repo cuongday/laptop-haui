@@ -17,6 +17,7 @@ public class User {
     private long id;
 
     @Email(message = "Email invalid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+
     private String email;
 
     @NotNull
