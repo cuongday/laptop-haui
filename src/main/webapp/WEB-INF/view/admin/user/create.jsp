@@ -43,13 +43,13 @@
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-3 col-12 mx-auto">
                                     <h2>
-                                        Create User
-                                    </h2>
-                                    <hr>
-                                    <form:form class="row g-3" method="post" action="/admin/user/create" modelAttribute="newUser" enctype="multipart/form-data">
-                                        <c:set var="errorEmail">
-                                            <form:errors path="email" cssClass="invalid-feedback" />
-                                        </c:set>
+                                            Create User
+                                            </h2>
+                                            <hr>
+                                            <form:form class="row g-3" method="post" action="/admin/user/create" modelAttribute="newUser" enctype="multipart/form-data">
+                                                <c:set var="errorEmail">
+                                                    <form:errors path="email" cssClass="invalid-feedback" />
+                                                </c:set>
                                         <c:set var="errorPassword">
                                             <form:errors path="password" cssClass="invalid-feedback" />
                                         </c:set>

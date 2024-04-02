@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration {
@@ -44,6 +45,9 @@ public class SecurityConfiguration {
         return new CustomSuccessHandler();
     }
 
+
+
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -62,6 +66,8 @@ public class SecurityConfiguration {
                         .permitAll())
                 .exceptionHandling(ex -> ex
                         .accessDeniedPage("/access-denied"));
+
+
         return http.build();
     }
 
