@@ -39,7 +39,7 @@
 
                             <hr>
 
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-striped table-hover table-responsive-md">
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>

@@ -92,7 +92,9 @@
                                             <label class="form-label">Role:</label>
                                             <form:select class="form-select" aria-label="Default select example" path="role.name">
                                                 <option value="ADMIN">Admin</option>
-                                                <option value="USER">User</option> 
+                                                <option value="USER">User</option>
+                                                <option value="MANAGER">Manager</option>
+                                                <option value="SELLER">Seller</option>
                                             </form:select>
                                         </div>
                                         <div class="col-md-6 col-12 mb-3">                                           

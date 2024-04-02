@@ -1,10 +1,13 @@
 package com.ndc.laptopvn.config;
 
+import com.ndc.laptopvn.domain.User;
+import com.ndc.laptopvn.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -19,13 +22,19 @@ import java.util.Map;
 
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
+    @Autowired
+    private UserService userService;
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
+
 
     protected String determineTargetUrl(final Authentication authentication) {
 
         Map<String, String> roleTargetUrlMap = new HashMap<>();
         roleTargetUrlMap.put("ROLE_USER", "/");
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin");
+        roleTargetUrlMap.put("ROLE_MANAGER", "/admin");
+        roleTargetUrlMap.put("ROLE_SELLER", "/admin");
 
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (final GrantedAuthority grantedAuthority : authorities) {
@@ -38,12 +47,21 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         throw new IllegalStateException();
     }
 
-    protected void clearAuthenticationAttributes(HttpServletRequest request) {
+    protected void clearAuthenticationAttributes(HttpServletRequest request, Authentication authentication) {
         HttpSession session = request.getSession(false);
         if (session == null) {
             return;
         }
+        //get email
+        String email = authentication.getName();
+        //query user
+        User user = userService.getUserByEmail(email);
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+        if (user != null) {
+            session.setAttribute("role", user.getRole().getName());
+            session.setAttribute("fullName", user.getFullName());
+            session.setAttribute("avatar", user.getAvatar());
+        }
     }
 
 
@@ -63,7 +81,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         }
 
         redirectStrategy.sendRedirect(request, response, targetUrl);
-        clearAuthenticationAttributes(request);
+        clearAuthenticationAttributes(request, authentication);
     }
 
 

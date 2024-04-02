@@ -10,12 +10,13 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
-
-                <a class="nav-link" href="/admin/user">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    User
-                </a>
-
+                <c:if test="${sessionScope.role == 'ADMIN'}">
+                    <a class="nav-link" href="/admin/user">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        User
+                    </a>
+                </c:if>
+                <c:if test="${sessionScope.role == 'MANAGER'}">
                 <a class="nav-link" href="/admin/product">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Product
@@ -25,11 +26,12 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Order
                 </a>
+                </c:if>
             </div>
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            Admin
+            <c:out value="${sessionScope.role}" />
         </div>
     </nav>
 </div>
