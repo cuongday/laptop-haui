@@ -9,6 +9,7 @@ import com.ndc.laptopvn.repository.CartRepository;
 import com.ndc.laptopvn.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import com.ndc.laptopvn.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +47,7 @@ public class ProductService {
         return this.productRepository.findAll();
     }
 
-    public void handleAddProductToCart(String email, long productId) {
+    public void handleAddProductToCart(String email, long productId, HttpSession session) {
 
         User user = this.userService.getUserByEmail(email);
 
@@ -70,12 +71,28 @@ public class ProductService {
                 Product realProduct = productOptional.get();
                 //check xem product đã có trong cart chưa
 
-                CartDetail cd =  new CartDetail();
-                cd.setCart(cart);
-                cd.setProduct(realProduct);
-                cd.setPrice(realProduct.getPrice());
-                cd.setQuantity(1);
-                this.cartDetailRepository.save(cd);
+                CartDetail oldDetail = this.cartDetailRepository.findByCartAndProduct(cart, realProduct);
+
+                if(oldDetail == null){
+                    CartDetail cd =  new CartDetail();
+                    cd.setCart(cart);
+                    cd.setProduct(realProduct);
+                    cd.setPrice(realProduct.getPrice());
+                    cd.setQuantity(1);
+                    this.cartDetailRepository.save(cd);
+
+                    //update cart sum
+
+                    int s = cart.getSum() + 1;
+                    cart.setSum(s);
+                    this.cartRepository.save(cart);
+                    session.setAttribute("cartSum", s);
+                }else {
+                    oldDetail.setQuantity(oldDetail.getQuantity() + 1);
+                    this.cartDetailRepository.save(oldDetail);
+                }
+
+
             }
         }
 
