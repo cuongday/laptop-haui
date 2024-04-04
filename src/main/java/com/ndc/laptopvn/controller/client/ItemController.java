@@ -39,7 +39,7 @@ public class ItemController {
     }
 
     @GetMapping("/cart")
-    public String getCartPage() {
+    public String getCartPage(Model model) {
         return "client/cart/show";
     }
 }

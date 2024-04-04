@@ -59,7 +59,7 @@ public class ProductService {
                 // tạo mới cart
                 Cart otherCart = new Cart();
                 otherCart.setUser(user);
-                otherCart.setSum(1);
+                otherCart.setSum(0);
 
                 cart = this.cartRepository.save(otherCart);
             }

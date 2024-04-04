@@ -32,7 +32,7 @@ public class UserService {
         return this.userRepository.findFirstById(id);
     }
 
-    public void deleteAUser(long id) {
+    public void deleteAUser(long id)     {
         this.userRepository.deleteById(id);
     }
 
