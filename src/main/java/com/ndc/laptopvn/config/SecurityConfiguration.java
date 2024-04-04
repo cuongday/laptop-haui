@@ -73,7 +73,7 @@ public class SecurityConfiguration {
                         .permitAll())
                 .exceptionHandling(ex -> ex
                         .accessDeniedPage("/access-denied"));
-        ;
+
 
 
         return http.build();

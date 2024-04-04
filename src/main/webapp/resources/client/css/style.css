@@ -493,18 +493,5 @@
     line-height: 35px;
 }
 
-.table thead th {
-    background-color: #4CAF50; /* Change this to your preferred color */
-    color: white;
-}
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-.table tbody tr:hover {
-    background-color: #ddd;
-}
-.table .btn {
-    margin-right: 5px;
-}
 /*** Footer End ***/
 
