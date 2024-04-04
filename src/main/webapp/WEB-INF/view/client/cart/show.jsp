@@ -61,164 +61,107 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Products</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Sản phẩm</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Đơn giá</th>
+                    <th scope="col">Số luợng</th>
+                    <th scope="col">Thành tiền</th>
+                    <th scope="col">Xử lý</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">
-                        <div class="d-flex align-items-center">
-                            <img src="/client/img/vegetable-item-3.png"
-                                 class="img-fluid me-5 rounded-circle"
-                                 style="width: 80px; height: 80px;" alt="">
-                        </div>
-                    </th>
-                    <td>
-                        <p class="mb-0 mt-4">Big Banana</p>
-                    </td>
-                    <td>
-                        <p class="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                        <div class="input-group quantity mt-4" style="width: 120px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input type="text"
-                                   class="form-control text-center border-0" value="1">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                        <button class="btn btn-md rounded-circle bg-light border mt-3">
-                            <i class="fa fa-times text-danger"></i>
-                        </button>
-                    </td>
+                    <c:if test="${ empty cartDetails}">
+                        <tr>
+                            <td colspan="6">
+                                Không có sản phẩm trong giỏ hàng
+                            </td>
+                        </tr>
+                    </c:if>
+                    <c:forEach items="${cartDetails}" var="cartDetail">
+                        <tr>
+                            <th scope="row">
+                                <div class="d-flex align-items-center">
+                                    <img src="/images/product/${cartDetail.product.image}"
+                                         class="img-fluid me-5 rounded-circle"
+                                         style="width: 80px; height: 80px;" alt="">
+                                </div>
+                            </th>
+                            <td>
+                                <p class="mb-0 mt-4">
+                                    <a href="/product/${cartDetail.product.id}" target="_blank">${cartDetail.product.name}</a>
+                                </p>
+                            </td>
+                            <td>
 
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <div class="d-flex align-items-center">
-                            <img src="/client/img/vegetable-item-5.jpg"
-                                 class="img-fluid me-5 rounded-circle"
-                                 style="width: 80px; height: 80px;" alt="" alt="">
-                        </div>
-                    </th>
-                    <td>
-                        <p class="mb-0 mt-4">Potatoes</p>
-                    </td>
-                    <td>
-                        <p class="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                        <div class="input-group quantity mt-4" style="width: 120px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input type="text"
-                                   class="form-control form-control-sm text-center border-0" value="1">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                        <button class="btn btn-md rounded-circle bg-light border mt-3 mt-4">
-                            <i class="fa fa-times text-danger"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <div class="d-flex align-items-center">
-                            <img src="/client/img/vegetable-item-2.jpg"
-                                 class="img-fluid me-5 rounded-circle"
-                                 style="width: 80px; height: 80px;" alt="" alt="">
-                        </div>
-                    </th>
-                    <td>
-                        <p class="mb-0 mt-4">Awesome Brocoli</p>
-                    </td>
-                    <td>
-                        <p class="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                        <div class="input-group quantity mt-4" style="width: 120px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-minus rounded-circle bg-light border">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input type="text"
-                                   class="form-control form-control-sm text-center border-0" value="1">
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="mb-0 mt-4">2.99 $</p>
-                    </td>
-                    <td>
-                        <button class="btn btn-md rounded-circle bg-light border mt-3 mt-4">
-                            <i class="fa fa-times text-danger"></i>
-                        </button>
-                    </td>
-                </tr>
+                                <p class="mb-0 mt-4"> <fmt:formatNumber value="${cartDetail.price}" type="number" /> đ</p>
+                            </td>
+                            <td>
+                                <div class="input-group quantity mt-4" style="width: 120px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text"
+                                           class="form-control text-center border-0"
+                                           value="${cartDetail.quantity}"
+                                           data-cart-detail-id="${cartDetail.id}"
+                                           data-cart-detail-price="${cartDetail.price}">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="mb-0 mt-4" data-cart-detail-id="${cartDetail.id}"> <fmt:formatNumber value="${cartDetail.price * cartDetail.quantity}" type="number" /> đ</p>
+                            </td>
+                            <td>
+                                <form method="post" action="/delete-cart-product/${cartDetail.id}">
+                                    <button class="btn btn-md rounded-circle bg-light border mt-3">
+                                        <i class="fa fa-times text-danger"></i>
+                                    </button>
+                                    <input type="hidden" name="${_csrf.parameterName}"
+                                    value="${_csrf.token}"/>
+                                </form>
+                            </td>
+
+                        </tr>
+                    </c:forEach>
+
+
                 </tbody>
             </table>
         </div>
-
-        <div class="mt-5 row g-4 justify-content-start">
+        <c:if test="${not empty cartDetails}">
+            <div class="mt-5 row g-4 justify-content-start">
             <div class="col-12 col-md-8">
                 <div class="bg-light rounded">
                     <div class="p-4">
-                        <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
+                        <h1 class="display-6 mb-4"> Thông tin<span class="fw-normal">Đơn hàng</span></h1>
                         <div class="d-flex justify-content-between mb-4">
-                            <h5 class="mb-0 me-4">Subtotal:</h5>
-                            <p class="mb-0">$96.00</p>
+                            <h5 class="mb-0 me-4">Tạm tính:</h5>
+                            <p class="mb-0" data-cart-total-price="${totalPrice}"><fmt:formatNumber value="${totalPrice}" type="number" /> đ</p>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <h5 class="mb-0 me-4">Shipping</h5>
+                            <h5 class="mb-0 me-4">Phí vận chuyển</h5>
                             <div class="">
-                                <p class="mb-0">Flat rate: $3.00</p>
+                                <p class="mb-0">0 đ</p>
                             </div>
                         </div>
-                        <p class="mb-0 text-end">Shipping to Ukraine.</p>
                     </div>
                     <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                        <h5 class="mb-0 ps-4 me-4">Total</h5>
-                        <p class="mb-0 pe-4">$99.00</p>
+                        <h5 class="mb-0 ps-4 me-4">Tổng số tiền</h5>
+                        <p class="mb-0 pe-4" data-cart-total-price="${totalPrice}"><fmt:formatNumber value="${totalPrice}" type="number" /> đ </p>
                     </div>
                     <button
                             class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-                            type="button">Proceed Checkout</button>
+                            type="button">Xác nhận đặt hàng</button>
                 </div>
             </div>
         </div>
+        </c:if>
     </div>
 </div>
 <!-- Cart Page End -->
