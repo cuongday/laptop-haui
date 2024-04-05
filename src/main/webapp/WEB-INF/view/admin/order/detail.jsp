@@ -32,7 +32,7 @@
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-start">
                                 <h2>
-                                    Table Orders
+                                    Order Detail with id = ${id}
                                 </h2>
 
                             </div>
@@ -42,24 +42,30 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Total Price</th>
-                                    <th scope="col">User</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Sản phẩm</th>
+                                    <th scope="col">Tên</th>
+                                    <th scope="col">Đơn giá</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Thành tiền</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <c:forEach items="${orders}" var="order">
+                                <tbody class="text-align-center">
+                                <c:forEach items="${orderDetails}" var="orderDetail">
                                     <tr>
-                                        <td>${order.id}</td>
-                                        <td><fmt:formatNumber value="${order.totalPrice}" type="number" /> đ</td>
-                                        <td>${sessionScope.fullName}</td>
-                                        <td>${order.status}</td>
+                                        <th scope="row">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/images/product/${orderDetail.product.image}"
+                                                     class="img-fluid me-5 rounded-circle"
+                                                     style="width: 80px; height: 80px;" alt="">
+                                            </div>
+                                        </th>
                                         <td>
-                                            <a href="/admin/order/${order.id}" class="btn btn-success">View</a>
-                                            <a href="/admin/order/update/${order.id}" class="btn btn-warning">Update</a>
-                                            <a href="/admin/order/delete/${order.id}" class="btn btn-danger">Delete</a>
+                                            <a target="_blank" style="text-decoration: none" href="/product/${orderDetail.product.id}">${orderDetail.product.name}</a>
+                                        </td>
+                                        <td>${orderDetail.price}</td>
+                                        <td>${orderDetail.quantity}</td>
+                                        <td>
+                                            <fmt:formatNumber value="${orderDetail.quantity * orderDetail.price}" type="number" /> đ
                                         </td>
                                     </tr>
                                 </c:forEach>
