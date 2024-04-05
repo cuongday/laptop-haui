@@ -5,6 +5,8 @@ import com.ndc.laptopvn.domain.Product;
 import com.ndc.laptopvn.domain.User;
 import com.ndc.laptopvn.service.ProductService;
 import com.ndc.laptopvn.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -78,5 +80,17 @@ public class HomePageController {
     public String getDenyPage(Model model) {
 
         return "client/auth/deny";
+    }
+
+    @GetMapping("order-history")
+    public String getOrderHistoryPage(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        User currentUser = new User();
+        long id = (long) session.getAttribute("Id");
+        currentUser.setId(id);
+
+
+
+        return "client/order/order-history";
     }
 }

@@ -1,6 +1,7 @@
 package com.ndc.laptopvn.service;
 
 import com.ndc.laptopvn.domain.Order;
+import com.ndc.laptopvn.domain.User;
 import com.ndc.laptopvn.repository.OrderDetailRepository;
 import com.ndc.laptopvn.repository.OrderRepository;
 import org.springframework.stereotype.Service;
@@ -49,4 +50,8 @@ public class OrderService {
             this.orderRepository.deleteById(id);
         }
     }
+
+//    public List<Order> fetchOrderByUser(User user){
+//        return
+//    }
 }
