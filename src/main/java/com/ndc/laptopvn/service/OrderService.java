@@ -51,7 +51,7 @@ public class OrderService {
         }
     }
 
-//    public List<Order> fetchOrderByUser(User user){
-//        return
-//    }
+    public List<Order> fetchOrdersByUser(User user) {
+        return this.orderRepository.findByUser(user);
+    }
 }

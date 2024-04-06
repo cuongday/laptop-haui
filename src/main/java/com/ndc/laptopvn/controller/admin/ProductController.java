@@ -4,6 +4,10 @@ import com.ndc.laptopvn.domain.Product;
 import com.ndc.laptopvn.service.ProductService;
 import com.ndc.laptopvn.service.UploadService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,9 +30,12 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product")
-    public String getProductPage(Model model) {
-        List<Product> products = this.productService.fetchProducts();
-        model.addAttribute("products", products);
+    public String getProductPage(Model model,
+                                 @RequestParam("page") int page) {
+        Pageable pageable = PageRequest.of(page-1, 5);
+        Page<Product> products = this.productService.fetchProducts(pageable);
+        List<Product> productList = products.getContent();
+        model.addAttribute("products", productList);
         return "admin/product/show";
     }
 
@@ -126,6 +133,15 @@ public class ProductController {
     public String postDeleteProduct(Model model, @ModelAttribute("newProduct") Product product) {
         this.productService.deleteProductById(product.getId());
         return "redirect:/admin/product";
+    }
+
+    @GetMapping("/api/products/search")
+    public ResponseEntity<Object> searchProducts(@RequestParam("name") String keyword,
+                                                @RequestParam(defaultValue = "0") int page,
+                                                @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Product> products = this.productService.searchProduct(keyword, pageable);
+        return ResponseEntity.ok(products);
     }
 
 }
