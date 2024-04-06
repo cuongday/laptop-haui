@@ -14,29 +14,29 @@
         <link href="/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary">
+    <body class="bg-primary bg-login">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
                     <div class="container">
                         <div class="row justify-content-center">
+                            <img class="img-set mt-5" src="/images/auth-bg/login.jpg">
                             <div class="col-lg-5">
+
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Đăng nhập</h3></div>
                                     <div class="card-body">
                                         <form method="post" action="/login">
                                             <c:if test="${param.error != null}">
-                                                <div class="my-2" style="color: red;">Invalid email or password.</div>
+                                                <div class="my-2" style="color: red;">Nhập sai địa chỉ email hoặc mật khẩu</div>
                                             </c:if>
-                                            <c:if test="${param.logout != null}">
-                                                <div class="my-2" style="color: green;">Logout success.</div>
-                                            </c:if>
+
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" type="email"
                                                        placeholder="name@example.com"
                                                        name="username"
                                                 />
-                                                <label>Email address</label>
+                                                <label>Địa chỉ email</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control"
@@ -44,7 +44,7 @@
                                                        placeholder="Password"
                                                        name="password"
                                                 />
-                                                <label>Password</label>
+                                                <label>Mật khẩu</label>
                                             </div>
 
                                             <div>
@@ -52,15 +52,20 @@
                                                        value="${_csrf.token}"/>
 
                                             </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" name="rememberMe" id="rememberMe">
+                                                <label class="form-check-label text-secondary" for="rememberMe">Lưu tài khoản</label>
+                                            </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                                    <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
                                                 </div>
                                             </div>
                                         </form>
+
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="/register">Need an account? Sign up!</a></div>
+                                        <div class="small">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
                                     </div>
                                 </div>
                             </div>
