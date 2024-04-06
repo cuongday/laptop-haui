@@ -18,13 +18,12 @@
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <img class="img-set mt-5" src="/images/auth-bg/login.jpg">
-                            <div class="col-lg-5">
-
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Đăng nhập</h3></div>
+                    <div class="container d-flex align-items-center min-vh-100 justify-content-center">
+                        <div class="row justify-content-center align-items-stretch">
+                            <img class="col-lg-5 d-flex flex-column" src="/images/auth-bg/login.jpg">
+                            <div class="col-lg-5 d-flex flex-column">
+                                <div class="card shadow-lg border-0 rounded-lg">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-2">Đăng nhập</h3></div>
                                     <div class="card-body">
                                         <form method="post" action="/login">
                                             <c:if test="${param.error != null}">
@@ -64,7 +63,7 @@
                                         </form>
 
                                     </div>
-                                    <div class="card-footer text-center py-3">
+                                    <div class="card-footer text-center">
                                         <div class="small">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
                                     </div>
                                 </div>

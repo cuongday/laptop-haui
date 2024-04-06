@@ -52,7 +52,7 @@
             </div>
             <div class="modal-body d-flex align-items-center">
                 <div class="input-group w-75 mx-auto d-flex">
-                    <input type="search" class="form-control p-3" placeholder="keywords"
+                    <input id="search-input" type="search" class="form-control p-3" placeholder="keywords"
                            aria-describedby="search-icon-1">
                     <span id="search-icon-1" class="input-group-text p-3"><i
                             class="fa fa-search"></i></span>
@@ -158,5 +158,34 @@
 
 <!-- Template Javascript -->
 <script src="/client/js/main.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#search-input').on('keyup', function () {
+            var keyword = $(this).val();
+            if (keyword.length > 0) {
+                $.ajax({
+                    url: '/api/products/search',
+                    type: 'GET',
+                    data: {
+                        keyword: keyword
+                    },
+                    success: function (data) {
+                        $('#tab-1').html(data);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '/search',
+                    type: 'GET',
+                    success: function (data) {
+                        $('#tab-1').html(data);
+                    }
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>

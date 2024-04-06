@@ -1,13 +1,18 @@
 package com.ndc.laptopvn.controller.client;
 
 import com.ndc.laptopvn.domain.DTO.RegisterDTO;
+import com.ndc.laptopvn.domain.Order;
 import com.ndc.laptopvn.domain.Product;
 import com.ndc.laptopvn.domain.User;
+import com.ndc.laptopvn.service.OrderService;
 import com.ndc.laptopvn.service.ProductService;
 import com.ndc.laptopvn.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,21 +30,26 @@ public class HomePageController {
     private final ProductService productService;
 
     private final UserService userService;
+    private final OrderService orderService;
 
     private final PasswordEncoder passwordEncoder;
 
     public HomePageController(ProductService productService,
                               UserService userService,
-                              PasswordEncoder passwordEncoder) {
+                              PasswordEncoder passwordEncoder,
+                              OrderService orderService) {
         this.productService = productService;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.orderService = orderService;
     }
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        List<Product> products = productService.fetchProducts();
-        model.addAttribute("products", products);
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Product> products = this.productService.fetchProducts(pageable);
+        List<Product> productList = products.getContent();
+        model.addAttribute("products", productList);
         return "client/homepage/show";
     }
 
@@ -82,15 +92,15 @@ public class HomePageController {
         return "client/auth/deny";
     }
 
-    @GetMapping("order-history")
+    @GetMapping("/order-history")
     public String getOrderHistoryPage(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         User currentUser = new User();
-        long id = (long) session.getAttribute("Id");
+        long id = (long) session.getAttribute("id");
         currentUser.setId(id);
 
-
-
-        return "client/order/order-history";
+        List<Order> orders = this.orderService.fetchOrdersByUser(currentUser);
+        model.addAttribute("orders", orders);
+        return "client/cart/order-history";
     }
 }
