@@ -71,7 +71,6 @@
                                                             <!-- Your image and content here -->
                                                             <img src="/images/product/${ProductImage.image}" class="img-fluid w-100 h-100 rounded"
                                                                  alt="Second slide">
-                                                            <a href="#" class="btn px-4 py-2 text-white rounded">Laptop</a>
                                                         </div>
                                                     </c:forEach>
                                                 </div>
