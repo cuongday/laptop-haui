@@ -11,24 +11,30 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Login</title>
-        <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/client/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/client/css/style.css">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary bg-login">
+    <body class="bg-login">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-                    <div class="container d-flex align-items-center min-vh-100 justify-content-center">
-                        <div class="row justify-content-center align-items-stretch">
-                            <img class="col-lg-5 d-flex flex-column" src="/images/auth-bg/login.jpg">
-                            <div class="col-lg-5 d-flex flex-column">
+                    <div class="container d-flex align-items-center min-vh-100 min-vw-100 justify-content-center">
+                        <div class="row justify-content-center col-md-6">
+                            <img class="col-md-6 flex-column " style="padding: 0" src="/images/auth-bg/login.jpg">
+                            <div class="col-md-6 flex-column" style="padding: 0;">
                                 <div class="card shadow-lg border-0 rounded-lg">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-2">Đăng nhập</h3></div>
+                                    <div class="card-header">
+                                        <h3 class="text-center font-weight-light my-5">Đăng nhập</h3>
+
+                                    </div>
+
                                     <div class="card-body">
+                                        <c:if test="${param.error != null}">
+                                            <div class="my-2" style="color: red;">Nhập sai địa chỉ email hoặc mật khẩu</div>
+                                        </c:if>
                                         <form method="post" action="/login">
-                                            <c:if test="${param.error != null}">
-                                                <div class="my-2" style="color: red;">Nhập sai địa chỉ email hoặc mật khẩu</div>
-                                            </c:if>
+
 
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" type="email"
@@ -57,14 +63,14 @@
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+                                                    <button type="submit" class="btn btn-login btn-block mt-5">Đăng nhập</button>
                                                 </div>
                                             </div>
                                         </form>
 
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
+                                        <div class="small mt-5">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
                                     </div>
                                 </div>
                             </div>

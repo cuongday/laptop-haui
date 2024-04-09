@@ -55,7 +55,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         //get email
         String email = authentication.getName();
         //query user
-        User user = userService.getUserByEmail(email);
+        User user = this.userService.getUserByEmail(email);
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
         if (user != null) {
             session.setAttribute("role", user.getRole().getName());

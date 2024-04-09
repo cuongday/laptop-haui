@@ -4,6 +4,8 @@ import com.ndc.laptopvn.domain.Order;
 import com.ndc.laptopvn.domain.User;
 import com.ndc.laptopvn.repository.OrderDetailRepository;
 import com.ndc.laptopvn.repository.OrderRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +27,8 @@ public class OrderService {
         this.orderRepository.save(order);
     }
 
-    public List<Order> fetchOrders() {
-        return this.orderRepository.findAll();
+    public Page<Order> fetchOrders(Pageable pageable) {
+        return this.orderRepository.findAll(pageable);
     }
 
     public Optional<Order> fetchOrderById(long id) {

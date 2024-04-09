@@ -11,7 +11,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Register</title>
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="/client/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/client/css/style.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-primary">

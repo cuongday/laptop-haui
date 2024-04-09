@@ -8,6 +8,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UploadService {
@@ -43,5 +45,17 @@ public class UploadService {
             e.printStackTrace();
         }
         return finalName;
+    }
+
+
+    public List<String> UploadFiles(MultipartFile[] files, String targetFolder) {
+        List<String> fileNames = new ArrayList<>();
+        for (MultipartFile file : files) {
+            if (!file.isEmpty()) {
+                String fileName = handleSaveUploadFile(file, targetFolder);
+                fileNames.add(fileName);
+            }
+        }
+        return fileNames;
     }
 }

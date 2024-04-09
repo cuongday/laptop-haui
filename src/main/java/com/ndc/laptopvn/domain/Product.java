@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -18,7 +20,9 @@ public class Product {
 
     @DecimalMin(value = "0.0", inclusive = false , message = "Giá sản phẩm phải lớn hơn 0")
     private double price;
-    private String image;
+    @OneToMany(mappedBy = "product")
+    private List<ProductImage> ProductImages;
+
     @NotNull
     @NotEmpty(message = "Mô tả sản phẩm không được để trống")
     @Column(columnDefinition = "MediumText")
@@ -55,12 +59,12 @@ public class Product {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
+    public List<ProductImage> getImages() {
+        return ProductImages;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(List<ProductImage> images) {
+        this.ProductImages = images;
     }
 
     public String getDetailDesc() {
@@ -113,7 +117,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", detailDesc="
+        return "Product [id=" + id + ", name=" + name + ", price=" + price + ", image=" + ProductImages + ", detailDesc="
                 + detailDesc + ", shortDesc=" + shortDesc + ", quantity=" + quantity + ", sold=" + sold + ", factory="
                 + factory + ", target=" + target + "]";
     }
