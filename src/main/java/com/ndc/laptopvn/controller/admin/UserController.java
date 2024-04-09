@@ -4,6 +4,9 @@ import com.ndc.laptopvn.domain.User;
 import com.ndc.laptopvn.service.UploadService;
 import com.ndc.laptopvn.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -29,9 +33,24 @@ public class UserController {
     }
 
     @RequestMapping("/admin/user")
-    public String getUserPage(Model model) {
-        List<User> users = this.userService.getAllUser();
-        model.addAttribute("users", users);
+    public String getUserPage(Model model,
+                              @RequestParam("page") Optional<String> OptionalPage) {
+        int page = 1;
+        try {
+            if (OptionalPage.isPresent()) {
+                page = Integer.parseInt(OptionalPage.get());
+            } else {
+
+            }
+        } catch (NumberFormatException e) {
+
+        }
+        Pageable pageable = PageRequest.of(page - 1, 5);
+        Page<User> users = this.userService.getAllUser(pageable);
+        List<User> userList = users.getContent();
+        model.addAttribute("users", userList);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", users.getTotalPages());
 
         return "admin/user/show";
     }

@@ -7,6 +7,8 @@ import com.ndc.laptopvn.repository.OrderRepository;
 import com.ndc.laptopvn.repository.ProductRepository;
 import com.ndc.laptopvn.repository.RoleRepository;
 import com.ndc.laptopvn.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,8 +32,8 @@ public class UserService {
         this.productRepository = productRepository;
     }
 
-    public List<User> getAllUser() {
-        return this.userRepository.findAll();
+    public Page<User> getAllUser(Pageable pageable) {
+        return this.userRepository.findAll(pageable);
     }
 
     public List<User> getAllUserByEmail(String email) {

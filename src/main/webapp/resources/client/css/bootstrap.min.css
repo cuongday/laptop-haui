@@ -6922,8 +6922,16 @@ textarea.form-control-lg {
     height: 100vh !important
 }
 
+.vh-75{
+    height: 75vh !important
+}
+
 .min-vh-100 {
     min-height: 100vh !important
+}
+
+.max-vh-75 {
+    max-height: 75vh !important
 }
 
 .flex-fill {
@@ -12041,4 +12049,9 @@ textarea.form-control-lg {
         display: none !important
     }
 
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
 }

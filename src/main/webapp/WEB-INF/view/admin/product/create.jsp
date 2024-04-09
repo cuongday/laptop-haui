@@ -126,7 +126,7 @@
                                 <div class="col-md-6 col-12 mb-3">
                                     <label for="productFile" class="form-label">Image:</label>
                                     <input class="form-control" type="file" id="productFile" accept=".png, .jpg, .jpeg"
-                                           name="uploadProductFile">
+                                           name="uploadProductFile" multiple>
                                 </div>
 
                                 <div class="col-12 mb-3">

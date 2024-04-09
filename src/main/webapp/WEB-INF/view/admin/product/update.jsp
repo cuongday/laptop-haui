@@ -15,21 +15,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(() => {
-            const productFile = $('#productFile');
-            const orgImage = "${newProduct.image}";
+            const productFiles = $('#productFiles');
+            const orgImages = "${ProductImages}";
 
-            if (orgImage){
-                const urlImage = "/images/product/" + orgImage;
-                $("#procuctPreview").attr('src', urlImage);
-                $("#procuctPreview").css('display', 'block');
-            }
-
-
-            productFile.change(function (e) {
-                const imgURL = URL.createObjectURL(e.target.files[0]);
-                $("#procuctPreview").attr('src', imgURL);
-                $("#procuctPreview").css('display', 'block');
+            orgImages.forEach((orgImage, index) => {
+                if (orgImage.image){
+                    const urlImage = "/images/product/1711078092373-asus-01.png";
+                    $("#productPreview" + index).attr('src', urlImage);
+                    $("#productPreview" + index).css('display', 'block');
+                }
             });
+
+
+
+            productFiles.change(function (e) {
+                $.each(e.target.files, function(index, file) {
+                    const imgURL = URL.createObjectURL(file);
+                    $("#productPreview" + index).attr('src', imgURL);
+                    $("#productPreview" + index).css('display', 'block');
+                });
+            });
+
+
+
         });
     </script>
 </head>
@@ -57,8 +65,15 @@
                                 Update Product
                             </h2>
                             <hr>
-                            <form:form class="row g-3" method="post" action="/admin/product/create"
+                            <form:form class="row g-3" method="post" action="/admin/product/update"
                                        modelAttribute="newProduct" enctype="multipart/form-data">
+
+                                <div class="mb-3" style="display: none;">
+                                    <label class="form-label">ID:</label>
+                                    <form:input type="text" class="form-control"
+                                                path = "id"
+                                    />
+                                </div>
                                 <div class="col-md-6 col-12 mb-3">
                                     <c:set var="errorProductName">
                                         <form:errors path="name" cssClass="invalid-feedback" />
@@ -133,15 +148,17 @@
                                 </div>
 
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label for="productFile" class="form-label">Image:</label>
-                                    <input class="form-control" type="file" id="productFile" accept=".png, .jpg, .jpeg"
-                                           name="uploadProductFile">
+                                    <label for="productFiles" class="form-label">Image:</label>
+                                    <input class="form-control" type="file" id="productFiles" accept=".png, .jpg, .jpeg"
+                                           name="uploadProductFile" multiple>
                                 </div>
 
-                                <div class="col-12 mb-3">
-                                    <img style="max-height: 250px; display:none;" alt="avatar preview"
-                                         id="procuctPreview">
-                                </div>
+                                <c:forEach items="${ProductImages}" var="ProductImage" varStatus="status">
+                                    <div class="col-12 mb-3">
+                                        <img style="max-height: 250px; display:none;" alt="product preview"
+                                             id="productPreview${status.index}">
+                                    </div>
+                                </c:forEach>
 
                                 <div class="col-12 mb-5">
                                     <button type="submit" class="btn btn-primary">Update</button>

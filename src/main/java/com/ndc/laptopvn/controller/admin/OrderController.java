@@ -2,14 +2,15 @@ package com.ndc.laptopvn.controller.admin;
 
 import com.ndc.laptopvn.domain.Order;
 import com.ndc.laptopvn.service.OrderService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class OrderController {
@@ -20,9 +21,24 @@ public class OrderController {
         this.orderService = orderService;
     }
     @GetMapping("/admin/order")
-    public String getDashboard(Model model) {
-        List<Order> orders = this.orderService.fetchOrders();
-        model.addAttribute("orders", orders);
+    public String getDashboard(Model model,
+                               @RequestParam("page") Optional<String> pageOptional) {
+        int page = 1;
+        try {
+            if (pageOptional.isPresent()) {
+                page = Integer.parseInt(pageOptional.get());
+            } else {
+
+            }
+        } catch (NumberFormatException e) {
+
+        }
+        Pageable pageable = PageRequest.of(page - 1, 5);
+        Page<Order> orders = this.orderService.fetchOrders(pageable);
+        List<Order> orderList = orders.getContent();
+        model.addAttribute("orders", orderList);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", orders.getTotalPages());
         return "admin/order/show";
     }
 

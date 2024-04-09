@@ -41,7 +41,15 @@
                                 </div>
 
                                 <ul class="list-group list-group-flu    sh">
-                                    <li><img style="max-height: 250px; width: auto" src="/images/product/${product.image}" class="card-img-top" alt="hình ảnh laptop"/></li>
+
+                                    <c:forEach items="${ProductImages}" var="ProductImage">
+                                        <li>
+                                            <img style="max-height: 250px; width: auto" src="/images/product/${ProductImage.image}" class="card-img-top" alt="hình ảnh laptop"/>
+                                        </li>
+                                    </c:forEach>
+
+
+
                                     <li class="list-group-item">ID: ${id} </li>
                                     <li class="list-group-item">Name: ${product.name} </li>
                                     <li class="list-group-item">Price: ${product.price}</li>
@@ -54,7 +62,7 @@
 
                         </div>
                     </div>
-                    <div class=""><a href="/admin/product" class="btn btn-success mt-2">Back</a></div>
+                    <div class=""><a href="/admin/product?page=${currentPage}" class="btn btn-success mt-2">Back</a></div>
                 </div>
             </div>
 

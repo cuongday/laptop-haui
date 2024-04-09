@@ -64,11 +64,28 @@
                                 <div class="col-lg-8 col-xl-9">
                                     <div class="row g-4">
                                         <div class="col-lg-6">
-                                            <div class="border rounded">
-                                                <a href="#">
-                                                    <img src="/images/product/${product.image}"
-                                                        class="img-fluid rounded" alt="Image">
-                                                </a>
+                                            <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+                                                <div class="carousel-inner" role="listbox">
+                                                    <c:forEach var="ProductImage" items="${ProductImages}" varStatus="status">
+                                                        <div class="carousel-item rounded ${status.index == 1 ? 'active' : ''}">
+                                                            <!-- Your image and content here -->
+                                                            <img src="/images/product/${ProductImage.image}" class="img-fluid w-100 h-100 rounded"
+                                                                 alt="Second slide">
+                                                            <a href="#" class="btn px-4 py-2 text-white rounded">Laptop</a>
+                                                        </div>
+                                                    </c:forEach>
+                                                </div>
+                                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                                                        data-bs-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                                                        data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>
+                                                <!-- Carousel controls here -->
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -190,6 +207,8 @@
 
                         </div>
                     </div>
+
+
                     <!-- Single Product End -->
 
                     <jsp:include page="../layout/footer.jsp" />

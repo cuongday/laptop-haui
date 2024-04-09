@@ -495,3 +495,18 @@
 
 /*** Footer End ***/
 
+.bg-login {
+    background-image: linear-gradient(rgb(13,66,118), rgb(13,169,195)); !important;
+}
+
+.btn-login {
+    background-color: rgb(11,110,253); !important;
+    border-color: rgb(11,110,253); !important;
+    color: #fff;
+}
+
+.btn-login:hover {
+    background-color: rgb(11,110,288); !important;
+    border-color: rgb(11,110,253); !important;
+    color: #fff;
+}
