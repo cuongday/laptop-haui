@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +25,8 @@ public class UserController {
 
     private final UserService userService;
     private final UploadService uploadService;
-
     private final PasswordEncoder passwordEncoder;
+
 
     public UserController(UserService userService, UploadService uploadService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
@@ -92,6 +94,7 @@ public class UserController {
         user.setPassword(hashPassword);
         user.setAvatar(avatar);
         user.setRole(this.userService.getRoleByName(user.getRole().getName()));
+        user.setCreateAt(new Timestamp(System.currentTimeMillis()));
         this.userService.handleSaveUser(user);
         return "redirect:/admin/user";
     }
@@ -134,5 +137,23 @@ public class UserController {
 
         return "redirect:/admin/user";
     }
+
+//    viết api login ở đây
+//    @PostMapping("/api/login")
+//    public ResponseEntity<Object> login(@Valid @RequestBody LoginRequest loginRequest, HttpServletResponse response) {
+//        //Authenticate
+//        try {
+//            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+//                    loginRequest.getEmail(),
+//                    loginRequest.getPassword()
+//            ));
+//
+//            //return ResponseEntity.ok(UserMapper.toUserDTO(((CustomUserDetails) authentication.getPrincipal()).getUser()));
+//
+//        } catch (Exception e) {
+//            return ResponseEntity.badRequest().body("Login failed");
+//        }
+//        return ResponseEntity.ok("Login success");
+//    }
 
 }

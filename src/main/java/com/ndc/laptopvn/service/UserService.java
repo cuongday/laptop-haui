@@ -36,6 +36,10 @@ public class UserService {
         return this.userRepository.findAll(pageable);
     }
 
+    public List<User> getListUser() {
+        return this.userRepository.findAll();
+    }
+
     public List<User> getAllUserByEmail(String email) {
         return this.userRepository.findOneByEmail(email);
     }

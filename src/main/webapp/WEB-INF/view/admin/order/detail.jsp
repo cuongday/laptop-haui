@@ -54,7 +54,7 @@
                                     <tr>
                                         <th scope="row">
                                             <div class="d-flex align-items-center">
-                                                <img src="/images/product/${orderDetail.product.image}"
+                                                <img src="/images/product/${orderDetail.product.getImages().get(0).image}"
                                                      class="img-fluid me-5 rounded-circle"
                                                      style="width: 80px; height: 80px;" alt="">
                                             </div>
@@ -62,7 +62,7 @@
                                         <td>
                                             <a target="_blank" style="text-decoration: none" href="/product/${orderDetail.product.id}">${orderDetail.product.name}</a>
                                         </td>
-                                        <td>${orderDetail.price}</td>
+                                        <td><fmt:formatNumber value="${orderDetail.price}" type="number" /></td>
                                         <td>${orderDetail.quantity}</td>
                                         <td>
                                             <fmt:formatNumber value="${orderDetail.quantity * orderDetail.price}" type="number" /> đ
