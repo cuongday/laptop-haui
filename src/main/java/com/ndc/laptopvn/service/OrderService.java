@@ -8,7 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -56,4 +59,8 @@ public class OrderService {
     public List<Order> fetchOrdersByUser(User user) {
         return this.orderRepository.findByUser(user);
     }
+
+//    public Map<LocalDate, Long> getOrdersCountByDate(Timestamp createAt) {
+//        return this.orderRepository.getOrdersCountByDate(createAt);
+//    }
 }

@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -28,6 +29,15 @@ public class User {
     private String address;
     private String phoneNumber;
     private String avatar;
+    private Timestamp createAt;
+
+    public Timestamp getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
+    }
 
     @ManyToOne
     @JoinColumn(name = "role_id")

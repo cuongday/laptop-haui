@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.ndc.laptopvn.service.UserService;
 import jakarta.servlet.http.HttpSession;
+
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -147,10 +149,6 @@ public class ProductService {
     public void handlePlaceOrder(User user, HttpSession session,
                                  String receiverName, String receiverAddress, String receiverPhone){
 
-
-
-
-
         // step1: get cart by user
         Cart cart = this.cartRepository.findByUser(user);
         if (cart != null){
@@ -164,6 +162,7 @@ public class ProductService {
                 order.setReceiverAddress(receiverAddress);
                 order.setReceiverPhone(receiverPhone);
                 order.setStatus("PENDING");
+                order.setCreateAt(new Timestamp(System.currentTimeMillis()));
 
                 double totalPrice = 0;
                 for(CartDetail cartDetail : cartDetails){

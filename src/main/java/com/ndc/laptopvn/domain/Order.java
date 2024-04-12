@@ -1,5 +1,6 @@
 package com.ndc.laptopvn.domain;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -28,6 +29,8 @@ public class Order {
 
     private String status;
 
+    private Timestamp createAt;
+
     // user id
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -35,6 +38,14 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
+
+    public Timestamp getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
+    }
 
     public long getId() {
         return id;

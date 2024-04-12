@@ -46,6 +46,7 @@
                                     <th scope="col">Total Price</th>
                                     <th scope="col">User</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Create At</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -56,6 +57,7 @@
                                         <td><fmt:formatNumber value="${order.totalPrice}" type="number" /> đ</td>
                                         <td>${sessionScope.fullName}</td>
                                         <td>${order.status}</td>
+                                        <td>${order.createAt}</td>
                                         <td>
                                             <a href="/admin/order/${order.id}" class="btn btn-success">View</a>
                                             <a href="/admin/order/update/${order.id}" class="btn btn-warning">Update</a>
