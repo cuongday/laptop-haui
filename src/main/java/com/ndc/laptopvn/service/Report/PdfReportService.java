@@ -52,7 +52,8 @@ public class PdfReportService {
                 FontFactory.register(fontPath, "Times New Roman");
         Font font = FontFactory.getFont("Times New Roman", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 4, Font.NORMAL, BaseColor.BLACK);
         Font fontRed = FontFactory.getFont("Times New Roman", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 4, Font.NORMAL, BaseColor.RED);
-        Font fontBold = FontFactory.getFont("Times New Roman", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 6, Font.BOLD, BaseColor.BLACK);
+        Font fontBoldBig = FontFactory.getFont("Times New Roman", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 6, Font.BOLD, BaseColor.BLACK);
+        Font fontBold = FontFactory.getFont("Times New Roman", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 4, Font.BOLD, BaseColor.BLACK);
 
         document.open();
         User currentUser = this.userService.getUserById(id);
@@ -61,11 +62,11 @@ public class PdfReportService {
 
         DecimalFormat df = new DecimalFormat("#");
 
-        Paragraph storeName = new Paragraph("LaptopHaui", fontBold);
+        Paragraph storeName = new Paragraph("LaptopHaui", fontBoldBig);
         storeName.setIndentationLeft(50);
         document.add(storeName);
 
-        Paragraph title = new Paragraph("Hoá đơn bán hàng", fontBold);
+        Paragraph title = new Paragraph("Hoá đơn bán hàng", fontBoldBig);
         title.setIndentationRight(50);
         title.setAlignment(Element.ALIGN_RIGHT);
         document.add(title);
@@ -122,9 +123,11 @@ public class PdfReportService {
             }
         }
         table.addCell("");
+        table.addCell("");
+        table.addCell("");
         table.addCell(new Phrase("Tổng cộng", font));
         String formattedSum = df.format(sum);
-        table.addCell(new Phrase(formattedSum, font));
+        table.addCell(new Phrase(formattedSum, fontBold));
         document.add(table);
 
         document.close();

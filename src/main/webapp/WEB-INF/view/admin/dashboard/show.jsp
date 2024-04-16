@@ -59,9 +59,9 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
-                                Area Chart Example
+                                Line Chart Example
                             </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body"><canvas id="salesChart" width="100%" height="40"></canvas></div>
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -82,9 +82,111 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="js/chart-area-demo.js"></script>
-<script src="js/chart-bar-demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+    // Lấy ngày hiện tại
+    let endDate = new Date();
+    endDate.setDate(endDate.getDate() + 1);
+    // Lấy ngày 30 ngày trước
+    let startDate = new Date();
+    startDate.setDate(startDate.getDate() - 30);
+
+    let formatDate = (date) => {
+        let month = '' + (date.getMonth() + 1),
+            day = '' + date.getDate(),
+            year = date.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+    console.log(endDate);
+    // Gọi API để lấy dữ liệu thống kê
+    $.ajax({
+        url: '/api/statistics/sales', // Đường dẫn của API thống kê
+        type: 'GET',
+        data: {
+            startDate: formatDate(startDate), // Ngày bắt đầu
+            endDate: formatDate(endDate) // Ngày kết thúc
+        },
+        success: function(data) {
+
+            // Tạo một đồ thị từ dữ liệu nhận được
+            var ctx = document.getElementById('salesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.map(item => new Date(item.date).toLocaleDateString('vi-VN')), // Ngày bán hàng
+                    datasets: [{
+                        label: 'Số lượng laptop bán được trong 30 ngày qua',
+                        data: data.map(item => item.counts), // Số lượng laptop bán được
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            min: 0
+                        }
+                    }
+                }
+            });
+        },
+        error: function(error) {
+            // Xử lý lỗi ở đây
+            console.error(error);
+        }
+    });
+
+    // Gọi API để lấy dữ liệu thống kê
+    $.ajax({
+        url: '/api/statistics/sales-by-factory', // Đường dẫn của API thống kê
+        type: 'GET',
+        data: {
+            startDate: formatDate(startDate), // Ngày bắt đầu
+            endDate: formatDate(endDate) // Ngày kết thúc
+        },
+        success: function(data) {
+            // Tạo một đồ thị từ dữ liệu nhận được
+            console.log(data);
+            var ctx = document.getElementById('myBarChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(item => item.factory), // Hãng sản xuất
+                    datasets: [{
+                        label: 'Số lượng sản phẩm bán được trong 30 ngày qua',
+                        data: data.map(item => item.counts), // Số lượng sản phẩm bán được
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            min: 0
+                        }
+                    }
+                }
+            });
+        },
+        error: function(error) {
+            // Xử lý lỗi ở đây
+            console.error(error);
+        }
+    });
+
+</script>
 </body>
 </html>
+

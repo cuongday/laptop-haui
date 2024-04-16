@@ -1,5 +1,6 @@
 package com.ndc.laptopvn.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +12,7 @@ public class ProductImage {
 
     private String image;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;

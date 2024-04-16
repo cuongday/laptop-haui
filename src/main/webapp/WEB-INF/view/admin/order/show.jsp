@@ -62,6 +62,7 @@
                                             <a href="/admin/order/${order.id}" class="btn btn-success">View</a>
                                             <a href="/admin/order/update/${order.id}" class="btn btn-warning">Update</a>
                                             <a href="/admin/order/delete/${order.id}" class="btn btn-danger">Delete</a>
+                                            <a href="/admin/report/${order.user.id}" class="btn btn-secondary">Xuất hóa đơn</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
