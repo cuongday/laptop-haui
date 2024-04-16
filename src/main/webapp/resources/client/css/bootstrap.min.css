@@ -18,8 +18,8 @@
     --bs-white: #fff;
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
-    --bs-primary: #81C408;
-    --bs-secondary: #FFB524;
+    --bs-primary: #751FFF;
+    --bs-secondary: #4f2f74;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
     --bs-warning: #ffc107;
@@ -196,7 +196,7 @@ sup {
 }
 
 a {
-    color: #81c408;
+    color: #751FFF;
     text-decoration: none
 }
 
@@ -6162,13 +6162,22 @@ textarea.form-control-lg {
     right: 0
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
+.carousel-control-prev-icon {
     display: inline-block;
     width: 2rem;
     height: 2rem;
     background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: 100% 100%
+    background-position: 40%;
+    background-size: 60% 100%
+}
+
+.carousel-control-next-icon {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-position: 60%;
+    background-size: 60% 100%
 }
 
 .carousel-control-prev-icon {
@@ -6807,15 +6816,15 @@ textarea.form-control-lg {
 }
 
 .border-primary {
-    border-color: #81c408 !important
+    border-color: ##751fff !important
 }
 
 .border-secondary {
-    border-color: #ffb524 !important
+    border-color: ##d1b4ff !important
 }
 
 .border-success {
-    border-color: #198754 !important
+    border-color: ##621ad6 !important
 }
 
 .border-info {
@@ -7794,11 +7803,11 @@ textarea.form-control-lg {
     color: #b7f7e1 !important
 }
 .text-primary {
-    color: #81c410 !important;
+    color: #000000 !important;
 }
 
 .text-secondary {
-    color: #ffb524 !important
+    color: #751FFF !important
 }
 
 .text-success {
@@ -7854,7 +7863,7 @@ textarea.form-control-lg {
 }
 
 .bg-secondary {
-    background-color: #ffb524 !important
+    background-color: #d72d2d !important
 }
 
 .bg-success {
