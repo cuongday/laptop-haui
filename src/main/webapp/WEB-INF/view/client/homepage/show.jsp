@@ -1,5 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,8 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+          rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
@@ -37,8 +38,7 @@
 </div>
 <!-- Spinner End -->
 
-<jsp:include page="../layout/header.jsp" />
-
+<jsp:include page="../layout/header.jsp"/>
 
 
 <!-- Modal Search Start -->
@@ -63,9 +63,7 @@
 </div>
 <!-- Modal Search End -->
 
-<jsp:include page="../layout/banner.jsp" />
-
-
+<jsp:include page="../layout/banner.jsp"/>
 
 
 <!-- Laptop Shop Start-->
@@ -100,9 +98,9 @@
                                             </div>
 
 
-
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                 style="top: 10px; left: 10px;">Laptop</div>
+                                                 style="top: 10px; left: 10px;">Laptop
+                                            </div>
                                             <div
                                                     class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4 style="font-size: 15px;">
@@ -117,17 +115,18 @@
                                                     <p style="font-size: 15px; text-align: center; width: 100%;"
                                                        class="text-dark  fw-bold mb-3">
                                                         <fmt:formatNumber type="number"
-                                                                          value="${product.price}" /> đ
+                                                                          value="${product.price}"/> đ
                                                     </p>
                                                     <form action="/add-product-to-cart/${product.id}"
                                                           method="post">
                                                         <input type="hidden"
                                                                name="${_csrf.parameterName}"
-                                                               value="${_csrf.token}" />
+                                                               value="${_csrf.token}"/>
 
                                                         <button
-                                                                class="mx-auto btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                                class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                class="mx-auto btn border border-secondary rounded-pill px-3 text-primary">
+                                                            <i
+                                                                    class="fa fa-shopping-bag me-2 text-primary"></i>
                                                             Add to cart
                                                         </button>
                                                     </form>
@@ -140,15 +139,26 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div id="tab-2" class="tab-pane fade show p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4 laptop-item">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Laptop Shop End-->
 
-<jsp:include page="../layout/feature.jsp" />
+<jsp:include page="../layout/feature.jsp"/>
 
-<jsp:include page="../layout/footer.jsp" />
+<jsp:include page="../layout/footer.jsp"/>
 
 
 <!-- Back to Top -->
@@ -167,33 +177,74 @@
 <!-- Template Javascript -->
 <script src="/client/js/main.js"></script>
 
-
 <script>
     $(document).ready(function () {
-        $('#search-input').on('keyup', function () {
-            var keyword = $(this).val();
+        searchProduct();
+    });
+
+    function searchProduct() {
+        $('#search-icon-1').click(function () {
+            let keyword = $('#search-input').val();
             if (keyword.length > 0) {
                 $.ajax({
-                    url: '/api/products/search',
+                    url: '/api/products/search?keyword=' + keyword,
                     type: 'GET',
-                    data: {
-                        keyword: keyword
-                    },
-                    success: function (data) {
-                        $('#tab-1').html(data);
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (json) {
+                        $('#searchModal').modal('hide');
+                        $('#tab-1').removeClass('active');
+                        $('#tab-2').addClass('active');
+                        console.log(json);
+                        showSearchProduct(json);
                     }
                 });
-            } else {
-                $.ajax({
-                    url: '/search',
-                    type: 'GET',
-                    success: function (data) {
-                        $('#tab-1').html(data);
-                    }
-                });
+            }else{
+                $('#searchModal').modal('hide');
+                $('#tab-1').addClass('active');
+                $('#tab-2').removeClass('active');
             }
         });
-    });
+    }
+
+    function showSearchProduct(data) {
+        if (!data || !Array.isArray(data)) {
+            console.error('Invalid data:', data);
+            return;
+        }
+        let body = $('.laptop-item');
+        body.empty();
+        let str = '';
+        for (let i = 0; i < data.length; i++) {
+            str += '<div class="col-md-6 col-lg-4 col-xl-3">';
+            str += '<div class="rounded position-relative fruite-item">';
+            str += '<div class="fruite-img">';
+            str += '<img src="/images/product/' + data[i].images[0].image + '" class="img-fluid w-100 rounded-top" alt="">';
+            str += '</div>';
+            str += '<div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Laptop</div> ';
+            str += '<div class="p-4 border border-secondary border-top-0 rounded-bottom">';
+            str += '<h4 style="font-size: 15px;"> <a href="/product/' + data[i].id + '">' + data[i].name + '</a></h4>';
+            str += '<p style="font-size: 13px;">' + data[i].shortDesc + '</p>';
+            str += '<div class="d-flex  flex-lg-wrap justify-content-center flex-column">';
+            let formattedPrice = new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(data[i].price);
+            str += '<p style="font-size: 15px; text-align: center; width: 100%;" class="text-dark fw-bold mb-3">' + formattedPrice + '</p>';
+            str += '<form action="/add-product-to-cart/' + data[i].id + '" method="post">';
+            str += '<button class="mx-auto btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Add to cart</button>';
+            str += '</form>';
+            str += '</div>';
+            str += '</div>';
+            str += '</div>';
+            str += '</div>';
+        }
+        body.append(str);
+    }
+
+
+
 </script>
+
 </body>
 </html>

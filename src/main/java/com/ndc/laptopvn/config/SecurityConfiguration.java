@@ -5,6 +5,7 @@ import com.ndc.laptopvn.service.UserService;
 import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -55,8 +56,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .dispatcherTypeMatchers(DispatcherType.FORWARD,
                                 DispatcherType.INCLUDE) .permitAll()
-                        .requestMatchers("/","/login", "/client/**", "/css/**", "/js/**","/product/**",
-                                "/images/**","/register","/api/**", "/admin/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/","/login", "/client/**", "/css/**", "/js/**","/product/**",
+                                "/images/**","/register","/api/**").permitAll()
                         .requestMatchers("/admin").hasAnyRole("ADMIN","MANAGER","SELLER")
                         .requestMatchers("/admin/product/**", "/admin/order/**").hasRole("MANAGER")
                         .requestMatchers("/admin/user/**").hasRole("ADMIN")

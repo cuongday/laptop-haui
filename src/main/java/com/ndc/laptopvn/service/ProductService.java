@@ -195,8 +195,8 @@ public class ProductService {
 
     }
 
-    public Page<Product> searchProduct(String keyword, Pageable pageable) {
-        return productRepository.findByNameContaining(keyword, pageable);
+    public List<Product> searchProduct(String keyword) {
+        return productRepository.findByNameContaining(keyword);
     }
 
 }

@@ -189,12 +189,8 @@ public class ProductController {
     }
 
     @GetMapping("/api/products/search")
-    public ResponseEntity<Object> searchProducts(@RequestParam("name") String keyword,
-                                                @RequestParam(defaultValue = "0") int page,
-                                                @RequestParam(defaultValue = "10") int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Product> products = this.productService.searchProduct(keyword, pageable);
-
+    public ResponseEntity<Object> searchProducts(@RequestParam("keyword") String keyword) {
+        List<Product> products = this.productService.searchProduct(keyword);
         return ResponseEntity.ok(products);
     }
 

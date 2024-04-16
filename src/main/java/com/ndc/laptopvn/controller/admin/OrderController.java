@@ -5,11 +5,15 @@ import com.ndc.laptopvn.service.OrderService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -77,6 +81,22 @@ public class OrderController {
     public String postDeleteOrder(@ModelAttribute("newOrder") Order order) {
         this.orderService.deleteOrderById(order.getId());
         return "redirect:/admin/order";
+    }
+
+    @GetMapping("/api/statistics/sales")
+    public ResponseEntity<List<Map<String, Object>>> getSalesStatistics(
+            @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        List<Map<String, Object>> statistics = orderService.getSalesStatistics(startDate, endDate);
+        return ResponseEntity.ok(statistics);
+    }
+
+    @GetMapping("/api/statistics/sales-by-factory")
+    public ResponseEntity<List<Map<String, Object>>> getSalesStatisticsByFactory(
+            @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        List<Map<String, Object>> statistics = orderService.getSalesStatisticsByFactory(startDate, endDate);
+        return ResponseEntity.ok(statistics);
     }
 }
 

@@ -17,7 +17,7 @@ public class ReportController {
     public String getReport(@PathVariable long id){
         try {
             this.pdfReportService.createPdfReport("reportOrder", id);
-            return "Report created successfully";
+            return "Bill create success!";
         } catch (Exception e) {
             return e.getMessage();
         }
