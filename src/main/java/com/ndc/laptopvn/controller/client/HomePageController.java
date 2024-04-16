@@ -64,6 +64,10 @@ public class HomePageController {
                                     BindingResult  registerUserbindingResult
                                  ) {
 
+        List<FieldError> errors = registerUserbindingResult.getFieldErrors();
+        for (FieldError error : errors ) {
+            System.out.println (error.getField() + " - " + error.getDefaultMessage());
+        }
 
         if (registerUserbindingResult.hasErrors()) {
             return "client/auth/register";
@@ -78,7 +82,6 @@ public class HomePageController {
         // save
         this.userService.handleSaveUser(user);
         return "redirect:/login";
-
     }
 
     @GetMapping("/login")
