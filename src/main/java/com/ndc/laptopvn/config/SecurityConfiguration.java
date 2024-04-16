@@ -58,10 +58,10 @@ public class SecurityConfiguration {
                                 DispatcherType.INCLUDE) .permitAll()
                         .requestMatchers(HttpMethod.GET,"/","/login", "/client/**", "/css/**", "/js/**","/product/**",
                                 "/images/**","/register","/api/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/register").permitAll()
                         .requestMatchers("/admin").hasAnyRole("ADMIN","MANAGER","SELLER")
                         .requestMatchers("/admin/product/**", "/admin/order/**").hasRole("MANAGER")
                         .requestMatchers("/admin/user/**").hasRole("ADMIN")
-
                         .anyRequest().authenticated())
                 .sessionManagement((sessionManagement) -> sessionManagement
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
