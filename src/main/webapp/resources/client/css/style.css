@@ -75,6 +75,25 @@
 }
 
 /*** Topbar Start ***/
+
+.top_banner{
+    line-height: 30px;
+}
+
+.img-logo {
+    height:40px;
+    padding-left: 16px;
+}
+
+.top_slide {
+    height: 30px;
+    font-size: 14px;
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 0px;
+}
+
 .fixed-top {
     transition: 0.5s;
     background: var(--bs-white);
@@ -82,7 +101,7 @@
 }
 
 .topbar {
-    padding: 20px;
+    padding: 30px;
     border-radius: 230px 100px;
 }
 
@@ -124,7 +143,7 @@
 }
 
 .navbar {
-    height: 100px;
+    height: 70px;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
@@ -178,10 +197,16 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(../img/hero-img.jpg);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3)), url(../img/hero-img.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-opacity:10%;
+}
+
+#shop_now {
+    background: #751FFF;
+    margin: 10px 0px 20px;
 }
 
 .carousel-item {
@@ -190,19 +215,19 @@
 
 .carousel-item a {
     position: absolute;
-    top: 50%;
+    bottom: 0px;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 25px;
-    background: linear-gradient(rgba(255, 181, 36, 0.7), rgba(255, 181, 36, 0.7));
+    background: linear-gradient(rgba(215, 45, 45, 0.9), rgba(215, 35, 35, 0.9));
 }
 
 .carousel-control-next,
 .carousel-control-prev {
-    width: 48px;
-    height: 48px;
-    border-radius: 48px;
-    border: 1px solid var(--bs-white);
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+    border: 2px solid var(--bs-white);
     background: var(--bs-primary);
     position: absolute;
     top: 50%;
@@ -210,11 +235,11 @@
 }
 
 .carousel-control-next {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .carousel-control-prev {
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .page-header {
@@ -228,7 +253,7 @@
 @media (min-width: 992px) {
     .hero-header,
     .page-header {
-        margin-top: 90px !important;
+        margin-top: 100px !important;
     }
 }
 

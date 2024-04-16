@@ -1,11 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Navbar start -->
-<div class="container-fluid fixed-top">
+
+<div class="container-fluid fixed-top" style = "padding: 0px">
+    <div class="top_slide">
+        <p class = "top_banner"> Chào mừng kỷ niệm 49 năm Ngày Giải phóng Miền Nam, thống nhất đất nước </p>
+    </div>
     <div class="container px-0">
         <nav class="navbar navbar-light bg-white navbar-expand-xl">
             <a href="/" class="navbar-brand">
-                <h1 class="text-primary display-6">LaptopHaui</h1>
+                <img src="/client/img/Logo.png" class="img-logo">
             </a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -16,7 +20,7 @@
                     <a href="/" class="nav-item nav-link active">Trang Chủ</a>
                     <a href="/products" class="nav-item nav-link">Sản Phẩm</a>
                 </div>
-                <div class="d-flex m-3 me-0">
+                <div class="d-flex me-0">
                     <button
                             class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                             data-bs-toggle="modal" data-bs-target="#searchModal"><i
@@ -27,7 +31,7 @@
                     <a href="/cart" class="position-relative me-4 my-auto">
                         <i class="fa fa-shopping-bag fa-2x"></i>
                         <span
-                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-light px-1"
                                 style="top: -5px; left: 15px; height: 20px; min-width: 20px;">${sessionScope.sum}
                         </span>
                     </a>
