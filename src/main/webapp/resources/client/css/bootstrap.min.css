@@ -2915,21 +2915,21 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-    color: #000;
-    background-color: #81c408;
-    border-color: #81c408
+    color: #fff;
+    background-color: #751FFF;
+    border-color: #751FFF
 }
 
 .btn-primary:hover {
-    color: #000;
-    background-color: #94cd2d;
-    border-color: #8eca21
+    color: #fff;
+    background-color: #621AD6;
+    border-color: #621AD6
 }
 
 .btn-check:focus + .btn-primary, .btn-primary:focus {
-    color: #000;
-    background-color: #94cd2d;
-    border-color: #8eca21;
+    color: #fff;
+    background-color: #621AD6;
+    border-color: #621AD6;
     box-shadow: 0 0 0 .25rem rgba(110, 167, 7, .5)
 }
 
