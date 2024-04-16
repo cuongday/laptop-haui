@@ -67,7 +67,7 @@
                     </div>
                     </c:if>
                     <c:if test="${empty pageContext.request.userPrincipal}">
-                        <a href="/login" class="btn btn-primary">Đăng Nhập</a>
+                        <a href="/login" class="btn btn-primary text-light text-center" style="line-height: 30px">Đăng Nhập</a>
                     </c:if>
                 </div>
             </div>
