@@ -91,9 +91,8 @@
                                             </div>
 
 
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                 style="top: 10px; left: 10px;">Laptop
-                                            </div>
+                                            <div class="text-white px-2 py-2 position-absolute"
+                                                 style="top:10px; left: 10px; background: var(--bs-red); border-radius: 50%">New</div>
                                             <div
                                                     class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4 style="font-size: 15px;">

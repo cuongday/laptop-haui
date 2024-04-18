@@ -50,8 +50,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="https://hoidanit.vn" target="_blank"><i
-                                class="fas fa-copyright text-light me-2"></i>LaptopHaui</a>, All right
+                        <span class="text-light"><i class="fas fa-copyright text-light me-2"></i>LaptopHaui, All right
                             reserved.</span>
             </div>
             <div class="col-md-6 my-auto text-center text-md-end text-white">

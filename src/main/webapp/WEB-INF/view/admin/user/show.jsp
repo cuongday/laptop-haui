@@ -83,7 +83,7 @@
 
                                     <c:forEach begin="0" end="${totalPages -1}" varStatus="loop">
                                         <li class="page-item">
-                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} " href="/admin/product?page=${loop.index + 1}">
+                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} " href="/admin/user?page=${loop.index + 1}">
                                                     ${loop.index + 1}
                                             </a>
                                         </li>

@@ -13,7 +13,7 @@ public class ReportController {
         this.pdfReportService = pdfReportService;
     }
 
-    @GetMapping("/admin/report/{id}")
+    @GetMapping("/api/admin/report/{id}")
     public String getReport(@PathVariable long id){
         try {
             this.pdfReportService.createPdfReport("reportOrder", id);

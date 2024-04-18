@@ -5,7 +5,7 @@
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-md-12 col-lg-7">
-                <h4 class="mb-3 text-secondary">100% Sản Phẩm Chính Hãng</h4>
+                <h4 class="mb-3" style="color: var( --bs-primary)">100% Sản Phẩm Chính Hãng</h4>
                 <h1 class="display-3 text-primary">Hàng cao cấp<br /> Rẻ vô địch</h1>
                 <div class="col-lg-8 text-start">
                                     <ul class="nav nav-pills d-inline-flex text-center">
