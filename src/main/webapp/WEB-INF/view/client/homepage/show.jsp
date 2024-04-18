@@ -84,14 +84,15 @@
                                     <div class="col-md-6 col-lg-4 col-xl-3">
                                         <div class="rounded position-relative fruite-item">
                                             <div class="fruite-img">
-                                                <img src="/images/product/${product.getImages().get(0).image}"
-                                                     class="img-fluid w-100 rounded-top" alt="">
+                                                <a href="/product/${product.id}">
+                                                    <img src="/images/product/${product.getImages().get(0).image}"
+                                                         class="img-fluid w-100 rounded-top" alt="">
+                                                </a>
                                             </div>
 
 
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                 style="top: 10px; left: 10px;">Laptop
-                                            </div>
+                                            <div class="text-white px-2 py-2 position-absolute"
+                                                 style="top:10px; left: 10px; background: var(--bs-red); border-radius: 50%">New</div>
                                             <div
                                                     class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4 style="font-size: 15px;">

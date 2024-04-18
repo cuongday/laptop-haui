@@ -78,6 +78,8 @@
     color: var(--bs-white) !important;
 }
 
+
+
 /*** Topbar Start ***/
 
 .top_banner{
@@ -144,6 +146,7 @@
     padding: 10px 15px;
     font-size: 16px;
     transition: .5s;
+    font-weight: 600;
 }
 
 .navbar {
@@ -209,7 +212,7 @@
 }
 
 #shop_now {
-    background: #751FFF;
+    background: #0b458f;
     margin: 10px 0px 20px;
 }
 
@@ -538,4 +541,8 @@
     background-color: rgb(11,110,288); !important;
     border-color: rgb(11,110,253); !important;
     color: #fff;
+}
+
+.btn.border-secondary:hover .fa-shopping-bag {
+    color: var(--bs-white) !important;
 }

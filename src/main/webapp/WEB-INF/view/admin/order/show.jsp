@@ -62,7 +62,7 @@
                                             <a href="/admin/order/${order.id}" class="btn btn-success">View</a>
                                             <a href="/admin/order/update/${order.id}" class="btn btn-warning">Update</a>
                                             <a href="/admin/order/delete/${order.id}" class="btn btn-danger">Delete</a>
-                                            <a href="/admin/report/${order.user.id}" class="btn btn-secondary">Xuất hóa đơn</a>
+                                            <a data-id="${order.id}" class="btn btn-secondary exportBill">Xuất hóa đơn</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -104,5 +104,24 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.exportBill').click(function () {
+            // lấy ra id của user để xuất hóa đơn
+            let id = $(this).data('id');
+            console.log(id);
+            $.ajax({
+                url: '/api/admin/report/' + id,
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                    alert('Xuất hóa đơn thành công');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
