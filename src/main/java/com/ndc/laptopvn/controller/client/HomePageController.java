@@ -107,4 +107,27 @@ public class HomePageController {
         model.addAttribute("orders", orders);
         return "client/cart/order-history";
     }
+
+    @GetMapping("/show-info")
+    public String getShowInfoPage(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        User currentUser = new User();
+        long id = (long) session.getAttribute("id");
+        currentUser.setId(id);
+
+        List<Order> orders = this.orderService.fetchOrdersByUser(currentUser);
+        model.addAttribute("orders", orders);
+        return "client/info/show-info";
+    }
+    @GetMapping("/info-setting")
+    public String getInfoSettingPage(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        User currentUser = new User();
+        long id = (long) session.getAttribute("id");
+        currentUser.setId(id);
+
+        List<Order> orders = this.orderService.fetchOrdersByUser(currentUser);
+        model.addAttribute("orders", orders);
+        return "client/info/info-setting";
+    }
 }
