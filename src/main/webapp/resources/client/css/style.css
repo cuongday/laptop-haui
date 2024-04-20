@@ -546,3 +546,13 @@
 .btn.border-secondary:hover .fa-shopping-bag {
     color: var(--bs-white) !important;
 }
+.col-info-1{
+    width: 30%;
+    text-align: right;
+    align: center;
+    padding-right:10px;
+}
+.col-info-2{
+    width: 60%;
+    height: 34px;
+}
