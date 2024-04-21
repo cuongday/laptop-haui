@@ -19,7 +19,7 @@
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
     --bs-primary: #0b458f;
-    --bs-secondary: #afd5ef;
+    --bs-secondary: #DB6464;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
     --bs-warning: #ffc107;
@@ -2921,8 +2921,8 @@ textarea.form-control-lg {
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #621AD6;
-    border-color: #621AD6
+    background-color: #1562d7;
+    border-color: #1562d7;
 }
 
 .btn-check:focus + .btn-primary, .btn-primary:focus {
@@ -7799,7 +7799,8 @@ textarea.form-control-lg {
     word-break: break-word !important
 }
 .para-text{
-    color: #b7f7e1 !important
+    color: #DEDEDE !important;
+    text-align: justify;
 }
 .text-primary {
     color: #000000 !important;
