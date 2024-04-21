@@ -83,7 +83,7 @@ public class ProductService {
 
 
     public Specification<Product>  buildPriceSpecification(List<String> price) {
-        Specification<Product> conbinedSpec = Specification.where(null);
+        Specification<Product> combinedSpec = Specification.where(null);
         for (String p : price){
             double min = 0;
             double max = 0;
@@ -106,11 +106,11 @@ public class ProductService {
             }
             if(min != 0 && max != 0){
                 Specification<Product> rangeSpec = ProductSpecs.matchMultiplePrice(min, max);
-                conbinedSpec = conbinedSpec.or(rangeSpec);
+                combinedSpec = combinedSpec.or(rangeSpec);
             }
         }
 
-        return conbinedSpec;
+        return combinedSpec;
     }
 
     public Page<Product> fetchProducts(Pageable page) {

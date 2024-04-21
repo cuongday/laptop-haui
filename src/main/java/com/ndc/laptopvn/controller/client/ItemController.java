@@ -152,15 +152,15 @@ public class ItemController {
         }
 
         //check sort price
-        Pageable pageable = PageRequest.of(page - 1, 3);
+        Pageable pageable = PageRequest.of(page - 1, 6);
         if(productCriteriaDTO.getSort() != null &&productCriteriaDTO.getSort().isPresent()) {
             String sort = productCriteriaDTO.getSort().get();
             if(sort.equals("gia-tang-dan")){
-                pageable = PageRequest.of(page - 1, 3, Sort.by(Product_.PRICE).ascending());
+                pageable = PageRequest.of(page - 1, 6, Sort.by(Product_.PRICE).ascending());
             }else if(sort.equals("gia-giam-dan")){
-                pageable = PageRequest.of(page - 1, 3, Sort.by(Product_.PRICE).descending());
+                pageable = PageRequest.of(page - 1, 6, Sort.by(Product_.PRICE).descending());
             }else {
-                pageable = PageRequest.of(page - 1, 3);
+                pageable = PageRequest.of(page - 1, 6);
             }
         }
 
