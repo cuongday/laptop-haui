@@ -59,7 +59,7 @@
                 </ol>
             </nav>
             <form:form method="get" modelAttribute="user">
-                <div style="background:#f0f8ff; margin-left:25%; margin-right:25%">
+                <div style="background:#f0f8ff; margin-left:25%; margin-right:25%" class="mt-5">
                     <div>
                         <div style="text-align: center"><img src="/images/avatar/${sessionScope.avatar}"
                                                              style="width: 150px; height: 150px; border-radius: 50%; margin-top: 25px">

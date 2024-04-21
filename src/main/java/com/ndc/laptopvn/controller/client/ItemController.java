@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class ItemController {
@@ -30,9 +27,12 @@ public class ItemController {
     @GetMapping("/product/{id}")
     public String getProductPage(Model model, @PathVariable long id) {
         Product product = this.productService.fetchProductById(id).get();
+        List<Map<String, Object>> productCountByFactory = this.productService.countProductsByFactory();
         model.addAttribute("product", product);
         model.addAttribute("id", id);
         model.addAttribute("ProductImages", product.getImages());
+        model.addAttribute("productCountByFactory", productCountByFactory);
+        System.out.println(productCountByFactory);
         return "client/product/detail";
     }
 

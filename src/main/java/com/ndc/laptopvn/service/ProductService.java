@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -260,6 +261,10 @@ public class ProductService {
 
     public List<Product> searchProduct(String keyword) {
         return productRepository.findByNameContaining(keyword);
+    }
+
+    public List<Map<String, Object>> countProductsByFactory() {
+        return productRepository.countProductsByFactory();
     }
 
 }
