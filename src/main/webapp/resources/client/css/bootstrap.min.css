@@ -19,7 +19,7 @@
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
     --bs-primary: #0b458f;
-    --bs-secondary: #DB6464;
+    --bs-secondary: #DE7070;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
     --bs-warning: #ffc107;
@@ -47,8 +47,8 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #747d88;
-    background-color: #fff;
+    color: #282828;
+    background-color: #f6f9fc;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
@@ -124,7 +124,7 @@ h6, .h6 {
 
 p {
     margin-top: 0;
-    margin-bottom: 1rem
+    margin-bottom: 0.5rem
 }
 
 abbr[title], abbr[data-bs-original-title] {
@@ -2927,15 +2927,15 @@ textarea.form-control-lg {
 
 .btn-check:focus + .btn-primary, .btn-primary:focus {
     color: #fff;
-    background-color: #621AD6;
+    background-color: 0B458F;
     border-color: #621AD6;
     box-shadow: 0 0 0 .25rem rgba(110, 167, 7, .5)
 }
 
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
     color: #000;
-    background-color: #9ad039;
-    border-color: #8eca21
+    background-color: #6DBBFF;
+    border-color: #6DBBFF;
 }
 
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
@@ -4729,7 +4729,7 @@ textarea.form-control-lg {
 
 .page-link:hover {
     z-index: 2;
-    color: #1562d7;
+    color: #FFF;
     background-color: #e9ecef;
     border-color: #dee2e6
 }
@@ -7582,6 +7582,11 @@ textarea.form-control-lg {
     padding-bottom: 3rem !important
 }
 
+.py-6 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important
+}
+
 .pt-0 {
     padding-top: 0 !important
 }
@@ -7750,6 +7755,10 @@ textarea.form-control-lg {
     line-height: 2 !important
 }
 
+.star-primary {
+    color: #f59e0b;
+}
+
 .text-start {
     text-align: left !important
 }
@@ -7799,7 +7808,7 @@ textarea.form-control-lg {
     word-break: break-word !important
 }
 .para-text{
-    color: #DEDEDE !important;
+    color: #D0D0D0 !important;
     text-align: justify;
 }
 .text-primary {
@@ -7883,7 +7892,7 @@ textarea.form-control-lg {
 }
 
 .bg-light {
-    background-color: #f4f6f8 !important
+    background-color: #fff !important
 }
 
 .bg-dark {
