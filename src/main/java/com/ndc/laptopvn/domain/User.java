@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -29,7 +30,25 @@ public class User {
     private String address;
     private String phoneNumber;
     private String avatar;
+    private String gender;
+    private Date dob;
     private Timestamp createAt;
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public Timestamp getCreateAt() {
         return createAt;

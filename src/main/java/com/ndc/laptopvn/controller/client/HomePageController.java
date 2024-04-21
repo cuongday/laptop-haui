@@ -124,10 +124,23 @@ public class HomePageController {
         HttpSession session = request.getSession(false);
         User currentUser = new User();
         long id = (long) session.getAttribute("id");
-        currentUser.setId(id);
-
-        List<Order> orders = this.orderService.fetchOrdersByUser(currentUser);
-        model.addAttribute("orders", orders);
+        User user = this.userService.getUserById(id);
+        model.addAttribute("user", user);
         return "client/info/info-setting";
+    }
+
+    @PostMapping("/info-setting")
+    public String handleInfoSetting(Model model,@ModelAttribute("user") User user) {
+        User currentUser = this.userService.getUserById(user.getId());
+        model.addAttribute("user", currentUser);
+        if (currentUser != null) {
+            currentUser.setDob(user.getDob());
+            currentUser.setFullName(user.getFullName());
+            currentUser.setAddress(user.getAddress());
+            currentUser.setPhoneNumber(user.getPhoneNumber());
+            currentUser.setGender(user.getGender());
+            this.userService.handleSaveUser(currentUser);
+        }
+        return "redirect:/show-info";
     }
 }
