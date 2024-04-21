@@ -14,11 +14,13 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
+
 <jsp:include page="../layout/header.jsp" />
 <div id="layoutSidenav">
     <jsp:include page="../layout/sidebar.jsp" />
 
     <div id="layoutSidenav_content">
+
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Dashboard</h1>
@@ -59,7 +61,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
-                                Line Chart Example
+                                Biểu đồ đường
                             </div>
                             <div class="card-body"><canvas id="salesChart" width="100%" height="40"></canvas></div>
                         </div>
@@ -68,7 +70,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-bar me-1"></i>
-                                Bar Chart Example
+                                Biểu đồ cột
                             </div>
                             <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                         </div>
@@ -132,9 +134,17 @@
                 },
                 options: {
                     scales: {
-                        y: {
+                        x: {
                             beginAtZero: true,
-                            min: 0
+                            min: 0,
+                            max: 32
+                        },
+                        yAxes: {
+                            beginAtZero: true,
+                            min: 0,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 }
@@ -172,10 +182,16 @@
                 },
                 options: {
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            min: 0
-                        }
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: 20,
+                                maxTicksLimit: 5
+                            },
+                            gridLines: {
+                                display: true
+                            }
+                        }],
                     }
                 }
             });
