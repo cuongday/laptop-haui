@@ -49,8 +49,8 @@
 <jsp:include page="../layout/header.jsp"/>
 
 <!-- Single Product Start -->
-<div class="container-fluid py-5 mt-5">
-    <div class="container py-5">
+<div class="container-fluid py-6 mt-5">
+    <div class="container py-6">
         <div class="row g-4 mb-5">
             <div>
                 <nav aria-label="breadcrumb">
@@ -62,7 +62,7 @@
                 </nav>
             </div>
 
-            <div class="row g-4 fruite">
+            <div class="row g-4 fruite" style="--bs-gutter-y: 0.25rem">
                 <div class="col-12 col-md-4">
                     <div class="row g-4">
                         <div class="col-12" id="factoryFilter">
@@ -202,7 +202,7 @@
                     <div class="row g-4">
                         <c:forEach var="product" items="${products}">
                             <div class="col-md-6 col-lg-4">
-                                <div class="rounded position-relative fruite-item">
+                                <div class="rounded position-relative fruite-item bg-light">
                                     <div class="fruite-img">
                                         <img src="/images/product/${product.getImages().get(0).image}"
                                              class="img-fluid w-100 rounded-top" alt="">
@@ -211,7 +211,7 @@
                                          style="top: 10px; left: 10px;">Laptop
                                     </div>
                                     <div
-                                            class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            class="p-4 border-top-0 rounded-bottom">
                                         <h4 style="font-size: 15px;">
                                             <a href="/product/${product.id}">
                                                     ${product.name}

@@ -31,12 +31,10 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="footer-item">
+                <div class="d-flex flex-column text-start footer-item">
                     <h4 class="text-light mb-3">Dịch vụ</h4>
                     <a class="btn-link para-text" href="#">Khuyến mãi</a>
-                    <br>
-                    <a class="btn-link para-text" href="#">CSKH</a>
-                    <br>
+                    <a class="btn-link para-text" href="#">Chăm sóc khách hàng</a>
                     <a class="btn-link para-text" href="#">Quảng cáo</a>
                 </div>
             </div>

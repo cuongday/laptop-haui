@@ -2,7 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Featurs Section Start -->
 <div class="container-fluid featurs py-5">
-    <div class="container py-5">
+    <div class="container py-1">
+        <div class="row g-4">
+                        <div class="col-lg-4 mb-3 text-start">
+                            <h1>Dịch vụ chất lượng</h1>
+                        </div>
+                    </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-3">
                 <div class="featurs-item text-center rounded bg-light p-4">

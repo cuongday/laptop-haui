@@ -95,10 +95,10 @@
 
                                             </h5>
                                             <div class="d-flex mb-4">
-                                                <i class="fa fa-star text-secondary"></i>
-                                                <i class="fa fa-star text-secondary"></i>
-                                                <i class="fa fa-star text-secondary"></i>
-                                                <i class="fa fa-star text-secondary"></i>
+                                                <i class="fa fa-star star-primary"></i>
+                                                <i class="fa fa-star star-primary"></i>
+                                                <i class="fa fa-star star-primary"></i>
+                                                <i class="fa fa-star star-primary"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <p class="mb-4">
