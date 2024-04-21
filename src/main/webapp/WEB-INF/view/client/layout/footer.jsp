@@ -16,7 +16,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="d-flex flex-column text-start footer-item">
                     <h4 class="text-light mb-3">Thông tin</h4>
-                    <p class="para-text"><i class="fas fa-map-marked-alt"></i>Địa chỉ: Số 68, Cầu Diễn, Từ Liêm, Hà Nội</p>
+                    <p class="para-text">Địa chỉ: Số 68, Cầu Diễn, Từ Liêm, Hà Nội</p>
                     <p class="para-text">CSKH: 18001765</p>
                     <p class="para-text">Bảo hành: 18003298</p>
                     <p class="para-text">Email: cskh@laptopvn.com</p>

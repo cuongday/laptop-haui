@@ -67,11 +67,11 @@
 
 
 <!-- Laptop Shop Start-->
-<div class="container-fluid fruite py-5">
+<div class="container-fluid fruite py-3">
     <div class="container py-5">
         <div class="tab-class text-center">
             <div class="row g-4">
-                <div class="col-lg-4 text-start">
+                <div class="col-lg-4 mb-3 text-start">
                     <h1>Sản phẩm nổi bật</h1>
                 </div>
             </div>

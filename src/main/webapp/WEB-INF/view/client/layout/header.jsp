@@ -15,7 +15,7 @@
                     data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
             </button>
-            <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
+            <div class="collapse navbar-collapse bg-white justify-content-between ms-xxl-5 me-xxl-3" id="navbarCollapse">
                 <div class="navbar-nav">
                     <a href="/" class="nav-item nav-link active">Trang Chủ</a>
                     <a href="/products" class="nav-item nav-link">Sản Phẩm</a>
@@ -31,8 +31,8 @@
                     <a href="/cart" class="position-relative me-4 my-auto">
                         <i class="fa fa-shopping-bag fa-2x"></i>
                         <span
-                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-light px-1"
-                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">${sessionScope.sum}
+                                class="position-absolute  rounded-circle d-flex align-items-center justify-content-center text-light px-1"
+                                style="background: var(--bs-red); top: -5px; left: 15px; height: 20px; min-width: 20px;">${sessionScope.sum}
                         </span>
                     </a>
 

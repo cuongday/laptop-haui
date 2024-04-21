@@ -1,16 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Hero Start -->
-<div class="container-fluid py-5 mb-5 hero-header">
+<div class="container-fluid py-5 hero-header"">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-md-12 col-lg-7">
-                <h4 class="mb-3" style="color: var( --bs-primary)">100% Sản Phẩm Chính Hãng</h4>
+                <h4 class="mb-3" style="color: var(--bs-primary)">100% Sản Phẩm Chính Hãng</h4>
                 <h1 class="display-3 text-primary">Hàng cao cấp<br /> Rẻ vô địch</h1>
                 <div class="col-lg-8 text-start">
                                     <ul class="nav nav-pills d-inline-flex text-center">
                                         <li class="nav-item">
-                                            <a id="shop_now" class="d-flex py-2 rounded-pill active" href="/products">
+                                            <a class="btn btn-primary d-flex py-2 rounded-pill" style="margin: 10px 0px 20px; width: 120px;" href="/products">
                                                 <span class="text-light" style="width: 130px;">Mua ngay</span>
                                             </a>
                                         </li>
