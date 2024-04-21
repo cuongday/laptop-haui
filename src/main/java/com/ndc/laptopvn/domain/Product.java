@@ -35,6 +35,78 @@ public class Product {
     private String factory;
     private String target;
 
+    private String processor;
+    private String ram;
+    private String storage;
+    private String display;
+    private String resolution;
+    private String graphic_card;
+    private String weight;
+
+    public List<ProductImage> getProductImages() {
+        return ProductImages;
+    }
+
+    public void setProductImages(List<ProductImage> productImages) {
+        ProductImages = productImages;
+    }
+
+    public String getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(String processor) {
+        this.processor = processor;
+    }
+
+    public String getRam() {
+        return ram;
+    }
+
+    public void setRam(String ram) {
+        this.ram = ram;
+    }
+
+    public String getStorage() {
+        return storage;
+    }
+
+    public void setStorage(String storage) {
+        this.storage = storage;
+    }
+
+    public String getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(String display) {
+        this.display = display;
+    }
+
+    public String getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
+    }
+
+    public String getGraphic_card() {
+        return graphic_card;
+    }
+
+    public void setGraphic_card(String graphic_card) {
+        this.graphic_card = graphic_card;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
     public long getId() {
         return id;
     }

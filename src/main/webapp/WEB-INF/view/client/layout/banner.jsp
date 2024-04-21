@@ -10,8 +10,8 @@
                 <div class="col-lg-8 text-start">
                                     <ul class="nav nav-pills d-inline-flex text-center">
                                         <li class="nav-item">
-                                            <a class="btn btn-primary d-flex py-2 rounded-pill" style="margin: 10px 0px 20px; width: 120px;" href="/products">
-                                                <span class="text-light" style="width: 130px;">Mua ngay</span>
+                                            <a class="btn btn-primary d-flex py-2 rounded-pill mt-3" href="/products">
+                                                <span class="text-light">Mua ngay</span>
                                             </a>
                                         </li>
                                     </ul>

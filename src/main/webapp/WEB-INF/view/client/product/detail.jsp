@@ -143,7 +143,10 @@
                                                     <button class="nav-link active border-white border-bottom-0"
                                                         type="button" role="tab" id="nav-about-tab" data-bs-toggle="tab"
                                                         data-bs-target="#nav-about" aria-controls="nav-about"
-                                                        aria-selected="true">Description</button>
+                                                        aria-selected="true">Mô tả</button>
+                                                    <button class="nav-link border-white border-bottom-0" type="button" role="tab"
+                                                            id="nav-mission-tab" data-bs-toggle="tab" data-bs-target="#nav-mission"
+                                                            aria-controls="nav-mission" aria-selected="false">Cấu hình chi tiết</button>
                                                 </div>
                                             </nav>
                                             <div class="tab-content mb-5">
@@ -154,7 +157,34 @@
                                                     </p>
 
                                                 </div>
-
+                                                <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
+                                                    <div style="background: #f8f9fa" class="py-2 px-2">
+                                                        <div class="d-flex">
+                                                            <img width="26" height="26" src="/images/performance/graphic-card.png" alt="graphic card" class="fas fa-apple-alt me-2">
+                                                            <p>${product.graphic_card}</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <img width="26" height="26" src="/images/performance/laptop.png" alt="graphic card" class="fas fa-apple-alt me-2">
+                                                            <p>${product.display}, ${product.resolution}</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <img width="26" height="26" src="/images/performance/cpu-tower.png" alt="graphic card" class="fas fa-apple-alt me-2">
+                                                            <p>${product.processor}</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <img width="26" height="26" src="/images/performance/ram.png" alt="graphic card" class="fas fa-apple-alt me-2">
+                                                            <p>${product.ram}</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <img width="26" height="26" src="/images/performance/ssd.png" alt="graphic card" class="fas fa-apple-alt me-2">
+                                                            <p>${product.storage}</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <img width="26" height="26" src="/images/performance/weight-scale.png" alt="graphic card" class="fas fa-apple-alt me-2">
+                                                            <p>${product.weight}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -169,32 +199,38 @@
                                                 <ul class="list-unstyled fruite-categorie">
                                                     <li>
                                                         <div class="d-flex justify-content-between fruite-name">
-                                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Apples</a>
-                                                            <span>(3)</span>
+                                                            <a href="#"><img width="28" height="28" src="https://img.icons8.com/deco/48/mac-os.png" alt="mac-os" class="fas fa-apple-alt me-2"/>Apples</a>
+                                                            <span>(${productCountByFactory[3].count})</span>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="d-flex justify-content-between fruite-name">
-                                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Dell</a>
-                                                            <span>(5)</span>
+                                                            <a href="#"><img width="28" height="28" src="https://img.icons8.com/color/48/dell--v1.png" alt="dell--v1" class="fas fa-apple-alt me-2"/>Dell</a>
+                                                            <span>(${productCountByFactory[1].count})</span>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="d-flex justify-content-between fruite-name">
-                                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Asus</a>
-                                                            <span>(2)</span>
+                                                            <a href="#"><img width="28" height="28" src="https://img.icons8.com/nolan/64/asus--v1.png" alt="asus--v1" class="fas fa-apple-alt me-2"/></i>Asus</a>
+                                                            <span>(${productCountByFactory[0].count})</span>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="d-flex justify-content-between fruite-name">
-                                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Acer</a>
-                                                            <span>(8)</span>
+                                                            <a href="#"><img width="30" height="30" src="https://cdn.icon-icons.com/icons2/3911/PNG/512/acer_logo_icon_247729.png" alt="lenovo" class="fas fa-apple-alt me-2"/>Acer</a>
+                                                            <span>(${productCountByFactory[5].count})</span>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="d-flex justify-content-between fruite-name">
-                                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Lenovo</a>
-                                                            <span>(5)</span>
+                                                            <a href="#"><img width="30" height="30" src="https://img.icons8.com/color/48/000000/lenovo.png" alt="lenovo" class="fas fa-apple-alt me-2"/>Lenovo</a>
+                                                            <span>(${productCountByFactory[2].count})</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="d-flex justify-content-between fruite-name">
+                                                            <a href="#"><img width="32" height="32" src="/images/product/lg_logo.jpg" alt="lenovo" class="fas fa-apple-alt me-2"/>LG</a>
+                                                            <span>(${productCountByFactory[2].count})</span>
                                                         </div>
                                                     </li>
                                                 </ul>
