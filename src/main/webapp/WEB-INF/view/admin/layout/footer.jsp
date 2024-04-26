@@ -6,9 +6,9 @@
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">Copyright &copy; Nguyen Duc Cuong</div>
             <div>
-                <a href="#">Privacy Policy</a>
+                <a href="#">Chính sách bảo mật</a>
                 &middot;
-                <a href="#">Terms &amp; Conditions</a>
+                <a href="#">Điều khoản</a>
             </div>
         </div>
     </div>

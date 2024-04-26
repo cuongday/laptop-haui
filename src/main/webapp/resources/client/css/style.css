@@ -542,13 +542,61 @@
 .btn.border-secondary:hover .fa-shopping-bag {
     color: var(--bs-white) !important;
 }
-.col-info-1{
-    width: 30%;
-    text-align: right;
-    align: center;
-    padding-right:10px;
+.st-div{
+    box-shadow: 0 0 3px #8C8C8C;
+    border-radius: 5px;
+    background: #fff;
 }
 .col-info-2{
-    width: 60%;
+    width: 90%;
     height: 34px;
+    border: 0.5px solid #BAB8B8;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+.offset-12{
+    margin-left: 11%
+}
+.offset-0{
+    margin-left: 5%
+}
+.mt-6{
+    margin-top: 6rem;
+}
+.st-div-2{
+    box-shadow: 0 0 3px #8C8C8C;
+    border-radius: 2rem;
+    background: #fff;
+}
+.btn-color-blue{
+    color: #fff;
+    background-color:  #1562D7;
+    border-color:  #1562D7;
+}
+.btn-color-blue:hover{
+    color: #fff;
+        background-color:  #0B458F;
+        border-color:  #0B458F;
+}
+.card-header-log{
+    padding: .5rem 1rem;
+    margin-bottom: 0;
+}
+.card-login{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+}
+.card-bottom-log{
+    padding: .5rem 1rem;
+}
+.mb-6{
+    margin-bottom: 7.1rem !important;
+}
+.my-top{
+    margin-top: 5rem !important;
 }

@@ -42,12 +42,12 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage Product</h1>
+                <h1 class="mt-4">Quản lý đơn hàng</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a
-                            style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a>
+                            style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a>
                     </li>
-                    <li class="breadcrumb-item active">Product</li>
+                    <li class="breadcrumb-item active">Đơn hàng</li>
 
                 </ol>
 
@@ -55,11 +55,11 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mb-3 col-12 mx-auto">
                             <h2>
-                                Update an Order
+                                Cập nhật đơn hàng
                             </h2>
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <p>  đ</p>
+                                <p>  </p>
                             </div>
                             <form:form method="post" action="/admin/order/update" class="row"
                                        modelAttribute="newOrder">
@@ -70,31 +70,31 @@
                                     <form:input type="text" class="form-control" path="id" />
                                 </div>
                                 <div class="mb-3">
-                                    <label>Order id = ${newOrder.id} </label>
+                                    <label>Mã đơn hàng: ${newOrder.id} </label>
                                     &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <label class="form-label">Price:
+                                    <label class="form-label">Thành tiền:
                                         <fmt:formatNumber type="number"
                                                           value="${newOrder.totalPrice}" /> đ
                                     </label>
                                 </div>
 
                                 <div class="mb-3 col-12 col-md-6">
-                                    <label class="form-label">User:</label>
+                                    <label class="form-label">Tài khoản:</label>
                                     <form:input type="text" class="form-control" disabled="true"
                                                 path="user.fullName" />
                                 </div>
 
                                 <div class="mb-3 col-12 col-md-6">
-                                    <label class="form-label">Status:</label>
+                                    <label class="form-label">Tình trạng:</label>
                                     <form:select class="form-select" path="status">
-                                        <form:option value="PENDING">PENDING</form:option>
-                                        <form:option value="SHIPPING">SHIPPING</form:option>
-                                        <form:option value="COMPLETE">COMPLETE</form:option>
-                                        <form:option value="CANCEL">CANCEL</form:option>
+                                        <form:option value="PENDING">Đang chuẩn bị hàng</form:option>
+                                        <form:option value="SHIPPING">Đang vận chuyển</form:option>
+                                        <form:option value="COMPLETE">Đã giao hàng</form:option>
+                                        <form:option value="CANCEL">Hủy đơn</form:option>
                                     </form:select>
                                 </div>
                                 <div class="col-12 mb-5">
-                                    <button type="submit" class="btn btn-warning">Update</button>
+                                    <button type="submit" class="btn btn-warning">Cập nhật</button>
                                 </div>
                             </form:form>
                         </div>

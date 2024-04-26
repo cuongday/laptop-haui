@@ -21,10 +21,10 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage Product</h1>
+                <h1 class="mt-4">Quản lý sản phẩm</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item">Dashboard</li>
-                    <li class="breadcrumb-item active">Product</li>
+                    <li class="breadcrumb-item">Thống kê</li>
+                    <li class="breadcrumb-item active">Sản phẩm</li>
 
                 </ol>
                 <div class="mt-4">
@@ -32,9 +32,9 @@
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-between">
                                 <h2>
-                                    Table Product
+                                    Danh sách sản phẩm
                                 </h2>
-                                <a href="/admin/product/create" class="btn btn-primary">Create a product</a>
+                                <a href="/admin/product/create" class="btn btn-primary">Thêm sản phẩm</a>
                             </div>
 
                             <hr>
@@ -43,10 +43,10 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Factory</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Giá thành</th>
+                                    <th scope="col">Nhãn hiệu</th>
+                                    <th scope="col">Tùy chọn</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -57,9 +57,9 @@
                                         <td><fmt:formatNumber value="${product.price}" type="number" /> đ</td>
                                         <td>${product.factory}</td>
                                         <td>
-                                            <a href="/admin/product/${product.id}" class="btn btn-success">View</a>
-                                            <a href="/admin/product/update/${product.id}" class="btn btn-warning">Update</a>
-                                            <a href="/admin/product/delete/${product.id}" class="btn btn-danger">Delete</a>
+                                            <a href="/admin/product/${product.id}" class="btn btn-success">Xem</a>
+                                            <a href="/admin/product/update/${product.id}" class="btn btn-warning">Cập nhật</a>
+                                            <a href="/admin/product/delete/${product.id}" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

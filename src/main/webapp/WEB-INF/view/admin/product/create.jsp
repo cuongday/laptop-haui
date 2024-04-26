@@ -32,12 +32,12 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage Product</h1>
+                <h1 class="mt-4">Quản lý sản phẩm</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a
-                            style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a>
+                            style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a>
                     </li>
-                    <li class="breadcrumb-item active">Product</li>
+                    <li class="breadcrumb-item active">Sản phẩm</li>
 
                 </ol>
 
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mb-3 col-12 mx-auto">
                             <h2>
-                                Create Product
+                                Thêm sản phẩm
                             </h2>
                             <hr>
                             <form:form class="row g-3" method="post" action="/admin/product/create"
@@ -54,7 +54,7 @@
                                     <c:set var="errorProductName">
                                         <form:errors path="name" cssClass="invalid-feedback" />
                                     </c:set>
-                                    <label class="form-label">Name:</label>
+                                    <label class="form-label">Tên sản phẩm:</label>
                                     <form:input type="text" class="form-control ${not empty errorProductName ? 'is-invalid' : ''}"
                                                 path="name"
                                     />
@@ -64,7 +64,7 @@
                                     <c:set var="errorProductPrice">
                                         <form:errors path="price" cssClass="invalid-feedback" />
                                     </c:set>
-                                    <label class="form-label">Price:</label>
+                                    <label class="form-label">Giá thành:</label>
                                     <form:input type="text" class="form-control ${not empty errorProductPrice ? 'is-invalid' : ''}"
                                                 path="price"
                                     />
@@ -74,7 +74,7 @@
                                     <c:set var="errorProductDetailDes">
                                         <form:errors path="detailDesc" cssClass="invalid-feedback" />
                                     </c:set>
-                                    <label class="form-label">Detail description:</label>
+                                    <label class="form-label">Thông tin mô tả:</label>
                                     <form:input type="text" class="form-control ${not empty errorProductDetailDes ? 'is-invalid' : ''}"
                                                 path="detailDesc"
                                     />
@@ -84,7 +84,7 @@
                                     <c:set var="errorProductShortDes">
                                         <form:errors path="shortDesc" cssClass="invalid-feedback" />
                                     </c:set>
-                                    <label class="form-label">Short description:</label>
+                                    <label class="form-label">Mô tả vắn tắt:</label>
                                     <form:input type="text" class="form-control ${not empty errorProductShortDes ? 'is-invalid' : ''}"
                                                 path="shortDesc"
                                     />
@@ -94,7 +94,7 @@
                                     <c:set var="errorProductQuantity">
                                         <form:errors path="quantity" cssClass="invalid-feedback" />
                                     </c:set>
-                                    <label class="form-label">Quantity:</label>
+                                    <label class="form-label">Số lượng:</label>
                                     <form:input type="text" class="form-control ${not empty errorProductQuantity ? 'is-invalid' : ''}"
                                                 path="quantity"
                                     />
@@ -102,7 +102,7 @@
                                 </div>
 
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label class="form-label">Factory:</label>
+                                    <label class="form-label">Nhãn hiệu:</label>
                                     <form:select class="form-select" aria-label="Default select example" path="factory">
                                         <option value="APPLE">Apple (Macbook)</option>
                                         <option value="ASUS">Asus</option>
@@ -114,7 +114,7 @@
                                 </div>
 
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label class="form-label">Target:</label>
+                                    <label class="form-label">Phân loại:</label>
                                     <form:select class="form-select" aria-label="Default select example" path="target">
                                         <option value="OFFICE">Văn phòng</option>
                                         <option value="GAMING">Gaming</option>
@@ -124,7 +124,7 @@
                                 </div>
 
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label for="productFile" class="form-label">Image:</label>
+                                    <label for="productFile" class="form-label">Hình ảnh:</label>
                                     <input class="form-control" type="file" id="productFile" accept=".png, .jpg, .jpeg"
                                            name="uploadProductFile" multiple>
                                 </div>
@@ -135,7 +135,7 @@
                                 </div>
 
                                 <div class="col-12 mb-5">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
                                 </div>
                             </form:form>
                         </div>

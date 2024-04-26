@@ -20,10 +20,10 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage Product</h1>
+                <h1 class="mt-4">Quản lý sản phẩm</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Product</li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a></li>
+                    <li class="breadcrumb-item active">Sản phẩm</li>
 
                 </ol>
 
@@ -31,13 +31,13 @@
                     <div class="row">
                         <div class="col-12 mx-auto">
                             <h2>
-                                Product Detail
+                                Chi tiết sản phẩm
                             </h2>
                             <hr  style="width: 60%;" />
 
                             <div class="card" style="width: 60%;">
                                 <div class="card-header">
-                                    Featured
+                                    Thông tin
                                 </div>
 
                                 <ul class="list-group list-group-flu    sh">
@@ -51,10 +51,10 @@
 
 
                                     <li class="list-group-item">ID: ${id} </li>
-                                    <li class="list-group-item">Name: ${product.name} </li>
-                                    <li class="list-group-item">Price: ${product.price}</li>
+                                    <li class="list-group-item">Tên sản phẩm: ${product.name} </li>
+                                    <li class="list-group-item">Giá thành: ${product.price}</li>
                                     <li class="list-group-item">Số lượng: ${product.quantity}</li>
-                                    <li class="list-group-item">Factory: ${product.factory}</li>
+                                    <li class="list-group-item">Nhãn hiệu: ${product.factory}</li>
                                 </ul>
 
                             </div>
@@ -62,7 +62,7 @@
 
                         </div>
                     </div>
-                    <div class=""><a href="/admin/product?page=${currentPage}" class="btn btn-success mt-2">Back</a></div>
+                    <div class=""><a href="/admin/product?page=${currentPage}" class="btn btn-success mt-2">Trở về</a></div>
                 </div>
             </div>
 

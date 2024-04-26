@@ -21,10 +21,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Manage User</h1>
+                        <h1 class="mt-4">Quản lý tài khoản</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a></li>
-                            <li class="breadcrumb-item active">User</li>
+                            <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a></li>
+                            <li class="breadcrumb-item active">Tài khoản</li>
 
                         </ol> 
 
@@ -32,7 +32,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12 mx-auto">
                                     <h2>
-                                        Update User
+                                        Cập nhật tài khoản
                                     </h2>
                                     <hr>
                                     <form:form method="post" action="/admin/user/update" modelAttribute="newUser" enctype="multipart/form-data">
@@ -52,32 +52,32 @@
                                         </div>
                                         
                                         <div class="mb-3">
-                                            <label class="form-label">Phone number:</label>
+                                            <label class="form-label">Số điện thoại:</label>
                                             <form:input type="text" class="form-control"
                                             path = "phoneNumber"
                                             />
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Fullname:</label>
+                                            <label class="form-label">Họ tên:</label>
                                             <form:input type="text" class="form-control"
                                             path = "fullName"
                                             />
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Address:</label>
+                                            <label class="form-label">Địa chỉ:</label>
                                             <form:input type="text" class="form-control"
                                             path = "address"
                                             />
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Role:</label>
+                                            <label class="form-label">Vai trò:</label>
                                             <form:select class="form-select" aria-label="Default select example" path="role.name">
-                                                <option value="ADMIN">Admin</option>
-                                                <option value="USER">User</option>
+                                                <option value="ADMIN">Quản trị viên</option>
+                                                <option value="USER">Người dùng</option>
                                             </form:select>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="avatarFile" class="form-label">Avatar:</label>
+                                            <label for="avatarFile" class="form-label">Ảnh đại diện:</label>
                                             <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg" name="uploadAvatarFile">
                                         </div>
 
@@ -85,7 +85,7 @@
                                             <img style="max-height: 250px; display:none;" alt="avatar preview" id="avatarPreview">
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-warning">Update</button>
+                                        <button type="submit" class="btn btn-warning">Cập nhật</button>
                                     </form:form>
                                 </div>
                             </div>

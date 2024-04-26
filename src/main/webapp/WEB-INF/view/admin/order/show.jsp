@@ -21,10 +21,10 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage Order</h1>
+                <h1 class="mt-4">Quản lý đơn hàng</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item">Dashboard</li>
-                    <li class="breadcrumb-item active">Order</li>
+                    <li class="breadcrumb-item">Thống kê</li>
+                    <li class="breadcrumb-item active">Đơn hàng</li>
 
                 </ol>
                 <div class="mt-4">
@@ -32,7 +32,7 @@
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-start">
                                 <h2>
-                                    Table Orders
+                                    Danh sách đơn hàng
                                 </h2>
 
                             </div>
@@ -43,11 +43,11 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Total Price</th>
-                                    <th scope="col">User</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Create At</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Thành tiền</th>
+                                    <th scope="col">Tài khoản</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Ngày tạo</th>
+                                    <th scope="col">Tùy chọn</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -59,9 +59,9 @@
                                         <td>${order.status}</td>
                                         <td>${order.createAt}</td>
                                         <td>
-                                            <a href="/admin/order/${order.id}" class="btn btn-success">View</a>
-                                            <a href="/admin/order/update/${order.id}" class="btn btn-warning">Update</a>
-                                            <a href="/admin/order/delete/${order.id}" class="btn btn-danger">Delete</a>
+                                            <a href="/admin/order/${order.id}" class="btn btn-success">Xem</a>
+                                            <a href="/admin/order/update/${order.id}" class="btn btn-warning">Cập nhật</a>
+                                            <a href="/admin/order/delete/${order.id}" class="btn btn-danger">Xóa</a>
                                             <a data-id="${order.id}" class="btn btn-secondary exportBill">Xuất hóa đơn</a>
                                         </td>
                                     </tr>

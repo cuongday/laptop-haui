@@ -32,7 +32,7 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage User</h1>
+                <h1 class="mt-4">Quản lý tài khoản</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a
                             style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a>
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mb-3 col-12 mx-auto">
                             <h2>
-                                Create User
+                                Thêm tài khoản
                             </h2>
                             <hr>
                             <form:form class="row g-3" method="post" action="/admin/user/create"

@@ -59,46 +59,50 @@
                 </ol>
             </nav>
             <div>
-                <div class="mb-3" style="text-align: center">
-                    <img src="/images/avatar/${sessionScope.avatar}"
-                         style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;">
 
-                </div>
                 <form:form method="post" modelAttribute="user" action="/info-setting">
                     <div style=" margin-top: 25px;  padding-left: 25%; padding-right: 25%">
-                        <div style="background: #f0f8ff; border: 1px solid">
-                            <p style="margin-top: 5px; margin-left:15px; font-size:30px; color: #000; font-weight: bold; text-align: center">
-                                Thông tin người dùng</p>
+                        <div class="st-div">
+                            <div style="margin-top: 5%"><p style="padding-top: 3% ; margin-left:15px; font-size:30px; color: #000; font-weight: bold; text-align: center">
+                                Sửa thông tin người dùng</p>
+                                <hr style="margin-left: 5%;margin-right: 5%; margin-bottom: 5% ;"/>
+                            </div>
+                            <div class="mb-3" style="margin-left: 30px; margin-top: 15px">
+                                <img src="/images/avatar/${sessionScope.avatar}"
+                                     style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden;">
+                                <p style=" display: inline; margin-left: 10px; font-weight: bold">Ảnh đại diện</p>
+                            </div>
                             <div class="mb-3" style="display: none;">
                                 <label class="form-label">ID:</label>
                                 <form:input type="text" class="form-control"
                                             path = "id"
                                 />
                             </div>
-                            <label class="col-info-1">Họ và tên </label>
-                            <form:input type="text" path="fullName" class="col-info-2 mb-3"/>
-                            <label class="col-info-1">Giới tính </label>
-                            <form:input path="gender" class="col-info-2 mb-3"/>
-                            <label class="col-info-1">Ngày sinh </label>
-                            <form:input type="date" path="dob" class="col-info-2 mb-3"/>
-                            <label class="col-info-1">Địa chỉ </label>
-                            <form:input type="text" path="address" class="col-info-2 mb-3"/>
+                            <div style="display: inline-grid; margin-left: 33px ; width:47%">
+                                <label class="fw-bold">Họ và tên </label>
+                                <form:input type="text" path="fullName" class="col-info-2 mb-3"/>
+                            </div>
+                            <div style="display: inline-grid; width:47%">
+                                <label class="fw-bold">Giới tính </label>
+                                <form:input path="gender" class="col-info-2 mb-3"/>
+                            </div>
+                            <div style="display: inline-grid; width:47%; margin-left: 33px">
+                                <label class="fw-bold">Ngày sinh </label>
+                                <form:input type="date" pattern="\d{4}-\d{2}-\d{2}" path="dob" class="col-info-2 mb-3"/>
+                            </div>
+                            <div style="display: inline-grid; width:47%">
+                                <label class="fw-bold">Số điện thoại </label>
+                                <form:input type="text" path="phoneNumber" class="col-info-2 mb-3"/>
+                            </div>
+                            <div style="display: grid; margin-left: 33px">
+                                <label class="fw-bold">Địa chỉ </label>
+                                <form:input type="text" path="address" class="col-info-2 mb-3" style="width: 95%"/>
+                            </div>
+                            <div class="d-flex justify-content-center mt-4">
+                                <button type="submit" class="btn btn-color-blue mb-4">Xác nhận sửa</button>
+                            </div>
+                        </div>
 
-                        </div>
-                        <br/>
-                        <div style="background: #f0f8ff; border: 1px solid">
-                            <p style="margin-top: 5px; margin-left:15px; font-size:30px; color: #000; font-weight: bold; text-align: center">
-                                Thông tin tài khoản</p>
-                            <label class="col-info-1">Địa chỉ email </label>
-                            <form:input type="text" path="email" class="col-info-2 mb-3"/>
-                            <label class="col-info-1">Số điện thoại </label>
-                            <form:input type="text" path="phoneNumber" class="col-info-2 mb-3"/>
-                            <label class="col-info-1">Mật khẩu </label>
-                            <form:input type="text" path="password" class="col-info-2 mb-3"/>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success mt-3 text-center">Xác nhận sửa</button>
-                        </div>
                     </div>
                 </form:form>
 

@@ -21,10 +21,10 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage User</h1>
+                <h1 class="mt-4">Quản lý đơn hàng</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a></li>
-                    <li class="breadcrumb-item active">User</li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a></li>
+                    <li class="breadcrumb-item active">Đơn hàng</li>
 
                 </ol>
 
@@ -32,12 +32,12 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mx-auto">
                             <h2>
-                                Delete Order
+                                Xóa đơn hàng
                             </h2>
                             <hr />
 
                             <div class="alert alert-danger" role="alert">
-                                Are you sure to delete this order?
+                                Bạn muốn xóa đơn hàng này?
                             </div>
 
                             <form:form action="/admin/order/delete" modelAttribute="newOrder" method ="post">
@@ -47,7 +47,7 @@
                                                 path = "id"
                                     />
                                 </div>
-                                <button class="btn btn-danger">Confirm</button>
+                                <button class="btn btn-danger">Xác nhận</button>
                             </form:form>
 
                         </div>
