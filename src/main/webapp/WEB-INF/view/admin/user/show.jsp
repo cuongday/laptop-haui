@@ -20,10 +20,10 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage User</h1>
+                <h1 class="mt-4">Quản lý tài khoản</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a></li>
-                    <li class="breadcrumb-item active">User</li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a></li>
+                    <li class="breadcrumb-item active">Tài khoản</li>
 
                 </ol>
 
@@ -32,9 +32,9 @@
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-between">
                                 <h2>
-                                    Table User
+                                    Danh sách tài khoản
                                 </h2>
-                                <a href="/admin/user/create" class="btn btn-primary">Create User</a>
+                                <a href="/admin/user/create" class="btn btn-primary">Tạo tài khoản</a>
                             </div>
 
                             <hr>
@@ -44,10 +44,10 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Full Name</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Create At</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Họ tên</th>
+                                    <th scope="col">Vai trò</th>
+                                    <th scope="col">Ngày tạo</th>
+                                    <th scope="col">Tùy chọn</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -60,9 +60,9 @@
                                         <td>${user.getRole().getName()}</td>
                                         <td>${user.createAt}</td>
                                         <td>
-                                            <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
-                                            <a href="/admin/user/update/${user.id}" class="btn btn-warning">Update</a>
-                                            <a href="/admin/user/delete/${user.id}" class="btn btn-danger">Delete</a>
+                                            <a href="/admin/user/${user.id}" class="btn btn-success">Xem</a>
+                                            <a href="/admin/user/update/${user.id}" class="btn btn-warning">Cập nhật</a>
+                                            <a href="/admin/user/delete/${user.id}" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

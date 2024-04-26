@@ -21,10 +21,10 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Manage Order</h1>
+                <h1 class="mt-4">Quản lý đơn hàng</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item">Dashboard</li>
-                    <li class="breadcrumb-item active">Order</li>
+                    <li class="breadcrumb-item">Thống kê</li>
+                    <li class="breadcrumb-item active">Đơn hàng</li>
 
                 </ol>
                 <div class="mt-5">
@@ -32,7 +32,7 @@
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-start">
                                 <h2>
-                                    Order Detail with id = ${id}
+                                    Thông tin đơn hàng với id: ${id}
                                 </h2>
 
                             </div>

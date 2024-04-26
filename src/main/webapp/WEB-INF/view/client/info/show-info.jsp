@@ -59,40 +59,34 @@
                 </ol>
             </nav>
             <form:form method="get" modelAttribute="user">
-                <div style="background:#f0f8ff; margin-left:25%; margin-right:25%" class="mt-5">
+                <div style="margin-left:20%; margin-right:20%" class="mt-6 st-div-2 ">
                     <div>
-                        <div style="text-align: center"><img src="/images/avatar/${sessionScope.avatar}"
-                                                             style="width: 150px; height: 150px; border-radius: 50%; margin-top: 25px">
+                        <div style="text-align: center; display: absolute"><img src="/images/avatar/${sessionScope.avatar}"
+                                                             style="width: 150px; height: 150px; border-radius: 50%; margin-top: -10%; box-shadow: 0 0 3px #8C8C8C;">
                         </div>
                     </div>
-                    <div style="display: inline-block; margin-left:45px" class="mt-3">
-                        <div style="font-size: 20px; font-weight: bold;color: #000">Họ
-                            tên: ${sessionScope.fullName}</div>
-                        <br/>
-                        <div style="display:flex">
-                            <div style="font-size: 20px; font-weight: bold;color: #000;">Giới
-                                tính: ${sessionScope.gender}</div>
-                            <div style="font-size: 20px; font-weight: bold;color: #000;margin-left:90px">Ngày
-                                sinh: ${sessionScope.dob}</div>
+                    <div >
+                        <div class="mt-3">
+                            <div class="offset-12 d-inline-block">
+                                <div class="fs-4 d-flex"><p class="fw-bold mb-3">Họ và tên:&nbsp; </p> ${sessionScope.fullName}</div>
+                                <div class="fs-4 d-flex"><p class="fw-bold mb-3">Ngày sinh:&nbsp; </p> ${sessionScope.dob}</div>
+                            </div>
+                            <div class="offset-12 d-inline-block ">
+                                <div class="fs-4 d-flex "><p class="fw-bold mb-3"> Giới tính:&nbsp;</p>${sessionScope.gender}</div>
+                                <div class="fs-4 d-flex "><p class="fw-bold mb-3"> Số điện thoại:&nbsp; </p> ${sessionScope.phoneNumber}</div>
+                            </div>
+                            <div class="fs-4 offset-12 d-flex mb-2"> <p class="fw-bold">Địa chỉ:&nbsp; </p> ${sessionScope.address}</div>
+                            <div class="fs-4 offset-12 d-flex mb-3"> <p class="fw-bold">Email:&nbsp; </p> ${sessionScope.email}</div>
+                            <div>
+                                <div class="mt-3 d-flex justify-content-center ">
+                                <a href="/info-setting" class="btn btn-color-blue mb-4">Sửa thông tin</a>
+                                </div>
+                            </div>
                         </div>
-                        <br/>
-                        <div style="font-size: 20px; font-weight: bold;color: #000;">Địa
-                            chỉ: ${sessionScope.address}</div>
-                        <br/>
-                        <div style="font-size: 20px; font-weight: bold;color: #000;">Số điện
-                            thoại: ${sessionScope.phoneNumber}</div>
-                        <br/>
-                        <div style="font-size: 20px; font-weight: bold;color: #000;">Email: d*****@gmail.com</div>
-                        <br/>
-                        <div style="font-size: 20px; font-weight: bold;color: #000;">Mật khẩu: ********</div>
-                        <br/>
                     </div>
                 </div>
             </form:form>
-            <div>
-                <div class="mt-3 d-flex justify-content-center"><a
-                        href="/info-setting" class="btn btn-success">Sửa thông tin</a></div>
-            </div>
+
         </div>
     </div>
 </div>
