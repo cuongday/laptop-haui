@@ -131,15 +131,15 @@
                                                 <div class="row">
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Tên người nhận</label>
-                                                        <input class="form-control" name="receiverName" required />
+                                                        <input class="form-control" name="receiverName" value= ${sessionScope.fullName} required></input>
                                                     </div>
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Địa chỉ người nhận</label>
-                                                        <input class="form-control" name="receiverAddress" required />
+                                                        <input class="form-control" name="receiverAddress" value= ${sessionScope.address} required />
                                                     </div>
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Số điện thoại</label>
-                                                        <input class="form-control" name="receiverPhone" required />
+                                                        <input class="form-control" name="receiverPhone" value= ${sessionScope.phoneNumber} required />
                                                     </div>
                                                     <div class="mt-4">
                                                         <i class="fas fa-arrow-left"></i>

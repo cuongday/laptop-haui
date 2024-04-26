@@ -62,7 +62,7 @@
                 <div style="margin-left:20%; margin-right:20%" class="mt-6 st-div-2 ">
                     <div>
                         <div style="text-align: center; display: absolute"><img src="/images/avatar/${sessionScope.avatar}"
-                                                             style="width: 150px; height: 150px; border-radius: 50%; margin-top: -10%; box-shadow: 0 0 3px #8C8C8C;">
+                                                             style="width: 150px; height: 150px; border-radius: 50%; margin-top: -10%; box-shadow: 0 0 10px #8C8C8C;">
                         </div>
                     </div>
                     <div >

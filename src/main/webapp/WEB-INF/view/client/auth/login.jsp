@@ -21,11 +21,11 @@
                 <main>
                     <div class="container d-flex align-items-center min-vh-100 min-vw-100 justify-content-center">
                         <div class="row justify-content-center col-md-6">
-                            <img class="col-md-6 flex-column " style="padding: 0" src="/images/auth-bg/login.jpg">
+                            <img class="col-md-6 flex-column " style="padding: 0;border-radius: 10px 0px 0px 10px;" src="/images/auth-bg/login.jpg">
                             <div class="col-md-6 flex-column" style="padding: 0;">
-                                <div class="card shadow-lg border-0 rounded-lg">
-                                    <div class="card-header">
-                                        <h3 class="text-center font-weight-light my-5">Đăng nhập</h3>
+                                <div class="card-login shadow-lg border-0 rounded-lg" style=" border-radius: 0px 10px 10px 0px; ">
+                                    <div class="card-header-log">
+                                        <h3 class="text-center font-weight-light my-top">Đăng nhập</h3>
 
                                     </div>
 
@@ -33,7 +33,7 @@
                                         <c:if test="${param.error != null}">
                                             <div class="my-2" style="color: red;">Nhập sai địa chỉ email hoặc mật khẩu</div>
                                         </c:if>
-                                        <form method="post" action="/login">
+                                        <form method="post" action="/login" style="padding-left: 10px; padding-right: 10px;">
 
 
                                             <div class="form-floating mb-3">
@@ -63,14 +63,14 @@
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-login btn-block mt-5">Đăng nhập</button>
+                                                    <button type="submit" class="btn btn-login btn-block">Đăng nhập</button>
                                                 </div>
                                             </div>
                                         </form>
 
                                     </div>
-                                    <div class="card-footer text-center">
-                                        <div class="small mt-5">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
+                                    <div class="card-footer-log text-center">
+                                        <div class="small mb-6">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
                                     </div>
                                 </div>
                             </div>

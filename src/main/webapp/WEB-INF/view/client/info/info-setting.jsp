@@ -88,7 +88,7 @@
                             </div>
                             <div style="display: inline-grid; width:47%; margin-left: 33px">
                                 <label class="fw-bold">Ngày sinh </label>
-                                <form:input type="date" path="dob" class="col-info-2 mb-3"/>
+                                <form:input type="date" pattern="\d{4}-\d{2}-\d{2}" path="dob" class="col-info-2 mb-3"/>
                             </div>
                             <div style="display: inline-grid; width:47%">
                                 <label class="fw-bold">Số điện thoại </label>

@@ -578,3 +578,25 @@
         background-color:  #0B458F;
         border-color:  #0B458F;
 }
+.card-header-log{
+    padding: .5rem 1rem;
+    margin-bottom: 0;
+}
+.card-login{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+}
+.card-bottom-log{
+    padding: .5rem 1rem;
+}
+.mb-6{
+    margin-bottom: 7.1rem !important;
+}
+.my-top{
+    margin-top: 5rem !important;
+}
