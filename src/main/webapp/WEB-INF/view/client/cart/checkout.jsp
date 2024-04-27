@@ -49,7 +49,7 @@
                     <jsp:include page="../layout/header.jsp" />
 
                     <!-- Cart Page Start -->
-                    <div class="container-fluid py-5">
+                    <div class="container-fluid py-7">
                         <div class="container py-5">
                             <div class="mb-3">
                                 <nav aria-label="breadcrumb">
@@ -151,9 +151,7 @@
                                         <div class="col-12 col-md-6">
                                             <div class="bg-light rounded">
                                                 <div class="p-4">
-                                                    <h1 class="display-6 mb-4">Thông Tin <span class="fw-normal">Thanh
-                                                            Toán</span>
-                                                    </h1>
+                                                    <h1 class="display-6 mb-4">Thông Tin Thanh Toán</h1>
 
                                                     <div class="d-flex justify-content-between">
                                                         <h5 class="mb-0 me-4">Phí vận chuyển</h5>
