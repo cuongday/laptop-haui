@@ -2439,7 +2439,6 @@ textarea.form-control-lg {
 
 .form-check-inline {
     display: inline-block;
-    margin-right: 1rem
 }
 
 .btn-check {
@@ -2949,8 +2948,8 @@ textarea.form-control-lg {
 }
 
 .btn-secondary {
-    color: #000;
-    background-color: #ffb524;
+    color: #fff;
+    background-color: #de7070;
     border-color: #ffb524
 }
 
@@ -6819,7 +6818,7 @@ textarea.form-control-lg {
 }
 
 .border-secondary {
-    border-color: #023e74!important
+    border-color: #e55c5c!important
 }
 
 .border-success {

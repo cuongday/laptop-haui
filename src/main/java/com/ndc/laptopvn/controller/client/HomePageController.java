@@ -114,9 +114,8 @@ public class HomePageController {
         User currentUser = new User();
         long id = (long) session.getAttribute("id");
         currentUser.setId(id);
-
-        List<Order> orders = this.orderService.fetchOrdersByUser(currentUser);
-        model.addAttribute("orders", orders);
+        User user = this.userService.getUserById(id);
+        model.addAttribute("user", user);
         return "client/info/show-info";
     }
     @GetMapping("/info-setting")
