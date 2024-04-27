@@ -204,7 +204,7 @@
                         </div>
                         <div class="col-12 ">
                             <button id="btnFilter"
-                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4">
+                                    class="btn border-secondary rounded-pill px-3 py-2 text-primary text-uppercase mb-4">
 
                                 Lọc Sản Phẩm
                             </button>
