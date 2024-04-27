@@ -221,8 +221,10 @@
                             <div class="col-md-6 col-lg-4">
                                 <div class="rounded position-relative fruite-item bg-light">
                                     <div class="fruite-img">
-                                        <img src="/images/product/${product.getImages().get(0).image}"
-                                             class="img-fluid w-100 rounded-top" alt="">
+                                        <a href="/product/${product.id}">
+                                             <img src="/images/product/${product.getImages().get(0).image}"
+                                                  class="img-fluid w-100 rounded-top" alt="">
+                                        </a>
                                     </div>
                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                                          style="top: 10px; left: 10px;">Laptop
