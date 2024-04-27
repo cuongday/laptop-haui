@@ -37,7 +37,7 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Đăng nhập với vai trò:</div>
-            <c:out value="${sessionScope.role}" />
+            <c:out value="${sessionScope.roleDescription}" />
         </div>
     </nav>
 </div>
