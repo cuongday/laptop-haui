@@ -114,12 +114,9 @@
                                                         <input type="hidden"
                                                                name="${_csrf.parameterName}"
                                                                value="${_csrf.token}"/>
-
-                                                        <button
-                                                                class="mx-auto btn border border-secondary btn-secondary rounded-pill px-3">
-                                                            <i
-                                                                    class="fa fa-shopping-bag me-2"></i>
-                                                            Add to cart
+                                                        <button class="mx-auto btn btn-secondary rounded-pill px-3">
+                                                            <i class="fa fa-shopping-bag me-2"></i>
+                                                            Thêm vào giỏ
                                                         </button>
                                                     </form>
                                                 </div>

@@ -49,7 +49,7 @@
                     <jsp:include page="../layout/header.jsp" />
 
                     <!-- Single Product Start -->
-                    <div class="container-fluid py-5 mt-5">
+                    <div class="container-fluid py-6 mt-5">
                         <div class="container py-5">
                             <div class="row g-4 mb-5">
                                 <div>
@@ -130,9 +130,9 @@
                                                 <input class="form-control d-none" type="text" name="quantity"
                                                     id="cartDetails0.quantity" />
                                                 <button
-                                                    class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
-                                                        class="fa fa-shopping-bag me-2 text-primary"></i>
-                                                    Add to cart
+                                                    class="btn btn-secondary rounded-pill px-4 py-2 mb-4"><i
+                                                        class="fa fa-shopping-bag me-2"></i>
+                                                    Thêm vào giỏ
                                                 </button>
                                             </form>
 
@@ -195,7 +195,7 @@
                                         <div class="col-lg-12">
 
                                             <div class="mb-4">
-                                                <h4>Categories</h4>
+                                                <h4>Hãng sản xuất</h4>
                                                 <ul class="list-unstyled fruite-categorie">
                                                     <li>
                                                         <div class="d-flex justify-content-between fruite-name">
