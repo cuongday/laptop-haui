@@ -34,6 +34,9 @@ public class User {
     private Date dob;
     private Timestamp createAt;
 
+    @OneToOne(mappedBy = "user")
+    private ForgotPassword forgotPassword;
+
     public Date getDob() {
         return dob;
     }

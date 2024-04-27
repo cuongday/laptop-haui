@@ -87,4 +87,8 @@ public class UserService {
     public long countProducts() {
         return this.productRepository.count();
     }
+
+    public void updatePassword(String email, String password) {
+        this.userRepository.updatePassword(email, password);
+    }
 }

@@ -72,6 +72,7 @@
 .btn.border-secondary:hover {
     background: var(--bs-primary) !important;
     color: var(--bs-white) !important;
+    border-color: var(--bs-primary) !important;
 }
 
 .btn-search:hover .fa-search {

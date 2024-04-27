@@ -1,8 +1,10 @@
 package com.ndc.laptopvn.controller.admin;
 
 import com.ndc.laptopvn.domain.User;
+import com.ndc.laptopvn.service.MailService;
 import com.ndc.laptopvn.service.UploadService;
 import com.ndc.laptopvn.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 public class UserController {
@@ -26,12 +29,20 @@ public class UserController {
     private final UserService userService;
     private final UploadService uploadService;
     private final PasswordEncoder passwordEncoder;
+    private final MailService mailService;
+    private final HttpServletRequest request;
 
 
-    public UserController(UserService userService, UploadService uploadService, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService,
+                          UploadService uploadService,
+                          PasswordEncoder passwordEncoder,
+                          MailService mailService,
+                          HttpServletRequest request) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.passwordEncoder = passwordEncoder;
+        this.mailService = mailService;
+        this.request = request;
     }
 
     @RequestMapping("/admin/user")
@@ -138,22 +149,5 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
-//    viết api login ở đây
-//    @PostMapping("/api/login")
-//    public ResponseEntity<Object> login(@Valid @RequestBody LoginRequest loginRequest, HttpServletResponse response) {
-//        //Authenticate
-//        try {
-//            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-//                    loginRequest.getEmail(),
-//                    loginRequest.getPassword()
-//            ));
-//
-//            //return ResponseEntity.ok(UserMapper.toUserDTO(((CustomUserDetails) authentication.getPrincipal()).getUser()));
-//
-//        } catch (Exception e) {
-//            return ResponseEntity.badRequest().body("Login failed");
-//        }
-//        return ResponseEntity.ok("Login success");
-//    }
 
 }
