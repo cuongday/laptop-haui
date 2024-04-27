@@ -22,8 +22,8 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Quản lý tài khoản</h1>
                         <ol class="breadcrumb mb-4">
-                          <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a></li>
-                          <li class="breadcrumb-item active">User</li>
+                          <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a></li>
+                          <li class="breadcrumb-item active">Tài khoản</li>
 
                         </ol> 
 
@@ -31,27 +31,25 @@
                             <div class="row">
                                 <div class="col-12 mx-auto">
                                     <h2>
-                                        User Detail 
+                                        Thông tin tài khoản
                                     </h2>
                                     <hr  style="width: 60%;" />
         
                                     <div class="card" style="width: 60%;">
                                         <div class="card-header">
-                                            Featured
+                                            Thông tin
                                         </div>
                                         <ul class="list-group list-group-flu    sh">
                                             <li class="list-group-item">ID: ${id} </li>
                                             <li class="list-group-item">Email: ${user.email} </li>
-                                            <li class="list-group-item">Full Name: ${user.fullName}</li>
-                                            <li class="list-group-item">Address: ${user.address}</li>
-                                            <li class="list-group-item">Role: ${user.role.name}</li>
+                                            <li class="list-group-item">Họ tên: ${user.fullName}</li>
+                                            <li class="list-group-item">Địa chỉ: ${user.address}</li>
+                                            <li class="list-group-item">Vai trò: ${user.role.description}</li>
                                         </ul>
                                     </div>
-                                        
-                                    
                                 </div>
                             </div>
-                            <div class=""><a href="/admin/user" class="btn btn-success mt-2">Back</a></div>
+                            <div class=""><a href="/admin/user" class="btn btn-success mt-2">Trở lại</a></div>
                         </div>
                     </div>
                     

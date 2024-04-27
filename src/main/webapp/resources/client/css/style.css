@@ -526,7 +526,7 @@
 /*** Footer End ***/
 
 .bg-login {
-    background-image: linear-gradient(rgb(13,66,118), rgb(13,169,195)); !important;
+    background-image: linear-gradient(to right, rgb(13, 66, 118), rgb(13, 169, 195)) !important;
 }
 
 .btn-login {
@@ -598,8 +598,8 @@
     padding: .5rem 1rem;
 }
 .mb-6{
-    margin-bottom: 7.1rem !important;
+    margin-bottom: 12.1rem !important;
 }
 .my-top{
-    margin-top: 5rem !important;
+    margin-top: 8.5rem !important;
 }

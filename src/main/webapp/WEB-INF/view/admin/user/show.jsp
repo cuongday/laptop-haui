@@ -57,7 +57,7 @@
                                         <th>${user.id}</th>
                                         <td>${user.email}</td>
                                         <td>${user.fullName}</td>
-                                        <td>${user.getRole().getName()}</td>
+                                        <td>${user.getRole().getDescription()}</td>
                                         <td>${user.createAt}</td>
                                         <td>
                                             <a href="/admin/user/${user.id}" class="btn btn-success">Xem</a>
