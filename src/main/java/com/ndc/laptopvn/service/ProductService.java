@@ -90,6 +90,7 @@ public class ProductService {
             double max = 0;
             switch (p) {
                 case "duoi-10-trieu":
+                    min = 1;
                     max = 10000000;
                     break;
                 case "10-toi-15-trieu":

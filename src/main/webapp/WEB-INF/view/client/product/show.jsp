@@ -35,6 +35,14 @@
 
     <!-- Template Stylesheet -->
     <link href="/client/css/style.css" rel="stylesheet">
+    <style>
+        .page-link.disabled {
+            color: var(--bs-pagination-disabled-color);
+            pointer-events: none;
+            background-color: var(--bs-pagination-disabled-bg);
+        }
+    </style>
+</head>
 </head>
 
 <body>
@@ -251,7 +259,8 @@
                                                   method="post">
                                                 <input type="hidden" name="${_csrf.parameterName}"
                                                        value="${_csrf.token}"/>
-                                                <button class="mx-auto btn btn-secondary rounded-pill px-3">
+                                                <button data-product-id="${product.id}"
+                                                        class="mx-auto btn btn-secondary rounded-pill px-3">
                                                     <i class="fa fa-shopping-bag me-2"></i>
                                                     Thêm vào giỏ
                                                 </button>
@@ -310,6 +319,7 @@
 <script src="/client/lib/waypoints/waypoints.min.js"></script>
 <script src="/client/lib/lightbox/js/lightbox.min.js"></script>
 <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
+
 
 <!-- Template Javascript -->
 <script src="/client/js/main.js"></script>
