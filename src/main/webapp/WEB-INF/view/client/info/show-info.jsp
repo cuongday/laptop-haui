@@ -49,7 +49,7 @@
 <jsp:include page="../layout/header.jsp"/>
 
 <!-- Cart Page Start -->
-<div class="container-fluid py-5">
+<div class="container-fluid py-7">
     <div class="container py-5">
         <div class="mb-3">
             <nav aria-label="breadcrumb">

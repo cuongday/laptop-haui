@@ -2375,9 +2375,9 @@ textarea.form-control-lg {
 }
 
 .form-check-input:focus {
-    border-color: #c0e284;
+    border-color: #0B458F;
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(129, 196, 8, .25)
+    box-shadow: 0 0 0 .25rem rgba(11, 69, 143, .25)
 }
 
 .form-check-input:checked {
@@ -2904,7 +2904,7 @@ textarea.form-control-lg {
 
 .btn-check:focus + .btn, .btn:focus {
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(129, 196, 8, .25)
+    box-shadow: 0 0 0 .25rem rgba(11, 69, 143, .25)
 }
 
 .btn:disabled, .btn.disabled, fieldset:disabled .btn {
@@ -2949,14 +2949,14 @@ textarea.form-control-lg {
 
 .btn-secondary {
     color: #fff;
-    background-color: #de7070;
-    border-color: #ffb524
+    background-color: #EE4E5E;
+    border-color: #EE4E5E
 }
 
 .btn-secondary:hover {
-    color: #000;
-    background-color: #ffc045;
-    border-color: #ffbc3a
+    color: #fff;
+    background-color: #DE2739;
+    border-color: #DE2739
 }
 
 .btn-check:focus + .btn-secondary, .btn-secondary:focus {
@@ -3759,8 +3759,9 @@ textarea.form-control-lg {
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
-    color: #1e2125;
-    background-color: #e9ecef
+    background: #F0F8FF;
+    color: var(--bs-primary);
+    border-radius: 7px;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -6818,7 +6819,7 @@ textarea.form-control-lg {
 }
 
 .border-secondary {
-    border-color: #e55c5c!important
+    border-color: #0b458f!important
 }
 
 .border-success {
@@ -7582,7 +7583,12 @@ textarea.form-control-lg {
 }
 
 .py-6 {
-    padding-top: 2rem !important;
+    padding-top: 2.25rem !important;
+    padding-bottom: 2rem !important
+}
+
+.py-7 {
+    padding-top: 4rem !important;
     padding-bottom: 2rem !important
 }
 

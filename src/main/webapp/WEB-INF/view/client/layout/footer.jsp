@@ -3,7 +3,7 @@
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
     <div class="container py-5">
-        <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+        <div class="pb-4 mb-4" style="border-bottom: 1px solid #D0D0D0;">
 
         </div>
         <div class="row g-5">

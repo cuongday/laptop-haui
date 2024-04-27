@@ -62,8 +62,8 @@
                 </nav>
             </div>
 
-            <div class="row g-4 fruite" style="--bs-gutter-y: 0.25rem">
-                <div class="col-12 col-md-4">
+            <div class="row g-4 fruite" style="padding-right: 0px; --bs-gutter-y: 0.25rem">
+                <div class="col-12 col-md-3">
                     <div class="row g-4">
                         <div class="col-12" id="factoryFilter">
                             <div class="mb-2"><b>Hãng sản xuất</b></div>
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-8 text-center">
+                <div class="col-12 col-md-9 text-center">
                     <c:if test="${totalPages == 0}">
                         <div>Không tìm thấy sản phẩm nào</div>
                     </c:if>
@@ -251,12 +251,9 @@
                                                   method="post">
                                                 <input type="hidden" name="${_csrf.parameterName}"
                                                        value="${_csrf.token}"/>
-
-                                                <button
-                                                        class="mx-auto btn border border-secondary rounded-pill px-3 text-primary">
-                                                    <i
-                                                            class="fa fa-shopping-bag me-2 text-primary"></i>
-                                                    Add to cart
+                                                <button class="mx-auto btn btn-secondary rounded-pill px-3">
+                                                    <i class="fa fa-shopping-bag me-2"></i>
+                                                    Thêm vào giỏ
                                                 </button>
                                             </form>
                                         </div>

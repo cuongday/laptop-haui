@@ -185,8 +185,9 @@
 }
 
 .dropdown .dropdown-menu a:hover {
-    background: var(--bs-secondary);
+    background: #F0F8FF;
     color: var(--bs-primary);
+    border-radius: 7px;
 }
 
 .navbar .nav-item:hover .dropdown-menu {
@@ -545,15 +546,16 @@
 }
 .st-div{
     box-shadow: 0 0 3px #8C8C8C;
-    border-radius: 5px;
+    border-radius: 10px;
     background: #fff;
 }
 .col-info-2{
     width: 90%;
     height: 34px;
     border: 0.5px solid #BAB8B8;
-    border-radius: 3px;
+    border-radius: 5px;
     margin-top: 10px;
+    padding: 1px 5px
 }
 .offset-12{
     margin-left: 11%
@@ -571,13 +573,13 @@
 }
 .btn-color-blue{
     color: #fff;
-    background-color:  #1562D7;
-    border-color:  #1562D7;
+    background-color:  #0B458F;
+    border-color:  #0B458F;
 }
 .btn-color-blue:hover{
     color: #fff;
-        background-color:  #0B458F;
-        border-color:  #0B458F;
+        background-color:  #1562D7;
+        border-color:  #1562D7;
 }
 .card-header-log{
     padding: .5rem 1rem;
