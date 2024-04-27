@@ -227,7 +227,7 @@
                                         </a>
                                     </div>
                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                         style="top: 10px; left: 10px;">Laptop
+                                         style="top: 10px; left: 11px;">Laptop
                                     </div>
                                     <div
                                             class="p-4 border-top-0 rounded-bottom">
