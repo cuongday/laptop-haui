@@ -33,7 +33,7 @@
                                         <c:if test="${param.error != null}">
                                             <div class="my-2" style="color: red;">Nhập sai địa chỉ email hoặc mật khẩu</div>
                                         </c:if>
-                                        <form method="post" action="/login" style="padding-left: 10px; padding-right: 10px;">
+                                        <form method="post" action="/login" style="padding-left: 30px; padding-right: 30px;">
 
 
                                             <div class="form-floating mb-3">
@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-login btn-block">Đăng nhập</button>
+                                                    <button type="submit" class="btn btn-login btn-block lh-lg">Đăng nhập</button>
                                                 </div>
                                             </div>
                                         </form>

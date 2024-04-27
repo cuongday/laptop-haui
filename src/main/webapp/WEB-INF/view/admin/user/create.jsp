@@ -35,9 +35,9 @@
                 <h1 class="mt-4">Quản lý tài khoản</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a
-                            style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Dashboard</a>
+                            style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a>
                     </li>
-                    <li class="breadcrumb-item active">User</li>
+                    <li class="breadcrumb-item active">Tài khoản</li>
 
                 </ol>
 
@@ -67,20 +67,20 @@
                                         ${errorEmail}
                                 </div>
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label class="form-label">Password:</label>
+                                    <label class="form-label">Mật khẩu:</label>
                                     <form:input type="password"
                                                 class="form-control ${not empty errorPassword ? 'is-invalid' : ''}"
                                                 path="password"/>
                                         ${errorPassword}
                                 </div>
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label class="form-label">Phone number:</label>
+                                    <label class="form-label">Số điện thoại:</label>
                                     <form:input type="text" class="form-control"
                                                 path="phoneNumber"
                                     />
                                 </div>
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label class="form-label">Fullname:</label>
+                                    <label class="form-label">Họ tên:</label>
                                     <form:input type="text"
                                                 class="form-control ${not empty errorFullName ? 'is-invalid' : ''}"
                                                 path="fullName"
@@ -88,24 +88,24 @@
                                         ${errorFullName}
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label">Address:</label>
+                                    <label class="form-label">Địa chỉ:</label>
                                     <form:input type="text" class="form-control"
                                                 path="address"
                                     />
                                 </div>
 
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label class="form-label">Role:</label>
+                                    <label class="form-label">Vai trò:</label>
                                     <form:select class="form-select" aria-label="Default select example"
                                                  path="role.name">
-                                        <option value="ADMIN">Admin</option>
-                                        <option value="USER">User</option>
-                                        <option value="MANAGER">Manager</option>
-                                        <option value="SELLER">Seller</option>
+                                        <option value="ADMIN">Quản trị viên</option>
+                                        <option value="USER">Người dùng</option>
+                                        <option value="MANAGER">Nhân viên quản lý</option>
+                                        <option value="SELLER">Nhân viên bán hàng</option>
                                     </form:select>
                                 </div>
                                 <div class="col-md-6 col-12 mb-3">
-                                    <label for="avatarFile" class="form-label">Avatar:</label>
+                                    <label for="avatarFile" class="form-label">Ảnh đại diện:</label>
                                     <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg"
                                            name="uploadAvatarFile">
                                 </div>
@@ -116,7 +116,7 @@
                                 </div>
 
                                 <div class="col-12 mb-5">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
                                 </div>
                             </form:form>
                         </div>
