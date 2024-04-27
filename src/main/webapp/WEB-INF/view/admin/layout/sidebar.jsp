@@ -27,6 +27,12 @@
                     Đơn hàng
                 </a>
                 </c:if>
+                <c:if test="${sessionScope.role == 'SELLER'}">
+                    <a class="nav-link" href="/admin/order">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Đơn hàng
+                    </a>
+                </c:if>
             </div>
         </div>
         <div class="sb-sidenav-footer">

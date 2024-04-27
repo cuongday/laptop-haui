@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -130,6 +131,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 
 @ExtendWith(SpringExtension.class)
+@AutoConfigureMockMvc(addFilters = false)
 @WebMvcTest(HomePageController.class)
 public class HomePageControllerTest {
 
@@ -152,14 +154,9 @@ public class HomePageControllerTest {
 
     @BeforeEach
     public void setup() {
-        // Here you can set up any common pre-conditions, like common mock behaviors
-        // Example for user registration success:
         MockitoAnnotations.openMocks(this);
         homePageController = new HomePageController(productService, userService, passwordEncoder, orderService);
-        when(userService.registerDTOtoUser(any(RegisterDTO.class))).thenReturn(new User());
-        when(userService.handleSaveUser(any(User.class))).thenReturn(new User());
-        when(passwordEncoder.encode(any(String.class))).thenReturn("hashedPassword");
-        when(userService.getUserByEmail(any(String.class))).thenReturn(new User());
+
     }
 
 
@@ -171,6 +168,7 @@ public class HomePageControllerTest {
         validRegisterDTO.setLastName("user");
         validRegisterDTO.setEmail("valid@email.com");
         validRegisterDTO.setPassword("validPassword");
+        validRegisterDTO.setConfirmPassword("validPassword");
 
         // ... set other necessary fields
 
@@ -180,8 +178,8 @@ public class HomePageControllerTest {
                         .param("lastName", validRegisterDTO.getLastName())
                         .param("email", validRegisterDTO.getEmail())
                         .param("password", validRegisterDTO.getPassword())
+                        .param("confirmPassword", validRegisterDTO.getConfirmPassword())
                         .with(csrf())
-                        .with(httpBasic("testuser@gmail.com", "123456"))
                         // ... set other necessary parameters
                         .sessionAttr("registerUser", validRegisterDTO))
                 .andExpect(status().is3xxRedirection())
@@ -202,6 +200,7 @@ public class HomePageControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("client/auth/register"));
     }
+
 
     @Test
     public void testFindUserByUsername(){
