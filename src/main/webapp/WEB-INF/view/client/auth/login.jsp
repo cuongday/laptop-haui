@@ -14,6 +14,7 @@
         <link href="/client/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="/client/css/style.css">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="shortcut icon" type="image/png" href="/images/auth-bg/icon.png"/>
     </head>
     <body class="bg-login">
         <div id="layoutAuthentication">

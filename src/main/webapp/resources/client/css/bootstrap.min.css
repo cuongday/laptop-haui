@@ -7815,6 +7815,8 @@ textarea.form-control-lg {
 .para-text{
     color: #D0D0D0 !important;
     text-align: justify;
+    font-size: 14px;
+    margin-bottom: 0.25rem;
 }
 .text-primary {
     color: #000000 !important;

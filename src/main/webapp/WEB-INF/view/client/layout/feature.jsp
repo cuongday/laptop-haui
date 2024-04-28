@@ -37,7 +37,7 @@
                         <i class="fas fa-exchange-alt fa-3x text-white"></i>
                     </div>
                     <div class="featurs-content text-center">
-                        <h5>30 Đổi trả</h5>
+                        <h5>30 ngày đổi trả</h5>
                         <p class="mb-0">Đổi trả miễn phí</p>
                     </div>
                 </div>
