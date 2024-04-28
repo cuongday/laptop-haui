@@ -45,6 +45,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Thành tiền</th>
                                     <th scope="col">Tài khoản</th>
+                                    <th scope="col">Địa chỉ nhận hàng</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Ngày tạo</th>
                                     <th scope="col">Tùy chọn</th>
@@ -56,6 +57,7 @@
                                         <td>${order.id}</td>
                                         <td><fmt:formatNumber value="${order.totalPrice}" type="number" /> đ</td>
                                         <td>${sessionScope.fullName}</td>
+                                        <td>${order.receiverAddress}</td>
                                         <td>${order.status}</td>
                                         <td>${order.createAt}</td>
                                         <td>
@@ -81,7 +83,7 @@
 
                                     <c:forEach begin="0" end="${totalPages -1}" varStatus="loop">
                                         <li class="page-item">
-                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} " href="/admin/product?page=${loop.index + 1}">
+                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} " href="/admin/order?page=${loop.index + 1}">
                                                     ${loop.index + 1}
                                             </a>
                                         </li>
