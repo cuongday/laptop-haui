@@ -511,7 +511,7 @@
 /*** Footer Start ***/
 .footer .footer-item .btn-link {
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     color: rgba(255, 255, 255, .5);
     transition: 0.5s;
 }
@@ -602,4 +602,11 @@
 }
 .my-top{
     margin-top: 8.5rem !important;
+}
+
+#location {
+     width: 80%px;
+     height: 200px;
+     margin-bottom: 0.25rem;
+     border-radius: 5px;
 }
