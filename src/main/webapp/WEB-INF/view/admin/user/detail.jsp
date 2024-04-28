@@ -39,6 +39,9 @@
                                         <div class="card-header">
                                             Thông tin
                                         </div>
+                                        <div>
+                                            <img src="/images/avatar/${user.avatar}" alt="ảnh đại diện" style="max-width: 200px; height: auto">
+                                        </div>
                                         <ul class="list-group list-group-flu    sh">
                                             <li class="list-group-item">ID: ${id} </li>
                                             <li class="list-group-item">Email: ${user.email} </li>
