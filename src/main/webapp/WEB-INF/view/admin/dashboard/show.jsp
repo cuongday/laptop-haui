@@ -128,8 +128,8 @@
                     datasets: [{
                         label: 'Số lượng laptop bán được trong 30 ngày qua',
                         data: data.map(item => item.counts), // Số lượng laptop bán được
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(2, 123, 253, 0.2)',
+                        borderColor: 'rgba(2, 123, 253, 1)',
                         borderWidth: 1
                     }]
                 },
@@ -176,7 +176,7 @@
                     datasets: [{
                         label: 'Số lượng sản phẩm bán được trong 30 ngày qua',
                         data: data.map(item => item.counts), // Số lượng sản phẩm bán được
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#C35AF2', '#ED700D'],
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
                     }]

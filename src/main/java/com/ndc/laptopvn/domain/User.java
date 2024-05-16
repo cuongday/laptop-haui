@@ -151,6 +151,14 @@ public class User {
         this.avatar = avatar;
     }
 
+    public ForgotPassword getForgotPassword() {
+        return forgotPassword;
+    }
+
+    public void setForgotPassword(ForgotPassword forgotPassword) {
+        this.forgotPassword = forgotPassword;
+    }
+
     @Override
     public String toString() {
         return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName

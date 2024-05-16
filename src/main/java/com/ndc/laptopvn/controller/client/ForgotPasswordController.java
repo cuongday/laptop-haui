@@ -34,11 +34,12 @@ public class ForgotPasswordController {
     }
 
 
+
+
     // send mail for email verification
     @PostMapping("/verify-email/{email}")
     public ResponseEntity<String> veryfyEmail(@PathVariable String email) {
         User user = this.userService.getUserByEmail(email);
-
         int otp = otpGenerator();
         MailBody mailBody = MailBody.builder()
                 .to(email)
@@ -64,7 +65,7 @@ public class ForgotPasswordController {
         ForgotPassword fp = this.forgotPasswordRepository.findByOtpAndUser(otp, user)
                 .orElseThrow(() -> new RuntimeException("Invalid OTP for email: "+ email));
         if (fp.getExpirationTime().before(Date.from(Instant.now()))) {
-            this.forgotPasswordRepository.deleteById(fp.getFpid());
+            this.forgotPasswordRepository.deleteById(fp.getFpId());
             return new ResponseEntity<>("OTP has expired!", HttpStatus.EXPECTATION_FAILED);
         }
 

@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -141,5 +142,12 @@ public class HomePageController {
             this.userService.handleSaveUser(currentUser);
         }
         return "redirect:/show-info";
+    }
+
+    @GetMapping("/forgot-password/verify-email/{email}")
+    public String verifyEmail(@PathVariable String email) {
+        User user = this.userService.getUserByEmail(email);
+
+        return "client/auth/sentMail";
     }
 }
