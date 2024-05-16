@@ -14,16 +14,11 @@ public class MailService {
         this.javaMailSender = javaMailSender;
     }
 
-//    public void sendResetTokenEmail(String contextPath, String token, User user) {
-//        String url = contextPath + "/reset-password?token=" + token;
-//        String message = "Reset your password by clicking the following link " + url;
-//        sendEmail(user.getEmail(), "Reset Password", message);
-//    }
 
     public void sendSimpleMessage(MailBody mailBody) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(mailBody.to());
-        message.setFrom("vbvbbttb@gmail.com");
+        message.setFrom("cuonghaui101@gmail.com");
         message.setSubject(mailBody.subject());
         message.setText(mailBody.content());
         javaMailSender.send(message);

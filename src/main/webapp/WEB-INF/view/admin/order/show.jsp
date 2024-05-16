@@ -118,8 +118,7 @@
                 url: '/api/admin/report/' + id,
                 type: 'GET',
                 success: function (data) {
-                    console.log(data);
-                    alert('Xuất hóa đơn thành công');
+                    window.open(/reports/ + data);
                 }
             });
         });

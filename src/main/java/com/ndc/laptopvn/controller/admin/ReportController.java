@@ -16,8 +16,8 @@ public class ReportController {
     @GetMapping("/api/admin/report/{id}")
     public String getReport(@PathVariable long id){
         try {
-            this.pdfReportService.createPdfReport("reportOrder", id);
-            return "Bill create success!";
+            String filePath = this.pdfReportService.createPdfReport("reportOrder", id);
+            return filePath;
         } catch (Exception e) {
             return e.getMessage();
         }

@@ -39,7 +39,7 @@ public class PdfReportService {
     }
 
 
-    public void createPdfReport(String fileName, long id) throws FileNotFoundException, DocumentException {
+    public String createPdfReport(String fileName, long id) throws FileNotFoundException, DocumentException {
         // Create PDF report
         try {
             Document document = new Document(PageSize.A6, 20, 20, 20, 20);
@@ -146,6 +146,10 @@ public class PdfReportService {
 
                 document.add(time);
                 document.close();
+
+
+                return fileName;
+
             }else {
                 System.err.println("Order with id " + id + " does not exist.");
                 // Ném ra ngoại lệ
@@ -161,5 +165,6 @@ public class PdfReportService {
             // Xử lý ngoại lệ IllegalArgumentException
             System.err.println("Invalid argument: " + e.getMessage());
         }
+        return "";
     }
 }
