@@ -4,6 +4,7 @@ import com.ndc.laptopvn.domain.DTO.RegisterDTO;
 import com.ndc.laptopvn.domain.Order;
 import com.ndc.laptopvn.domain.Product;
 import com.ndc.laptopvn.domain.User;
+import com.ndc.laptopvn.domain.request.ResetPassword;
 import com.ndc.laptopvn.service.OrderService;
 import com.ndc.laptopvn.service.ProductService;
 import com.ndc.laptopvn.service.UserService;
@@ -145,9 +146,24 @@ public class HomePageController {
     }
 
     @GetMapping("/forgot-password/verify-email/{email}")
-    public String verifyEmail(@PathVariable String email) {
+    public String verifyEmail(Model model, @PathVariable String email) {
         User user = this.userService.getUserByEmail(email);
+        model.addAttribute("email", email);
+        model.addAttribute("user", user);
+        return "client/auth/verifyEmail";
+    }
 
-        return "client/auth/sentMail";
+    @GetMapping("/forgot-password/verify-otp")
+    public String verifyOtp(Model model) {
+        return "client/auth/verifyOtp";
+    }
+
+    @GetMapping("/forgot-password/reset-password/{email}")
+    public String resetPassword(Model model, @PathVariable String email) {
+        User user = this.userService.getUserByEmail(email);
+        model.addAttribute("email", email);
+        model.addAttribute("user", user);
+        model.addAttribute("resetPassword", new ResetPassword());
+        return "client/auth/resetPassword";
     }
 }
