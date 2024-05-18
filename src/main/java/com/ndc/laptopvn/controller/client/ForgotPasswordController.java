@@ -10,6 +10,7 @@ import com.ndc.laptopvn.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
@@ -17,7 +18,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
 
-@RestController
+@Controller
 @RequestMapping("/forgot-password")
 public class ForgotPasswordController {
     private final UserService userService;
@@ -38,7 +39,7 @@ public class ForgotPasswordController {
 
     // send mail for email verification
     @PostMapping("/verify-email/{email}")
-    public ResponseEntity<String> veryfyEmail(@PathVariable String email) {
+    public String verifyEmail(@PathVariable String email) {
         User user = this.userService.getUserByEmail(email);
         int otp = otpGenerator();
         MailBody mailBody = MailBody.builder()
@@ -55,7 +56,7 @@ public class ForgotPasswordController {
         mailService.sendSimpleMessage(mailBody);
         forgotPasswordRepository.save(fp);
 
-        return ResponseEntity.ok("Email sent for verification!");
+        return "redirect:/forgot-password/verify-otp";
     }
 
     @PostMapping("/verify-otp/{otp}/{email}")
@@ -65,9 +66,10 @@ public class ForgotPasswordController {
         ForgotPassword fp = this.forgotPasswordRepository.findByOtpAndUser(otp, user)
                 .orElseThrow(() -> new RuntimeException("Invalid OTP for email: "+ email));
         if (fp.getExpirationTime().before(Date.from(Instant.now()))) {
-            this.forgotPasswordRepository.deleteById(fp.getFpId());
+            this.forgotPasswordRepository.deleteByFpId(fp.getFpId());
             return new ResponseEntity<>("OTP has expired!", HttpStatus.EXPECTATION_FAILED);
         }
+        this.forgotPasswordRepository.deleteByFpId(fp.getFpId());
 
         return ResponseEntity.ok("OTP verified successfully!");
     }
@@ -75,14 +77,14 @@ public class ForgotPasswordController {
     @PostMapping("/reset-password/{email}")
     public ResponseEntity<String> resetPassword(@RequestBody ResetPassword resetPassword,
                                                 @PathVariable String email) {
-        if(!Objects.equals(resetPassword.password(), resetPassword.confirmPassword())) {
-            return new ResponseEntity<>("Passwords do not match!", HttpStatus.EXPECTATION_FAILED);
+        if(!resetPassword.getPassword().equals(resetPassword.getConfirmPassword())) {
+            return new ResponseEntity<>("Mật khẩu không khớp!", HttpStatus.BAD_REQUEST);
         }
 
-        String encodedPassword = this.passwordEncoder.encode(resetPassword.password());
+        String encodedPassword = this.passwordEncoder.encode(resetPassword.getPassword());
         this.userService.updatePassword(email, encodedPassword);
 
-        return ResponseEntity.ok("Password reset successfully!");
+        return ResponseEntity.ok("Password updated successfully!");
     }
 
     private Integer otpGenerator() {
