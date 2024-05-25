@@ -13,8 +13,15 @@
                     <p class="para-text">CSKH: 18001765</p>
                     <p class="para-text">Bảo hành: 18003298</p>
                     <p class="para-text">Email: cskh@laptopvn.com</p>
-                    <p class="para-text">Zalo: </p>
-                    <p class="para-text">Facebook: </p>
+                    <div class="contact">
+                        <a class="para-text me-sm-2" target="_blank" href="https://web.facebook.com/huynee14.07/">
+                            <img class="ft-icon" src="/images/auth-bg/fb-icon.png"/>
+                        </a>
+                        <a class="para-text me-sm-2" target="_blank" href="https://zalo.me/0396006368">
+                            <img class="ft-icon" style="margin-top:1px" src="/images/auth-bg/zl-icon.png"/>
+                        </a>
+                    </div>
+
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">

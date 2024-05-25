@@ -610,3 +610,16 @@
      margin-bottom: 0.25rem;
      border-radius: 5px;
 }
+
+.contact {
+    display: flex;
+    margin-top: 5px;
+    vertical-align: middle;
+}
+
+.ft-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
