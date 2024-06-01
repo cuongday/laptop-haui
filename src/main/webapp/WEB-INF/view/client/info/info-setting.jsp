@@ -60,17 +60,24 @@
             </nav>
             <div>
 
-                <form:form method="post" modelAttribute="user" action="/info-setting">
+                <form:form method="post" modelAttribute="user" action="/info-setting" enctype="multipart/form-data">
                     <div style=" margin-top: 25px;  padding-left: 25%; padding-right: 25%">
                         <div class="st-div">
                             <div style="margin-top: 5%"><p style="padding-top: 3% ; margin-left:15px; font-size:30px; color: #000; font-weight: bold; text-align: center">
                                 Sửa thông tin người dùng</p>
                                 <hr style="margin-left: 5%;margin-right: 5%; margin-bottom: 5% ;"/>
                             </div>
-                            <div class="mb-3" style="margin-left: 30px; margin-top: 15px">
-                                <img src="/images/avatar/${sessionScope.avatar}"
-                                     style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden;">
-                                <p style=" display: inline; margin-left: 10px; font-weight: bold">Ảnh đại diện</p>
+                            <div class="mb-3 d-flex justify-content-between" style="margin-left: 30px; margin-top: 15px">
+                                <div class="d-flex">
+                                    <img src="/images/avatar/${user.avatar}"
+                                         style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden;">
+                                </div>
+
+                                <div class="fw-bold mb-3" style="margin-right: 30px; width: 47%">
+                                    <label for="avatarFile" class="form-label">Ảnh đại diện:</label>
+                                    <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg"
+                                           name="uploadAvatarFile">
+                                </div>
                             </div>
                             <div class="mb-3" style="display: none;">
                                 <label class="form-label">ID:</label>
