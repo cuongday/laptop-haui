@@ -3,10 +3,8 @@ package com.ndc.laptopvn.service;
 import com.ndc.laptopvn.domain.DTO.RegisterDTO;
 import com.ndc.laptopvn.domain.User;
 import com.ndc.laptopvn.domain.Role;
-import com.ndc.laptopvn.repository.OrderRepository;
-import com.ndc.laptopvn.repository.ProductRepository;
-import com.ndc.laptopvn.repository.RoleRepository;
-import com.ndc.laptopvn.repository.UserRepository;
+import com.ndc.laptopvn.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,23 +12,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-
+    private final ForgotPasswordRepository forgotPasswordRepository;
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
-
-    public UserService(UserRepository userRepository,
-                       RoleRepository roleRepository,
-                       OrderRepository orderRepository,
-                       ProductRepository productRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.orderRepository = orderRepository;
-        this.productRepository = productRepository;
-    }
 
     public Page<User> getAllUser(Pageable pageable) {
         return this.userRepository.findAll(pageable);
@@ -48,7 +37,8 @@ public class UserService {
         return this.userRepository.findFirstById(id);
     }
 
-    public void deleteAUser(long id)     {
+    public void deleteAUser(long id){
+        this.forgotPasswordRepository.deleteByUserId(id);
         this.userRepository.deleteById(id);
     }
 

@@ -18,4 +18,9 @@ public interface ForgotPasswordRepository extends JpaRepository<ForgotPassword, 
     @Transactional
     @Query(value = "delete from forgot_password fp where fp.fp_id = ?1", nativeQuery = true)
     void deleteByFpId(Integer fpId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from forgot_password fp where fp.user_id = ?1", nativeQuery = true)
+    void deleteByUserId(Long userId);
 }

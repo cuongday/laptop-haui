@@ -91,4 +91,11 @@ public class ForgotPasswordController {
         Random random = new Random();
         return random.nextInt(100_000, 999_999);
     }
+
+    @PostMapping("/delete/{email}")
+    public ResponseEntity<String> deleteOTP(@PathVariable String email) {
+        User user = this.userService.getUserByEmail(email);
+        this.forgotPasswordRepository.deleteByUserId(user.getId());
+        return ResponseEntity.ok("delete success!");
+    }
 }

@@ -145,11 +145,8 @@ public class HomePageController {
         return "redirect:/show-info";
     }
 
-    @GetMapping("/forgot-password/verify-email/{email}")
-    public String verifyEmail(Model model, @PathVariable String email) {
-        User user = this.userService.getUserByEmail(email);
-        model.addAttribute("email", email);
-        model.addAttribute("user", user);
+    @GetMapping("/forgot-password/verify-email")
+    public String verifyEmail(Model model) {
         return "client/auth/verifyEmail";
     }
 

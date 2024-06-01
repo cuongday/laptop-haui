@@ -43,11 +43,11 @@
         <form method="post" class="col-lg-6 bg-primary rounded p-5">
             <h2 class="text-center text-white mb-4">Đổi mật khẩu</h2>
             <div class="mb-3">
-                <label class="form-label text-white">password</label>
+                <label class="form-label text-white">Mật khẩu</label>
                 <input type="password" class="form-control" id="password" />
             </div>
             <div class="mb-3">
-                <label class="form-label text-white">confirm password</label>
+                <label class="form-label text-white">Xác nhận mật khẩu</label>
                 <input type="password" class="form-control" id="confirmPassword"/>
             </div>
             <div>

@@ -54,7 +54,7 @@
                             </li>
                             <li><a class="dropdown-item" href="/show-info">Quản lý tài khoản</a></li>
                             <li><a class="dropdown-item" href="/order-history">Lịch sử mua hàng</a></li>
-                            <li><a class="dropdown-item" href="/forgot-password/verify-email/${sessionScope.email}">Đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="/forgot-password/verify-email">Đổi mật khẩu</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
