@@ -4,9 +4,7 @@ import com.ndc.laptopvn.controller.client.HomePageController;
 import com.ndc.laptopvn.domain.DTO.RegisterDTO;
 import com.ndc.laptopvn.domain.Role;
 import com.ndc.laptopvn.domain.User;
-import com.ndc.laptopvn.service.OrderService;
-import com.ndc.laptopvn.service.ProductService;
-import com.ndc.laptopvn.service.UserService;
+import com.ndc.laptopvn.service.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -149,13 +147,16 @@ public class HomePageControllerTest {
 
     @MockBean
     private OrderService orderService;
+
+    @MockBean
+    private UploadService uploadService;
     @InjectMocks
     private HomePageController homePageController;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
-        homePageController = new HomePageController(productService, userService, passwordEncoder, orderService);
+        homePageController = new HomePageController(productService, userService, orderService, uploadService, passwordEncoder);
 
     }
 

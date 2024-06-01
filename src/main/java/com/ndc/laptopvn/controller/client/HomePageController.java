@@ -7,10 +7,12 @@ import com.ndc.laptopvn.domain.User;
 import com.ndc.laptopvn.domain.request.ResetPassword;
 import com.ndc.laptopvn.service.OrderService;
 import com.ndc.laptopvn.service.ProductService;
+import com.ndc.laptopvn.service.UploadService;
 import com.ndc.laptopvn.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,32 +21,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class HomePageController {
 
     private final ProductService productService;
 
     private final UserService userService;
     private final OrderService orderService;
-
+    private final UploadService uploadService;
     private final PasswordEncoder passwordEncoder;
-
-    public HomePageController(ProductService productService,
-                              UserService userService,
-                              PasswordEncoder passwordEncoder,
-                              OrderService orderService) {
-        this.productService = productService;
-        this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-        this.orderService = orderService;
-    }
 
     @GetMapping("/")
     public String getHomePage(Model model) {
@@ -131,8 +122,10 @@ public class HomePageController {
     }
 
     @PostMapping("/info-setting")
-    public String handleInfoSetting(Model model,@ModelAttribute("user") User user) {
+    public String handleInfoSetting(Model model,@ModelAttribute("user") User user,
+                                    @RequestParam("uploadAvatarFile") MultipartFile file) {
         User currentUser = this.userService.getUserById(user.getId());
+        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         model.addAttribute("user", currentUser);
         if (currentUser != null) {
             currentUser.setDob(user.getDob());
@@ -140,6 +133,7 @@ public class HomePageController {
             currentUser.setAddress(user.getAddress());
             currentUser.setPhoneNumber(user.getPhoneNumber());
             currentUser.setGender(user.getGender());
+            currentUser.setAvatar(avatar);
             this.userService.handleSaveUser(currentUser);
         }
         return "redirect:/show-info";
