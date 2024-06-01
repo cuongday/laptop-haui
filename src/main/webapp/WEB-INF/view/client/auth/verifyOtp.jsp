@@ -41,9 +41,9 @@
 <div class="container h-100" style="margin-top: 158px ">
     <div class="row h-100 justify-content-center align-items-center py-7">
         <form method="post"
-                   class="col-lg-6 bg-primary rounded p-5">
+              class="col-lg-6 bg-primary rounded p-5">
             <h2 class="text-center text-white mb-4">Verify OTP</h2>
-<%--            thêm thời gian đếm ngược 60s--%>
+            <%--            thêm thời gian đếm ngược 60s--%>
             <div class="mb-3">
                 <div class="d-flex justify-content-between">
                     <label for="otp" class="form-label text-white">OTP</label>
@@ -54,7 +54,8 @@
             <input type="hidden" name="${_csrf.parameterName}"
                    value="${_csrf.token}"/>
             <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-light submitOtp">Verify</button>
+                <button type="submit" class="btn btn-light submitOtp">Xác thực</button>
+                <button type="submit" class="btn btn-light submitResend">Gửi lại OTP</button>
             </div>
         </form>
     </div>
@@ -82,9 +83,51 @@
         const countdownElement = $('#countdown');
         countdownElement.css('color', 'white');
         const submitBtn = $('.submitOtp');
-        let timeLeft = 60; // 60 seconds
+        const submitResendBtn = $('.submitResend');
+        submitResendBtn.css('display', 'none');
+        // let timeLeft = 5;
 
-        function updateCountdown() {
+
+        <%--function updateCountdown(timeLeft) {--%>
+        <%--    const csrfToken = $('[name="${_csrf.parameterName}"]').val();--%>
+        <%--    const minutes = Math.floor(timeLeft / 60);--%>
+        <%--    const seconds = timeLeft % 60;--%>
+        <%--    if(seconds < 10){--%>
+        <%--        countdownElement.text(`Time left: ` + minutes + `: 0` + seconds);--%>
+        <%--    } else--%>
+        <%--        countdownElement.text(`Time left: ` + minutes + `: ` + seconds);--%>
+        <%--    timeLeft--;--%>
+
+        <%--    if (timeLeft >= 0) {--%>
+        <%--        setTimeout(updateCountdown, 1000);--%>
+        <%--    } else {--%>
+        <%--        countdownElement.text("Time's up!");--%>
+        <%--        submitBtn.prop('disabled', true);--%>
+        <%--        $.toast({--%>
+        <%--            text: "Hết thời gian xác thực, vui lòng gửi lại mã OTP",--%>
+        <%--            showHideTransition: 'slide',--%>
+        <%--            bgColor: 'red',--%>
+        <%--            textColor: 'white',--%>
+        <%--            allowToastClose: true,--%>
+        <%--            hideAfter: 5000,--%>
+        <%--            stack: 5,--%>
+        <%--            textAlign: 'left',--%>
+        <%--            position: 'top-right',--%>
+        <%--            icon: 'error'--%>
+        <%--        });--%>
+        <%--        submitResendBtn.css('display', 'block')--%>
+        <%--        $.ajax({--%>
+        <%--            url:`/forgot-password/delete/${email}`,--%>
+        <%--            type: 'POST',--%>
+        <%--            headers: {--%>
+        <%--                'X-CSRF-TOKEN': csrfToken // Gửi CSRF token trong header--%>
+        <%--            },--%>
+        <%--        });--%>
+        <%--    }--%>
+        <%--}--%>
+
+        function updateCountdown(timeLeft) {
+            const csrfToken = $('[name="${_csrf.parameterName}"]').val();
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
             if(seconds < 10){
@@ -94,12 +137,12 @@
             timeLeft--;
 
             if (timeLeft >= 0) {
-                setTimeout(updateCountdown, 1000);
+                setTimeout(() => updateCountdown(timeLeft), 1000);
             } else {
                 countdownElement.text("Time's up!");
                 submitBtn.prop('disabled', true);
                 $.toast({
-                    text: "Time is up! Please request a new OTP.",
+                    text: "Hết thời gian xác thực, vui lòng gửi lại mã OTP",
                     showHideTransition: 'slide',
                     bgColor: 'red',
                     textColor: 'white',
@@ -110,10 +153,17 @@
                     position: 'top-right',
                     icon: 'error'
                 });
+                submitResendBtn.css('display', 'block')
+                $.ajax({
+                    url:`/forgot-password/delete/${email}`,
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken // Gửi CSRF token trong header
+                    },
+                });
             }
         }
-
-        updateCountdown();
+        updateCountdown(60);
 
         submitBtn.click((e) => {
             e.preventDefault();
@@ -122,7 +172,7 @@
             const email = encodeURIComponent('${email}'); // Mã hóa email để sử dụng trong URL
 
             $.ajax({
-                url: `/forgot-password/verify-otp/${otp}/${email}`,
+                url: `/forgot-password/verify-otp/` + otp + "/" + email,
                 type: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': csrfToken // Gửi CSRF token trong header
@@ -147,6 +197,50 @@
                 error: function (error) {
                     $.toast({
                         text: "Mã otp không chính xác hoặc đã hết hạn",
+                        showHideTransition: 'slide',
+                        bgColor: '#dc3545',
+                        textColor: 'white',
+                        allowToastClose: true,
+                        hideAfter: 5000,
+                        stack: 5,
+                        textAlign: 'left',
+                        position: 'top-right',
+                        icon: 'error'
+                    });
+                }
+            });
+        });
+
+        submitResendBtn.click((e) => {
+            e.preventDefault();
+            const csrfToken = $('[name="${_csrf.parameterName}"]').val(); // Lấy CSRF token từ input hidden
+            const email = encodeURIComponent('${email}'); // Mã hóa email để sử dụng trong URL
+
+            $.ajax({
+                url: `/forgot-password/verify-email/` + email,
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken // Gửi CSRF token trong header
+                },
+                success: function (data) {
+                    $.toast({
+                        text: "Gửi mã OTP thành công",
+                        showHideTransition: 'slide',
+                        bgColor: '#28a745',
+                        textColor: 'white',
+                        allowToastClose: true,
+                        hideAfter: 5000,
+                        stack: 5,
+                        textAlign: 'left',
+                        position: 'top-right',
+                        icon: 'success'
+                    });
+                    submitBtn.prop('disabled', false);
+                    updateCountdown(60);
+                },
+                error: function (error) {
+                    $.toast({
+                        text: "Gửi mã OTP thất bại",
                         showHideTransition: 'slide',
                         bgColor: '#dc3545',
                         textColor: 'white',
