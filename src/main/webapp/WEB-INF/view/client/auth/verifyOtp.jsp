@@ -172,7 +172,7 @@
             const email = encodeURIComponent('${email}'); // Mã hóa email để sử dụng trong URL
 
             $.ajax({
-                url: `/forgot-password/verify-otp/` + otp + "/" + email,
+                url: `/forgot-password/verify-otp/` + otp ,
                 type: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': csrfToken // Gửi CSRF token trong header
@@ -191,7 +191,7 @@
                         icon: 'success'
                     });
                     setTimeout(() => {
-                        window.location.href = `/forgot-password/reset-password/${email}`;
+                        window.location.href = `/forgot-password/reset-password/${sessionScope.userEmail}`;
                     }, 5000);
                 },
                 error: function (error) {
@@ -217,7 +217,7 @@
             const email = encodeURIComponent('${email}'); // Mã hóa email để sử dụng trong URL
 
             $.ajax({
-                url: `/forgot-password/verify-email/` + email,
+                url: `/forgot-password/verify-email/${sessionScope.userEmail}` ,
                 type: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': csrfToken // Gửi CSRF token trong header

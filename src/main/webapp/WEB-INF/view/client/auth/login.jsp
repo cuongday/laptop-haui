@@ -69,9 +69,11 @@
                                         </form>
 
                                     </div>
-                                    <div class="card-footer-log text-center">
-                                        <div class="small mb-6">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
+                                    <div class="text-center">
+                                        <div class="small mb-1">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
+                                        <div class="small mb-6"><a href="/forgot-password/verify-email">Quên mật khẩu</a></div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
