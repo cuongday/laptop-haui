@@ -25,7 +25,9 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
             "FROM Order o " +
             "INNER JOIN OrderDetail d ON o.id = d.order.id " +
             "WHERE o.createAt BETWEEN :startDate AND :endDate " +
-            "GROUP BY DATE(o.createAt)")
+            "GROUP BY DATE(o.createAt)" +
+            "ORDER BY DATE(o.createAt) ASC "
+    )
     List<Map<String, Object>> getSalesStatistics(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
 
     @Query("SELECT p.factory as factory, COUNT(p.factory) as counts " +
