@@ -118,7 +118,6 @@
             endDate: formatDate(endDate) // Ngày kết thúc
         },
         success: function(data) {
-
             // Tạo một đồ thị từ dữ liệu nhận được
             var ctx = document.getElementById('salesChart').getContext('2d');
             new Chart(ctx, {
