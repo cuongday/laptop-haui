@@ -623,3 +623,14 @@
     vertical-align: middle;
     margin-right: 5px;
 }
+.rad-left{
+    border-radius: 10px 0px 0px 10px !important;
+}
+.rad-right{
+    border-radius: 0px 10px 10px 0px !important;
+}
+.hide-pass{
+    color:#000;
+    border: 1px solid #ced4da;
+    border-left: none;
+}

@@ -35,8 +35,6 @@
                                             <div class="my-2" style="color: red;">Nhập sai địa chỉ email hoặc mật khẩu</div>
                                         </c:if>
                                         <form method="post" action="/login" style="padding-left: 30px; padding-right: 30px;">
-
-
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" type="email"
                                                        placeholder="name@example.com"
@@ -44,14 +42,15 @@
                                                 />
                                                 <label>Địa chỉ email</label>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control"
+                                            <div class="form-floating mb-3 d-flex">
+                                                <input class="form-control rad-left"
                                                        type="password"
                                                        placeholder="Password"
                                                        name="password"
                                                        id="password"
+                                                       style="width: 85%"
                                                 />
-                                                <input type="checkbox" onclick="myFunction()" style="display: none">
+                                                 <button class="btn rad-right hide-pass" type="button" id="show-password" onclick="togglePassword()" style="width: 70px">Hiện</button>
                                                 <label>Mật khẩu</label>
                                             </div>
 
@@ -76,7 +75,6 @@
                                         <div class="small mb-1">Chưa có tài khoản? <a href="/register">Đăng kí ngay!</a></div>
                                         <div class="small mb-6"><a href="/forgot-password/verify-email">Quên mật khẩu</a></div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -85,6 +83,19 @@
             </div>
 
         </div>
+        <script>
+                function togglePassword() {
+                    const passwordInput = document.getElementById('password');
+                    const showPasswordButton = document.getElementById('show-password');
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        showPasswordButton.textContent = 'Ẩn';
+                    } else {
+                        passwordInput.type = 'password';
+                        showPasswordButton.textContent = 'Hiện';
+                    }
+                }
+            </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/js/scripts.js"></script>
     </body>
