@@ -49,7 +49,9 @@
                                                        type="password"
                                                        placeholder="Password"
                                                        name="password"
+                                                       id="password"
                                                 />
+                                                <input type="checkbox" onclick="myFunction()" style="display: none">
                                                 <label>Mật khẩu</label>
                                             </div>
 
