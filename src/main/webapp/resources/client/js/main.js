@@ -373,7 +373,14 @@
 
         });
     });
-
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
     $('.btnAddToCartDetail').click(function (event) {
         event.preventDefault();
         if (!isLogin()) {
