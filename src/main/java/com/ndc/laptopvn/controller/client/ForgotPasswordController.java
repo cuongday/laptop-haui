@@ -7,6 +7,7 @@ import com.ndc.laptopvn.domain.request.ResetPassword;
 import com.ndc.laptopvn.repository.ForgotPasswordRepository;
 import com.ndc.laptopvn.service.MailService;
 import com.ndc.laptopvn.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,7 +40,7 @@ public class ForgotPasswordController {
 
     // send mail for email verification
     @PostMapping("/verify-email/{email}")
-    public String verifyEmail(@PathVariable String email) {
+    public String verifyEmail(@PathVariable String email, HttpSession session) {
         User user = this.userService.getUserByEmail(email);
         int otp = otpGenerator();
         MailBody mailBody = MailBody.builder()
@@ -55,12 +56,14 @@ public class ForgotPasswordController {
 
         mailService.sendSimpleMessage(mailBody);
         forgotPasswordRepository.save(fp);
+        session.setAttribute("userEmail", email);
 
         return "redirect:/forgot-password/verify-otp";
     }
 
-    @PostMapping("/verify-otp/{otp}/{email}")
-    public ResponseEntity<String> verifyOtp(@PathVariable Integer otp, @PathVariable String email) {
+    @PostMapping("/verify-otp/{otp}")
+    public ResponseEntity<String> verifyOtp(@PathVariable Integer otp, HttpSession session) {
+        String email = session.getAttribute("userEmail").toString();
         User user = this.userService.getUserByEmail(email);
 
         ForgotPassword fp = this.forgotPasswordRepository.findByOtpAndUser(otp, user)
