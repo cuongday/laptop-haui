@@ -81,7 +81,7 @@
                                     </div>
                                 </form:form>
                             </div>
-                            <div class="card-footer text-center py-3">`
+                            <div class="card-footer text-center py-3">
                                 <div class="small">Đã có tài khoản? <a href="/login">Đăng nhập</a></div>
                             </div>
                         </div>
