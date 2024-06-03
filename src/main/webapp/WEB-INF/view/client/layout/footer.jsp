@@ -35,7 +35,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="d-flex flex-column text-start footer-item">
                     <h5 class="text-light mb-2">Chính sách</h4>
-                    <a class="btn-link para-text" href="#">Chính sách bảo hành</a>
+                    <a class="btn-link para-text" href="/warranty">Chính sách bảo hành</a>
                     <a class="btn-link para-text" href="#">Chính sách giao hàng</a>
                     <a class="btn-link para-text" href="#">Chính sách bảo mật</a>
                 </div>
