@@ -39,7 +39,26 @@
                                     <div class="alert alert-danger" role="alert">
                                         Bạn muốn xóa tài khoản này?
                                     </div>
-        
+                                    <div class="mb-3">
+                                        <label class="h4 d-block"> Lý do: </label>
+                                        <div class="d-block mb-1">
+                                            <input type="checkbox" class="form-check-input"/>
+                                            <label>Tài khoản vi phạm chính sách</label>
+                                        </div>
+                                        <div class="d-block mb-1">
+                                            <input type="checkbox" class="form-check-input"/>
+                                            <label>Tài khoản giả mạo</label>
+                                        </div>
+                                        <div class="d-block mb-1">
+                                            <input type="checkbox" class="form-check-input"/>
+                                            <label>Tài khoản offline từ lâu</label>
+                                        </div>
+                                        <div class="d-block mb-1">
+                                            <input type="checkbox" class="form-check-input"/>
+                                            <label>Khác: </label>
+                                            <input type="text" class="ms-1" style="height: 20px; border: none;border-bottom: 1px solid">
+                                        </div>
+                                    </div>
                                     <form:form action="/admin/user/delete" modelAttribute="newUser" method ="post">
                                         <div class="mb-3" style="display: none;">
                                             <label class="form-label">ID:</label>

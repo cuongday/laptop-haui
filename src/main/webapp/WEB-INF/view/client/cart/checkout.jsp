@@ -3,18 +3,14 @@
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
             <%
-                // Lấy giá trị của fullName và address từ session
                 String fullName = (String) session.getAttribute("fullName");
                 String address = (String) session.getAttribute("address");
-
-                // Xử lý null cho cả hai giá trị
                 if (fullName == null) {
                     fullName = "";
                 } else {
                     fullName = fullName.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
                                        .replace("\"", "&quot;").replace("'", "&#x27;").replace("/", "&#x2F;");
                 }
-
                 if (address == null) {
                     address = "";
                 } else {
@@ -24,7 +20,6 @@
             %>
                 <!DOCTYPE html>
                 <html lang="en">
-
                 <head>
                     <meta charset="utf-8">
                     <link rel="shortcut icon" type="image/png" href="/images/auth-bg/icon.png"/>
