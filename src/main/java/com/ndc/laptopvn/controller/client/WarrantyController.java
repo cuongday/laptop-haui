@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class WarrantyController {
     @GetMapping("/warranty")
     public String getWarrantyPage(){
-        return "client/Warranty/warranty";
+        return "client/policy/warranty";
     }
 
 }
