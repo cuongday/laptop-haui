@@ -2,7 +2,26 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+            <%
+                // Lấy giá trị của fullName và address từ session
+                String fullName = (String) session.getAttribute("fullName");
+                String address = (String) session.getAttribute("address");
 
+                // Xử lý null cho cả hai giá trị
+                if (fullName == null) {
+                    fullName = "";
+                } else {
+                    fullName = fullName.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                                       .replace("\"", "&quot;").replace("'", "&#x27;").replace("/", "&#x2F;");
+                }
+
+                if (address == null) {
+                    address = "";
+                } else {
+                    address = address.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                                       .replace("\"", "&quot;").replace("'", "&#x27;").replace("/", "&#x2F;");
+                }
+            %>
                 <!DOCTYPE html>
                 <html lang="en">
 
@@ -132,11 +151,11 @@
                                                 <div class="row">
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Tên người nhận</label>
-                                                        <input class="form-control" name="receiverName" value= ${sessionScope.fullName} required></input>
+                                                        <input class="form-control" name="receiverName" value="<%= fullName %>" required></input>
                                                     </div>
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Địa chỉ người nhận</label>
-                                                        <input class="form-control" name="receiverAddress" value= ${sessionScope.address} required />
+                                                        <input class="form-control" name="receiverAddress" value="<%= address %>" required />
                                                     </div>
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Số điện thoại</label>
