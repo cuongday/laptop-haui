@@ -52,7 +52,7 @@ public class ProductController {
 
         }
 
-        Pageable pageable = PageRequest.of(page-1, 5);
+        Pageable pageable = PageRequest.of(page-1, 10);
         Page<Product> products = this.productService.fetchProducts(pageable);
         List<Product> productList = products.getContent();
         model.addAttribute("products", productList);
