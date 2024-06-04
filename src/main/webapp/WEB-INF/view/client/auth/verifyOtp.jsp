@@ -42,7 +42,7 @@
     <div class="row h-100 justify-content-center align-items-center py-7">
         <form method="post"
               class="col-lg-6 bg-primary rounded p-5">
-            <h2 class="text-center text-white mb-4">Verify OTP</h2>
+            <h2 class="text-center text-white mb-4">Xác thực OTP</h2>
             <%--            thêm thời gian đếm ngược 60s--%>
             <div class="mb-3">
                 <div class="d-flex justify-content-between">

@@ -5,6 +5,7 @@ import com.ndc.laptopvn.service.OrderService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -37,12 +38,14 @@ public class OrderController {
         } catch (NumberFormatException e) {
 
         }
-        Pageable pageable = PageRequest.of(page - 1, 5);
+        Pageable pageable = PageRequest.of(page - 1, 5, Sort.by("createAt").descending());
         Page<Order> orders = this.orderService.fetchOrders(pageable);
         List<Order> orderList = orders.getContent();
+        double totalAmount = this.orderService.getTotalAmountByMonth();
         model.addAttribute("orders", orderList);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", orders.getTotalPages());
+        model.addAttribute("totalAmount", totalAmount);
         return "admin/order/show";
     }
 

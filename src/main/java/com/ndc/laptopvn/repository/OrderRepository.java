@@ -37,4 +37,11 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
             "WHERE o.createAt BETWEEN :startDate AND :endDate " +
             "GROUP BY (p.factory)")
     List<Map<String, Object>> getSalesStatisticsByFactory(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
+
+    @Query("SELECT SUM(d.quantity * d.price) as amount " +
+            "FROM Order o " +
+            "INNER JOIN OrderDetail d ON o.id = d.order.id " +
+            "WHERE o.createAt BETWEEN :startDate AND :endDate "
+    )
+    double getTotalAmountByMonth(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
 }

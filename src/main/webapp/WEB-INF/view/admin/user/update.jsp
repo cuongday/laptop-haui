@@ -74,6 +74,8 @@
                                             <form:select class="form-select" aria-label="Default select example" path="role.name">
                                                 <option value="ADMIN">Quản trị viên</option>
                                                 <option value="USER">Người dùng</option>
+                                                <option value="MANAGER">Quản lý</option>
+                                                <option value="SELLER">Nhân viên bán hàng</option>
                                             </form:select>
                                         </div>
                                         <div class="mb-3">

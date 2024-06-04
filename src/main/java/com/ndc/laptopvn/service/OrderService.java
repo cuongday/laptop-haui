@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -70,5 +71,13 @@ public class OrderService {
         Timestamp startTimestamp = Timestamp.valueOf(startDate.atStartOfDay());
         Timestamp endTimestamp = Timestamp.valueOf(endDate.atStartOfDay());
         return orderRepository.getSalesStatisticsByFactory(startTimestamp, endTimestamp);
+    }
+
+    public double getTotalAmountByMonth(){
+            LocalDate now = LocalDate.now();
+            LocalDate startDate = now.withDayOfMonth(1);
+            LocalDate endDate = startDate.plusMonths(1).minusDays(1);
+            double result = orderRepository.getTotalAmountByMonth(Timestamp.valueOf(startDate.atStartOfDay()), Timestamp.valueOf(endDate.atTime(23, 59, 59)));
+            return result;
     }
 }

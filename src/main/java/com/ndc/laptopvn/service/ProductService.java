@@ -268,4 +268,8 @@ public class ProductService {
         return productRepository.countProductsByFactory();
     }
 
+
+
+
+
 }

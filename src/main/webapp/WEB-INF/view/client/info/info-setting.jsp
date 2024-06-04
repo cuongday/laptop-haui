@@ -73,7 +73,7 @@
                                          style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden;">
                                 </div>
 
-                                <div class="fw-bold mb-3" style="margin-right: 30px; width: 47%">
+                                <div class="fw-bold mb-3" style="margin-right: 33px; width: 44%">
                                     <label for="avatarFile" class="form-label">Ảnh đại diện:</label>
                                     <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg"
                                            name="uploadAvatarFile">
