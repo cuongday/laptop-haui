@@ -106,13 +106,12 @@
                                 <form:input type="text" path="address" class="col-info-2 mb-3" style="width: 95%"/>
                             </div>
                             <div class="d-flex justify-content-center mt-4">
-                                <button type="submit" class="btn btn-color-blue mb-4">Xác nhận sửa</button>
+                                <button type="submit" class="btn btn-color-blue mb-5 mx-2">Xác nhận sửa</button>
+                                <a href="/show-info"><button type="submit" class="btn btn-color-blue mb-4 mx-2">Hủy</button></a>
                             </div>
                         </div>
-
                     </div>
                 </form:form>
-
             </div>
         </div>
     </div>
