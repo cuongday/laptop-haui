@@ -634,3 +634,21 @@
     border: 1px solid #ced4da;
     border-left: none;
 }
+.policy{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 24px;
+}
+.policy-heading{
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    border-bottom: 2px solid gray;
+}
+.policy-content{
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+}

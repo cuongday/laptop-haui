@@ -4,7 +4,7 @@
 
 <div class="container-fluid fixed-top" style = "padding: 0px">
     <div class="top_slide">
-        <p class = "top_banner"> Chào mừng kỷ niệm 49 năm Ngày Giải phóng Miền Nam, thống nhất đất nước </p>
+        <p class = "top_banner"> Chào đón tân sinh viên 2024, LaptopHaui tung ngàn Deal shock! </p>
     </div>
     <div class="container px-0">
         <nav class="navbar navbar-light bg-white navbar-expand-xl">

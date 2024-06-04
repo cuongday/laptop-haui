@@ -10,4 +10,6 @@ public class WarrantyController {
         return "client/policy/warranty";
     }
 
+    @GetMapping("/img-warranty")
+    public String getWarrantyImg() { return "webapp/resources/client/img"; }
 }

@@ -50,6 +50,25 @@
 
 <jsp:include page="../layout/header.jsp"/>
 
+<div class="container-fluid py-6 mt-5">
+    <div class="container py-6">
+        <div class="row g-4 mb-3 mt-3 policy">
+            <div class="pb-sm-2 policy-heading">
+                <h2 class="text-primary">Chính sách bảo hành - Cam kết hỗ trợ khách hàng tối đa</h2>
+            </div>
+            <div class="policy-content">
+                <p>LaptopHaui rất tiếc và xin lỗi vì sự bất tiện của Quý khách khi sản phẩm không may phát sinh lỗi phải bảo hành. Hi vọng chi tiết chính sách đổi trả – bảo hành tại LaptopHaui cũng như thông tin liên hệ các bộ phận hỗ trợ dưới đây có thể giúp Quý khách yên tâm hơn trong quá trình sử dụng sản phẩm.</p>
+                <b>Hotline khiếu nại về sản phẩm dịch vụ: </b>
+                <p>18003298</p>
+                <b>Hotline tiếp nhận bảo hành: </b>
+                <p>0396006368</p>
+                <b>I. QUY ĐỊNH VỀ ĐỔI TRẢ SẢN PHẨM</b>
+                <img src="webapp/resources/client/img/bao-hanh.png">
+            </div>
+        </div>
+    </div>
+</div>
+
 <jsp:include page="../layout/footer.jsp"/>
 
 
