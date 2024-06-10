@@ -63,7 +63,7 @@
                 <b>Hotline tiếp nhận bảo hành: </b>
                 <p>0396006368</p>
                 <b>I. QUY ĐỊNH VỀ ĐỔI TRẢ SẢN PHẨM</b>
-                <img src="webapp/resources/client/img/bao-hanh.png">
+                <img class="mt-2" src="/client/img/bao-hanh.png">
             </div>
         </div>
     </div>

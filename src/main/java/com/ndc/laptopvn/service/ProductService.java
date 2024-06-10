@@ -268,4 +268,11 @@ public class ProductService {
         return productRepository.countProductsByFactory();
     }
 
+    public Page<Product> getAllProducts(String name, String factory, Pageable pageable) {
+        return productRepository.filterProductByNameAndFactory(name, factory, pageable);
+    }
+
+
+
+
 }

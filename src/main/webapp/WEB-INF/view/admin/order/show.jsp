@@ -31,10 +31,17 @@
                 <div class="mt-4">
                     <div class="row">
                         <div class="col-12 mx-auto">
-                            <div class="d-flex justify-content-start">
+                            <div class="d-flex justify-content-between">
                                 <h2>
                                     Danh sách đơn hàng
                                 </h2>
+                                <select id="status" style="min-width: 200px; max-height: 40px">
+                                    <option value="Tất cả" ${status == '' ? 'selected' : ''}>Tất cả</option>
+                                    <option value="PENDING" ${status == 'PENDING' ? 'selected' : ''}>PENDING</option>
+                                    <option value="SHIPPING" ${status == 'SHIPPING' ? 'selected' : ''}>SHIPPING</option>
+                                    <option value="COMPLETE" ${status == 'COMPLETE' ? 'selected' : ''}>COMPLETE</option>
+                                    <option value="CANCEL" ${status == 'CANCEL' ? 'selected' : ''}>CANCEL</option>
+                                </select>
 
                             </div>
 
@@ -84,7 +91,8 @@
 
                                     <c:forEach begin="0" end="${totalPages -1}" varStatus="loop">
                                         <li class="page-item">
-                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} " href="/admin/order?page=${loop.index + 1}">
+                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} "
+                                            href="#" data-page="${loop.index + 1}">
                                                     ${loop.index + 1}
                                             </a>
                                         </li>
@@ -100,17 +108,33 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </main>
         <jsp:include page="../layout/footer.jsp"/>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script>
     $(document).ready(function () {
+        $('.page-link').click(function(event) {
+            event.preventDefault(); // Ngăn chặn chuyển hướng mặc định
+
+            let page = $(this).attr('href'); // Lấy URL trên thẻ <a>
+            let status = $('#status').val(); // Lấy giá trị từ select box
+            if(status == "Tất cả") status='';
+
+            // Thêm giá trị của ô input và select box vào URL
+            page += `&status=` + status;
+
+            // Điều hướng trang đến URL mới với các tham số đã thêm
+            location.href = page;
+        });
+
         $('.exportBill').click(function () {
             // lấy ra id của user để xuất hóa đơn
             let id = $(this).data('id');
@@ -123,6 +147,15 @@
                 }
             });
         });
+
+        $('#status').change(() => {
+            let status = $('#status').val();
+            if (status === 'Tất cả') {
+                status = '';
+            }
+            location.href = `/admin/order?status=` + encodeURIComponent(status);
+        });
+
     });
 </script>
 </body>

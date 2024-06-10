@@ -1,8 +1,7 @@
 package com.ndc.laptopvn.service;
 
+import com.ndc.laptopvn.domain.*;
 import com.ndc.laptopvn.domain.DTO.RegisterDTO;
-import com.ndc.laptopvn.domain.User;
-import com.ndc.laptopvn.domain.Role;
 import com.ndc.laptopvn.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,9 +20,13 @@ public class UserService {
     private final ForgotPasswordRepository forgotPasswordRepository;
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
+    private final OrderDetailRepository orderDetailRepository;
+    private final CartRepository cartRepository;
+    private final CartDetailRepository cartDetailRepository;
 
-    public Page<User> getAllUser(Pageable pageable) {
-        return this.userRepository.findAll(pageable);
+
+    public Page<User> getAllUser(String fullName, String roleDes,Pageable pageable) {
+        return this.userRepository.filterUserByNameAndEmailAndRoleDes(fullName, roleDes, pageable);
     }
 
     public List<User> getListUser() {
@@ -39,6 +43,24 @@ public class UserService {
 
     public void deleteAUser(long id){
         this.forgotPasswordRepository.deleteByUserId(id);
+
+        Cart cart = this.cartRepository.findByUser(this.userRepository.findFirstById(id));
+        List<CartDetail> cartDetails = cart.getCartDetails();
+        if(cartDetails != null){
+            for (CartDetail cartDetail : cartDetails){
+                this.cartDetailRepository.deleteById(cartDetail.getId());
+            }
+        }
+        this.cartRepository.deleteById(cart.getId());
+
+
+        List<Order> orders = this.orderRepository.findByUser(this.userRepository.findFirstById((id)));
+        for(Order order : orders){
+                this.orderDetailRepository.deleteAll(order.getOrderDetails());
+
+                this.orderRepository.deleteById(order.getId());
+            }
+
         this.userRepository.deleteById(id);
     }
 

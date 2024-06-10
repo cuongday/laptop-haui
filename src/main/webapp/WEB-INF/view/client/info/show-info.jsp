@@ -68,7 +68,7 @@
                     <div >
                         <div class="mt-3">
                             <div class="offset-12 d-inline-block">
-                                <div class="fs-4 d-flex"><p class="fw-bold mb-3">Họ và tên:&nbsp; </p> ${user.fullName}</div>
+                                <div class="fs-4 d-flex"><p class="fw-bold mb-3 text-primary">Họ và tên:&nbsp; </p> ${user.fullName}</div>
                                 <div class="fs-4 d-flex"><p class="fw-bold mb-3">Ngày sinh:&nbsp; </p> <fmt:formatDate value="${user.dob}" pattern="dd/MM/yyyy"/></div>
                             </div>
                             <div class="offset-12 d-inline-block ">
@@ -111,6 +111,12 @@
 
 <!-- Template Javascript -->
 <script src="/client/js/main.js"></script>
+
+<script>
+    $(document).ready(() => {
+
+    });
+</script>
 </body>
 
 </html>

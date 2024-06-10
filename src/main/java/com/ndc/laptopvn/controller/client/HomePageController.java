@@ -125,6 +125,7 @@ public class HomePageController {
     public String handleInfoSetting(Model model,@ModelAttribute("user") User user,
                                     @RequestParam("uploadAvatarFile") MultipartFile file) {
         User currentUser = this.userService.getUserById(user.getId());
+
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         model.addAttribute("user", currentUser);
         if (currentUser != null) {
