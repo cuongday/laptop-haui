@@ -25,16 +25,24 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a style="text-decoration: none; color:var(--bs-breadcrumb-item-active-color)" href="/admin">Thống kê</a></li>
                     <li class="breadcrumb-item active">Tài khoản</li>
-
                 </ol>
 
                 <div class="mt-5">
                     <div class="row">
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-between">
-                                <h2>
-                                    Danh sách tài khoản
-                                </h2>
+                                <h2>Danh sách tài khoản</h2>
+                                <div class="d-flex" style="max-height: 40px">
+                                    <input class="form-control me-2" type="search" id="keyword" name="keyword" placeholder="Tìm kiếm" aria-label="Search" style="min-width: 400px">
+                                    <button class="btn btn-outline-success" type="submit" id="searchBtn" style="min-width: 100px">Tìm kiếm</button>
+                                </div>
+                                <select id="roleDes" style="min-width: 200px; max-height: 40px">
+                                    <option value="Tất cả" ${roleDes == '' ? 'selected' : ''}>Tất cả</option>
+                                    <option value="Admin" ${roleDes == 'Admin' ? 'selected' : ''}>Admin</option>
+                                    <option value="Quản lý" ${roleDes == 'Quản lý' ? 'selected' : ''}>Quản lý</option>
+                                    <option value="Nhân viên bán hàng" ${roleDes == 'Nhân viên bán hàng' ? 'selected' : ''}>Nhân viên</option>
+                                    <option value="User thong thuong" ${roleDes == 'User thong thuong' ? 'selected' : ''}>User</option>
+                                </select>
                                 <a href="/admin/user/create" class="btn btn-primary">Tạo tài khoản</a>
                             </div>
 
@@ -52,7 +60,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <c:forEach var="user" items="${users}">
                                     <tr>
                                         <th>${user.id}</th>
@@ -67,47 +74,85 @@
                                         </td>
                                     </tr>
                                 </c:forEach>
-
-
-
                                 </tbody>
                             </table>
 
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item">
-                                        <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
-                                           href="/admin/user?page=${currentPage - 1}" aria-label="Previous">
+                                        <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}" href="/admin/user?page=${currentPage - 1}" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
 
-                                    <c:forEach begin="0" end="${totalPages -1}" varStatus="loop">
+                                    <c:forEach begin="0" end="${totalPages > 0 ? totalPages - 1 : 0}" varStatus="loop">
                                         <li class="page-item">
-                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} " href="/admin/user?page=${loop.index + 1}">
+                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'}"
+                                               href="#" data-page="${loop.index + 1}">
                                                     ${loop.index + 1}
                                             </a>
                                         </li>
                                     </c:forEach>
+
                                     <li class="page-item">
-                                        <a class="${currentPage eq totalPages ? 'disabled page-link' : 'page-link'}"
-                                           href="/admin/user?page=${currentPage + 1}" aria-label="Next">
+                                        <a class="${currentPage eq totalPages ? 'disabled page-link' : 'page-link'}" href="/admin/user?page=${currentPage + 1}" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </main>
         <jsp:include page="../layout/footer.jsp" />
     </div>
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/scripts.js"></script>
+
+<script>
+    $(document).ready(() => {
+
+        $('.page-link').click(function(event) {
+            event.preventDefault(); // Ngăn chặn chuyển hướng mặc định
+
+            let page = $(this).attr('href'); // Lấy URL trên thẻ <a>
+            let keyword = $('#keyword').val(); // Lấy giá trị từ ô input
+            let roleDes = $('#roleDes').val(); // Lấy giá trị từ select box
+            if(roleDes == "Tất cả") roleDes='';
+
+            // Thêm giá trị của ô input và select box vào URL
+            page += `&fullName=` + keyword + `&roleDes=` + roleDes;
+
+            // Điều hướng trang đến URL mới với các tham số đã thêm
+            location.href = page;
+        });
+
+        $('#searchBtn').click(() => {
+            let keyword = $('#keyword').val();
+            let roleDes = $('#roleDes').val();
+            if (roleDes === 'Tất cả') {
+                roleDes = '';
+            }
+            location.href = `/admin/user?fullName=` + encodeURIComponent(keyword) + `&roleDes=` + encodeURIComponent(roleDes);
+        });
+
+        $('#roleDes').change(() => {
+            let keyword = $('#keyword').val();
+            let roleDes = $('#roleDes').val();
+            if (roleDes === 'Tất cả') {
+                roleDes = '';
+            }
+            location.href = `/admin/user?fullName=` + encodeURIComponent(keyword) + `&roleDes=` + encodeURIComponent(roleDes);
+        });
+    });
+</script>
+
 </body>
 </html>

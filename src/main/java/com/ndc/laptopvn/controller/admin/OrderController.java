@@ -27,7 +27,8 @@ public class OrderController {
     }
     @GetMapping("/admin/order")
     public String getDashboard(Model model,
-                               @RequestParam("page") Optional<String> pageOptional) {
+                               @RequestParam("page") Optional<String> pageOptional,
+                               @RequestParam(name = "status", required = false) String status) {
         int page = 1;
         try {
             if (pageOptional.isPresent()) {
@@ -39,13 +40,14 @@ public class OrderController {
 
         }
         Pageable pageable = PageRequest.of(page - 1, 5, Sort.by("createAt").descending());
-        Page<Order> orders = this.orderService.fetchOrders(pageable);
+        Page<Order> orders = this.orderService.getAllOrders(status, pageable);
         List<Order> orderList = orders.getContent();
         double totalAmount = this.orderService.getTotalAmountByMonth();
         model.addAttribute("orders", orderList);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", orders.getTotalPages());
         model.addAttribute("totalAmount", totalAmount);
+        model.addAttribute("status", status);
         return "admin/order/show";
     }
 

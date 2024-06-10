@@ -45,28 +45,24 @@ public class UserController {
         this.request = request;
     }
 
-    @RequestMapping("/admin/user")
+    @GetMapping("/admin/user")
     public String getUserPage(Model model,
-                              @RequestParam("page") Optional<String> OptionalPage) {
-        int page = 1;
-        try {
-            if (OptionalPage.isPresent()) {
-                page = Integer.parseInt(OptionalPage.get());
-            } else {
-
-            }
-        } catch (NumberFormatException e) {
-
-        }
+                              @RequestParam("page") Optional<Integer> optionalPage,
+                              @RequestParam(name = "fullName", required = false) String fullName,
+                              @RequestParam(name = "roleDes", required = false) String roleDes) {
+        int page = optionalPage.orElse(1);
         Pageable pageable = PageRequest.of(page - 1, 5);
-        Page<User> users = this.userService.getAllUser(pageable);
+        Page<User> users = this.userService.getAllUser(fullName, roleDes, pageable);
         List<User> userList = users.getContent();
         model.addAttribute("users", userList);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", users.getTotalPages());
-
+        model.addAttribute("fullName", fullName); // Add these to persist search values
+        model.addAttribute("roleDes", roleDes);   // Add these to persist search values
         return "admin/user/show";
     }
+
+
 
     @RequestMapping("/admin/user/{id}")
     public String getUserDetailPage(Model model, @PathVariable long id) {
@@ -144,10 +140,13 @@ public class UserController {
 
     @PostMapping("/admin/user/delete")
     public String postDeleteUser(Model model, @ModelAttribute("newUser") User user) {
+
         this.userService.deleteAUser(user.getId());
 
         return "redirect:/admin/user";
     }
+
+//    @GetMapping("admin/user/filter")
 
 
 }

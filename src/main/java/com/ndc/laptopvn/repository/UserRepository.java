@@ -31,4 +31,21 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query("update User u set u.password = ?2 where u.email = ?1")
     void updatePassword(String email ,String password);
+
+    @Query(
+            value = " SELECT u.* " +
+                    " FROM users u " +
+                    "INNER JOIN roles r ON u.role_id = r.id " +
+                    "WHERE (?1 IS NULL OR LOWER(u.full_name) LIKE CONCAT('%',LOWER(?1),'%')) " +
+                    "AND (?2 IS NULL OR LOWER(r.description) LIKE CONCAT('%',LOWER(?2),'%'))",
+            countQuery =" SELECT count(u.id) " +
+                    " FROM users u " +
+                    "INNER JOIN roles r ON u.role_id = r.id " +
+                    "WHERE (?1 IS NULL OR LOWER(u.full_name) LIKE CONCAT('%',LOWER(?1),'%')) " +
+                    "AND (?2 IS NULL OR LOWER(r.description) LIKE CONCAT('%',LOWER(?2),'%'))",
+            nativeQuery = true
+    )
+    Page<User> filterUserByNameAndEmailAndRoleDes(String fullName, String roleDescription, Pageable pageable);
+
+
 }

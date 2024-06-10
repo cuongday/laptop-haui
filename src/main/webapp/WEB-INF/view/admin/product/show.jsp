@@ -35,6 +35,19 @@
                                 <h2>
                                     Danh sách sản phẩm
                                 </h2>
+                                <div class="d-flex" style="max-height: 40px">
+                                    <input class="form-control me-2" type="search" id="keyword" name="keyword" placeholder="Tìm kiếm" aria-label="Search" style="min-width: 400px" value="${name}">
+                                    <button class="btn btn-outline-success" type="submit" id="searchBtn" style="min-width: 100px">Tìm kiếm</button>
+                                </div>
+                                <select id="factoryName" style="min-width: 200px; max-height: 40px">
+                                    <option value="Tất cả" ${factoryName == '' ? 'selected' : ''}>Tất cả</option>
+                                    <option value="Asus" ${factoryName == 'Asus' ? 'selected' : ''}>Asus</option>
+                                    <option value="Dell" ${factoryName == 'Dell' ? 'selected' : ''}>Dell</option>
+                                    <option value="Lenovo" ${factoryName == 'Lenovo' ? 'selected' : ''}>Lenovo</option>
+                                    <option value="LG" ${factoryName == 'LG' ? 'selected' : ''}>LG</option>
+                                    <option value="Apple" ${factoryName == 'Apple' ? 'selected' : ''}>Apple</option>
+                                    <option value="Acer" ${factoryName == 'Acer' ? 'selected' : ''}>Acer</option>
+                                </select>
                                 <a href="/admin/product/create" class="btn btn-primary">Thêm sản phẩm</a>
                             </div>
 
@@ -79,7 +92,8 @@
 
                                     <c:forEach begin="0" end="${totalPages -1}" varStatus="loop">
                                         <li class="page-item">
-                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} " href="/admin/product?page=${loop.index + 1}">
+                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'} "
+                                            href="#" data-page="${loop.index + 1}">
                                                     ${loop.index + 1}
                                             </a>
                                         </li>
@@ -99,8 +113,48 @@
         <jsp:include page="../layout/footer.jsp"/>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
+<script>
+    $(document).ready(() => {
+
+        $('.page-link').click(function(event) {
+            event.preventDefault(); // Ngăn chặn chuyển hướng mặc định
+
+            let page = $(this).attr('href'); // Lấy URL trên thẻ <a>
+            let keyword = $('#keyword').val(); // Lấy giá trị từ ô input
+            let factoryName = $('#factoryName').val(); // Lấy giá trị từ select box
+            if(factoryName == "Tất cả") factoryName='';
+
+            // Thêm giá trị của ô input và select box vào URL
+            page += `&name=` + keyword + `&factory=` + factoryName;
+
+            // Điều hướng trang đến URL mới với các tham số đã thêm
+            location.href = page;
+        });
+
+        $('#searchBtn').click(() => {
+            let keyword = $('#keyword').val();
+            let ft = $('#factoryName').val();
+            if (ft === 'Tất cả') {
+                ft = '';
+            }
+            location.href = `/admin/product?name=` + encodeURIComponent(keyword) + `&factory=` + encodeURIComponent(ft);
+        });
+
+        $('#factoryName').change(() => {
+            let keyword = $('#keyword').val();
+            let ft = $('#factoryName').val();
+            if (ft === 'Tất cả') {
+                ft = '';
+            }
+            location.href = `/admin/product?name=` + encodeURIComponent(keyword) + `&factory=` + encodeURIComponent(ft);
+        });
+    });
+</script>
 </body>
 </html>

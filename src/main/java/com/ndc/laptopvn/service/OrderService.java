@@ -80,4 +80,8 @@ public class OrderService {
             double result = orderRepository.getTotalAmountByMonth(Timestamp.valueOf(startDate.atStartOfDay()), Timestamp.valueOf(endDate.atTime(23, 59, 59)));
             return result;
     }
+
+    public Page<Order> getAllOrders(String status, Pageable pageable) {
+        return this.orderRepository.filterOrderByStatus(status, pageable);
+    }
 }

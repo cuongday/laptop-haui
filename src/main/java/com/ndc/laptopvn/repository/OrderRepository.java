@@ -1,6 +1,7 @@
 package com.ndc.laptopvn.repository;
 
 import com.ndc.laptopvn.domain.Order;
+import com.ndc.laptopvn.domain.Product;
 import com.ndc.laptopvn.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,4 +45,10 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
             "WHERE o.createAt BETWEEN :startDate AND :endDate "
     )
     double getTotalAmountByMonth(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
+
+    @Query(" SELECT o " +
+            "FROM Order o " +
+            "WHERE (?1 IS NULL OR LOWER(o.status) LIKE CONCAT('%',LOWER(?1),'%')) "
+    )
+    Page<Order> filterOrderByStatus(String status, Pageable pageable);
 }
