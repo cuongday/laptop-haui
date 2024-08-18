@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long>{
@@ -44,7 +45,7 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
             "INNER JOIN OrderDetail d ON o.id = d.order.id " +
             "WHERE o.createAt BETWEEN :startDate AND :endDate "
     )
-    double getTotalAmountByMonth(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
+    Optional<Double> getTotalAmountByMonth(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
 
     @Query(" SELECT o " +
             "FROM Order o " +

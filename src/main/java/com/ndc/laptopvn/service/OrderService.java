@@ -74,11 +74,11 @@ public class OrderService {
     }
 
     public double getTotalAmountByMonth(){
-            LocalDate now = LocalDate.now();
-            LocalDate startDate = now.withDayOfMonth(1);
-            LocalDate endDate = startDate.plusMonths(1).minusDays(1);
-            double result = orderRepository.getTotalAmountByMonth(Timestamp.valueOf(startDate.atStartOfDay()), Timestamp.valueOf(endDate.atTime(23, 59, 59)));
-            return result;
+        LocalDate now = LocalDate.now();
+        LocalDate startDate = now.withDayOfMonth(1);
+        LocalDate endDate = startDate.plusMonths(1).minusDays(1);
+        double result = orderRepository.getTotalAmountByMonth(Timestamp.valueOf(startDate.atStartOfDay()), Timestamp.valueOf(endDate.atTime(23, 59, 59))).orElse(0.0);
+        return result;
     }
 
     public Page<Order> getAllOrders(String status, Pageable pageable) {

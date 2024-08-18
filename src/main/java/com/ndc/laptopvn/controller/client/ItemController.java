@@ -2,9 +2,11 @@ package com.ndc.laptopvn.controller.client;
 
 import com.ndc.laptopvn.domain.*;
 import com.ndc.laptopvn.domain.DTO.ProductCriteriaDTO;
+import com.ndc.laptopvn.service.CommentService;
 import com.ndc.laptopvn.service.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,23 +18,31 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @Controller
+@AllArgsConstructor
 public class ItemController {
 
     private final ProductService productService;
+    private final CommentService commentService;
 
-    public ItemController(ProductService productService) {
-        this.productService = productService;
-    }
 
     @GetMapping("/product/{id}")
     public String getProductPage(Model model, @PathVariable long id) {
         Product product = this.productService.fetchProductById(id).get();
         List<Map<String, Object>> productCountByFactory = this.productService.countProductsByFactory();
+        List<Comment> comments = product.getComments();
+        double totalRate = 0;
+        for(Comment comment : comments){
+            totalRate += comment.getRate();
+        }
+        double avgRate = totalRate != 0 ? totalRate / comments.size() : 0;
+
         model.addAttribute("product", product);
         model.addAttribute("id", id);
-        model.addAttribute("ProductImages", product.getImages());
+        model.addAttribute("ProductImages", product.getProductImages());
         model.addAttribute("productCountByFactory", productCountByFactory);
-        System.out.println(productCountByFactory);
+        model.addAttribute("comments", product.getComments());
+        model.addAttribute("avgRate", avgRate);
+
         return "client/product/detail";
     }
 

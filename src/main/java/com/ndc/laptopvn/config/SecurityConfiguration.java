@@ -68,7 +68,9 @@ public class SecurityConfiguration {
                                 DispatcherType.INCLUDE) .permitAll()
                         .requestMatchers(HttpMethod.GET,"/","/login", "/client/**", "/css/**", "/js/**","/product/**",
                                 "/images/**","/register","/api/**", "/products/**", "/forgot-password/**", "/reports/**").permitAll()
-                        .requestMatchers(HttpMethod.POST,"/register", "/forgot-password/**", "/api/auth/login", "/api/add-product-to-cart").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/register", "/forgot-password/**",
+                                "/api/auth/login", "/api/add-product-to-cart",
+                                "/api/products/**").permitAll()
                         .requestMatchers("/admin").hasAnyRole("ADMIN","MANAGER","SELLER")
                         .requestMatchers("/admin/product/**").hasRole("MANAGER")
                         .requestMatchers("/admin/order/**").hasAnyRole("SELLER", "MANAGER")
