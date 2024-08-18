@@ -95,7 +95,7 @@ public class ProductController {
             productImage.setProduct(product);
             productImageList.add(productImage);
         }
-        product.setImages(productImageList);
+        product.setProductImages(productImageList);
         this.productService.handleSaveProduct(product);
         this.productImageService.handleSaveProductImage(productImageList);
 
@@ -107,7 +107,7 @@ public class ProductController {
         Product product = this.productService.fetchProductById(id).get();
         model.addAttribute("product", product);
         model.addAttribute("id", id);
-        model.addAttribute("ProductImages", product.getImages());
+        model.addAttribute("ProductImages", product.getProductImages());
         return "admin/product/detail";
     }
 
@@ -116,7 +116,7 @@ public class ProductController {
         Optional<Product> currentProduct = this.productService.fetchProductById(id);
         model.addAttribute("newProduct", currentProduct.get());
         model.addAttribute("id", id);
-        model.addAttribute("ProductImages", currentProduct.get().getImages());
+        model.addAttribute("ProductImages", currentProduct.get().getProductImages());
         return "admin/product/update";
     }
 
@@ -142,7 +142,7 @@ public class ProductController {
             if (files.length > 0) {
 
                 this.productImageService.deleteProductImagesByProductId(currentProduct.getId());
-                currentProduct.getImages().clear();
+                currentProduct.getProductImages().clear();
 
                 List<String> productImages = this.uploadService.UploadFiles(files, "product");
                 List<ProductImage> productImageList = new ArrayList<>();
@@ -152,7 +152,7 @@ public class ProductController {
                     productImage.setProduct(product);
                     productImageList.add(productImage);
                 }
-                product.setImages(productImageList);
+                product.setProductImages(productImageList);
                 this.productImageService.handleSaveProductImage(productImageList);
             }
 

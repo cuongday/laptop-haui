@@ -105,11 +105,19 @@
 
                         </h5>
                         <div class="d-flex mb-4">
-                            <i class="fa fa-star star-primary"></i>
-                            <i class="fa fa-star star-primary"></i>
-                            <i class="fa fa-star star-primary"></i>
-                            <i class="fa fa-star star-primary"></i>
-                            <i class="fa fa-star"></i>
+                            <c:forEach var="i" begin="1" end="5">
+                                <c:choose>
+                                    <c:when test="${i <= avgRate}">
+                                        <i class="fa fa-star star-primary"></i>
+                                    </c:when>
+                                    <c:when test="${i - 1 < avgRate && i > avgRate}">
+                                        <i class="fa fa-star-half-alt star-primary"></i>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <i class="fa fa-star"></i>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
                         </div>
                         <p class="mb-4">
                             ${product.shortDesc}
@@ -206,6 +214,85 @@
                         </div>
                     </div>
 
+                    <!-- Comments Section Start -->
+                    <div>
+                        <h4 class="mb-5 fw-bold">Bình luận</h4>
+                        <c:forEach var="comment" items="${comments}">
+                            <div id="comments-section" class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="border-bottom rounded p-3 mb-3">
+                                        <h5>${comment.userName}</h5>
+                                        <p>${comment.message}</p>
+                                        <div class="d-flex mb-2">
+                                            <c:forEach var="i" begin="1" end="5">
+                                                <c:choose>
+                                                    <c:when test="${i <= comment.rate}">
+                                                        <i class="fa fa-star star-primary"></i>
+                                                    </c:when>
+                                                    <c:when test="${i - 1 < comment.rate && i > comment.rate}">
+                                                        <i class="fa fa-star-half-alt star-primary"></i>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <i class="fa fa-star"></i>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                        </div>
+                                        <small class="text-muted">${comment.email}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    </div>
+                    <!-- Comments Section End -->
+
+                    <form method="post">
+                        <h4 class="mb-5 fw-bold">Đánh giá và nhận xét</h4>
+                        <div class="row g-4">
+                            <c:if test="${empty pageContext.request.userPrincipal}">
+                                <div class="col-lg-6">
+                                    <div class="border-bottom rounded">
+                                        <input type="text" id="name" class="form-control border-0 me-4" placeholder="Họ tên *">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="border-bottom rounded">
+                                        <input id="email" type="email" class="form-control border-0" placeholder="Email *">
+                                    </div>
+                                </div>
+                            </c:if>
+                            <div class="col-lg-12">
+                                <div class="border-bottom rounded my-4">
+                                    <textarea name="" id="content" class="form-control border-0" cols="30" rows="6" placeholder="Nội dung *" spellcheck="false"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="d-flex justify-content-between py-3 mb-5">
+                                    <div class="d-flex align-items-center">
+                                        <p class="mb-0 me-3">Please rate:</p>
+                                        <div class="d-flex align-items-center" style="font-size: 12px;">
+                                            <i class="fa fa-star text-muted" data-value="1"></i>
+                                            <i class="fa fa-star" data-value="2"></i>
+                                            <i class="fa fa-star" data-value="3"></i>
+                                            <i class="fa fa-star" data-value="4"></i>
+                                            <i class="fa fa-star" data-value="5"></i>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="rating" name="rating" value="0">
+
+                                    <a href="#" class="btn border border-secondary text-primary rounded-pill px-4 py-3 submit-comment"> Đánh giá</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="hidden" name="${_csrf.parameterName}" id="csrf"
+                                   value="${_csrf.token}"/>
+                        </div>
+
+                    </form>
+
                 </div>
             </div>
             <div class="col-lg-4 col-xl-3">
@@ -296,6 +383,87 @@
 
 <!-- Template Javascript -->
 <script src="/client/js/main.js"></script>
+<script>
+    $(document).ready(function() {
+        const csrfToken = $('#csrf').val();
+        $('.fa-star').click(function() {
+            var value = $(this).data('value');
+            $('#rating').val(value);
+            $('.fa-star').removeClass('text-muted');
+            $('.fa-star').each(function() {
+                if ($(this).data('value') <= value) {
+                    $(this).addClass('text-muted');
+                }
+            });
+        });
+
+
+
+
+
+        $('.submit-comment').click(function() {
+            let userName = '${sessionScope.fullName}';
+            let emailUser = '${sessionScope.email}';
+            var rating = $('#rating').val();
+            var name = userName ? userName : $('#name').val();
+            var email = emailUser ? emailUser : $('#email').val();
+            var content = $('#content').val();
+            console.log("Số sao đánh giá: " + rating);
+            console.log("Tên: " + name);
+            console.log("Email: " + email);
+            console.log("Nội dung: " + content);
+            console.log(csrfToken);
+
+            $.ajax({
+                url: '/api/products/${id}/comments',
+                type: 'POST',
+                contentType: 'application/json',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken  // Gửi CSRF token trong header
+                },
+                data: JSON.stringify({
+                    rate: rating,
+                    userName: name,
+                    email: email,
+                    message: content
+                }),
+                success: function(response) {
+                    console.log(response);
+                    $.toast({
+                        text: 'Đánh giá thành công',
+                        showHideTransition: 'slide',
+                        bgColor: '#28a745',
+                        textColor: 'white',
+                        allowToastClose: true,
+                        hideAfter: 3000,
+                        stack: 5,
+                        textAlign: 'left',
+                        position: 'top-right',
+                        icon: 'success'
+                    });
+                    location.href = '/products/${id}';
+                },
+                error: function(response) {
+                    console.log(response.message);
+                    $.toast({
+                        text: 'Đánh giá thất bại',
+                        showHideTransition: 'slide',
+                        bgColor: '#dc3545',
+                        textColor: 'white',
+                        allowToastClose: true,
+                        hideAfter: 3000,
+                        stack: 5,
+                        textAlign: 'left',
+                        position: 'top-right',
+                        icon: 'error'
+                    });
+                }
+            });
+        });
+        // Lấy giá trị số sao đánh giá
+
+    });
+</script>
 </body>
 
 </html>
