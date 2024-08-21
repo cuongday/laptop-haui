@@ -243,6 +243,10 @@ public class ProductService {
                     orderDetail.setPrice(cartDetail.getPrice());
                     orderDetail.setQuantity(cartDetail.getQuantity());
                     this.orderDetailRepository.save(orderDetail);
+
+                    Product product = cartDetail.getProduct();
+                    product.setQuantity(product.getQuantity() - cartDetail.getQuantity());
+                    this.productRepository.save(product);
                 }
 
                 //step 2: delete cart_detail and cart

@@ -118,14 +118,12 @@ public class ItemController {
             HttpServletRequest request,
             @RequestParam("receiverName") String receiverName,
             @RequestParam("receiverAddress") String receiverAddress,
-            @RequestParam("receiverPhone") String receiverPhone) {
+            @RequestParam("receiverPhone") String receiverPhone){
         HttpSession session = request.getSession(false);
         User currentUser = new User();// null
         long id = (long) session.getAttribute("id");
         currentUser.setId(id);
-
         this.productService.handlePlaceOrder(currentUser, session, receiverName, receiverAddress, receiverPhone);
-
         return "redirect:/thanks";
     }
 
