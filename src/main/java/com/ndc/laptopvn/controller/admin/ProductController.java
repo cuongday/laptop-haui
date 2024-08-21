@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -134,12 +135,14 @@ public class ProductController {
         if (newProductBindingResult.hasErrors()) {
             return "admin/product/update";
         }
-        System.out.println(product.getId());
+
         Optional<Product> optionalProduct = this.productService.fetchProductById(product.getId());
         if(optionalProduct.isPresent()){
             Product currentProduct = optionalProduct.get();
             model.addAttribute("newProduct", currentProduct);
-            if (files.length > 0) {
+
+            String fileNameCheck = files[0].getOriginalFilename();
+            if (!fileNameCheck.equals("")) {
 
                 this.productImageService.deleteProductImagesByProductId(currentProduct.getId());
                 currentProduct.getProductImages().clear();

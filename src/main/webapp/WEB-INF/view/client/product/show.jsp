@@ -125,27 +125,27 @@
 
                                 <div class="form-check form-check-inline col-sm-6">
                                     <input class="form-check-input" type="checkbox" id="target-5"
-                                           value="DOANH-NHAN">
+                                           value="BUSINESS">
                                     <label class="form-check-label" for="target-5">Doanh nhân</label>
                                 </div>
                             </div>
                             <div class="row ms-sm-1">
                                 <div class="form-check form-check-inline col-sm-6">
                                     <input class="form-check-input" type="checkbox" id="target-3"
-                                           value="THIET-KE-DO-HOA">
+                                           value="GRAPHIC">
                                     <label class="form-check-label" for="target-3">Thiết kế đồ
                                         họa</label>
                                 </div>
                                 <div class="form-check form-check-inline col-sm-6">
                                     <input class="form-check-input" type="checkbox" id="target-4"
-                                           value="MONG-NHE">
+                                           value="THIN">
                                     <label class="form-check-label" for="target-4">Mỏng nhẹ</label>
                                 </div>
                             </div>
                             <div class="row ms-sm-1">
                                 <div class="form-check form-check-inline col-sm-6">
                                     <input class="form-check-input" type="checkbox" id="target-2"
-                                           value="SINHVIEN-VANPHONG">
+                                           value="OFFICE">
                                     <label class="form-check-label" for="target-2">Văn phòng</label>
                                 </div>
                             </div>

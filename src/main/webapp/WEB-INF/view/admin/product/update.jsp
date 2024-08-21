@@ -127,23 +127,28 @@
 
                                 <div class="col-md-6 col-12 mb-3">
                                     <label class="form-label">Nhãn hiệu:</label>
-                                    <form:select class="form-select" aria-label="Default select example" path="factory">
+                                    <input type="text" style="display: none" value="${newProduct.getFactory()}" id="factoryP">
+                                    <form:select class="form-select" id="productFactory" aria-label="Default select example" path="factory">
                                         <option value="APPLE">Apple (Macbook)</option>
                                         <option value="ASUS">Asus</option>
                                         <option value="LENOVO">Lenovo</option>
                                         <option value="ACER">Acer</option>
                                         <option value="DELL">Dell</option>
                                         <option value="HP">HP</option>
+                                        <option value="LG">LG</option>
                                     </form:select>
                                 </div>
 
                                 <div class="col-md-6 col-12 mb-3">
                                     <label class="form-label">Phân loại:</label>
-                                    <form:select class="form-select" aria-label="Default select example" path="target">
-                                        <option value="OFFICE">Văn phòng</option>
+                                    <input type="hidden" value="${newProduct.getTarget()}" id="targetP">
+                                    <form:select class="form-select" aria-label="Default select example" path="target" id="targetProduct">
                                         <option value="GAMING">Gaming</option>
+                                        <option value="BUSINESS">Doanh Nhân</option>
                                         <option value="GRAPHIC">Thiết kế đồ họa</option>
                                         <option value="THIN">Mỏng nhẹ</option>
+                                        <option value="OFFICE">Văn phòng</option>
+                                        <option value=""></option>
                                     </form:select>
                                 </div>
 
@@ -176,5 +181,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
+<script>
+    $(document).ready(() => {
+        const factory = $("#factoryP").val();
+        document.getElementById("productFactory").value = factory;
+        const target = $("#targetP").val();
+        console.log(target);
+        document.getElementById("targetProduct").value = target;
+    });
+</script>
 </body>
 </html>
