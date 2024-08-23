@@ -17,7 +17,7 @@ public class CommentService {
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
 
-    public Comment addComment(String username, Long productId, String email, String message, int rate) {
+    public Comment addComment(String username, Long productId, String email, String message, int rate, Long parentCommentId) {
         Product product = productRepository.findFirstById(productId);
         Comment comment = new Comment();
         comment.setMessage(message);
@@ -25,6 +25,12 @@ public class CommentService {
         comment.setEmail(email);
         comment.setProduct(product);
         comment.setRate(rate);
+
+        if (parentCommentId != null) {
+            Comment parentComment = commentRepository.findById(parentCommentId).orElse(null);
+            comment.setParentComment(parentComment);
+        }
+
         return commentRepository.save(comment);
     }
 

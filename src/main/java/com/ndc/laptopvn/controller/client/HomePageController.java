@@ -24,6 +24,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -41,7 +42,14 @@ public class HomePageController {
     public String getHomePage(Model model) {
         Pageable pageable = PageRequest.of(0, 10);
         Page<Product> products = this.productService.fetchProducts(pageable);
-        List<Product> productList = products.getContent();
+        List<Product> productList = new ArrayList<>(products.getContent()); // Convert to modifiable list
+
+        // Sắp xếp sản phẩm theo rate theo thứ tự giảm dần
+        productList.sort((p1, p2) -> {
+            double avgRate1 = this.productService.getAvgRate(p1);
+            double avgRate2 = this.productService.getAvgRate(p2);
+            return Double.compare(avgRate2, avgRate1);
+        });
         model.addAttribute("products", productList);
         return "client/homepage/show";
     }

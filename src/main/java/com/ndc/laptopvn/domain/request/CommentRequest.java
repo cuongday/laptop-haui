@@ -10,4 +10,5 @@ public class CommentRequest {
     private String email;
     private String message;
     private int rate;
+    private Long parentCommentId;
 }
