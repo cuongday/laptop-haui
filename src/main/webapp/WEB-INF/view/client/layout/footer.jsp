@@ -14,10 +14,10 @@
                     <p class="para-text">Bảo hành: 18003298</p>
                     <p class="para-text">Email: cskh@laptopvn.com</p>
                     <div class="contact">
-                        <a class="para-text me-sm-2" target="_blank" href="https://web.facebook.com/huynee14.07/">
+                        <a class="para-text me-sm-2" target="_blank" href="https://www.facebook.com/profile.php?id=100051713341397">
                             <img class="ft-icon" src="/images/auth-bg/fb-icon.png"/>
                         </a>
-                        <a class="para-text me-sm-2" target="_blank" href="https://zalo.me/0396006368">
+                        <a class="para-text me-sm-2" target="_blank" href="https://zalo.me/0339515182">
                             <img class="ft-icon" style="margin-top:1px" src="/images/auth-bg/zl-icon.png"/>
                         </a>
                     </div>

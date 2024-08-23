@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.Instant;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -42,6 +43,13 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL)
+    private List<Comment> replies;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_comment_id")
+    private Comment parentComment;
 
     @PrePersist
     public void handleBeforeCreate() {

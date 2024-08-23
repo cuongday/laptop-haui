@@ -60,16 +60,17 @@
 <!-- Single Product Start -->
 <div class="container-fluid py-6 mt-5">
     <div class="container py-5">
+        <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Chi Tiết Sản Phẩm
+                    </li>
+                </ol>
+            </nav>
+        </div>
         <div class="row g-4 mb-5">
-            <div>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Chi Tiết Sản Phẩm
-                        </li>
-                    </ol>
-                </nav>
-            </div>
+
             <div class="col-lg-8 col-xl-9">
                 <div class="row g-4">
                     <div class="col-lg-6">
@@ -100,6 +101,7 @@
                     <div class="col-lg-6">
                         <h4 class="fw-bold mb-3"> ${product.name}</h4>
                         <p>Kho: ${product.quantity}</p>
+                        <input type="hidden" id="quantityP" value="${product.quantity}">
                         <p class="mb-3">${product.factory}</p>
                         <h5 class="fw-bold mb-3">
                             <fmt:formatNumber type="number" value="${product.price}"/> đ
@@ -125,13 +127,15 @@
                             ${product.shortDesc}
                         </p>
 
+                        <input type="hidden" id="cartQuantity" value="${cartQuantity}">
+
                         <div class="input-group quantity mb-5" style="width: 120px;">
                             <div class="input-group-btn">
                                 <button class="btn btn-sm btn-minus rounded-circle bg-light border">
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text"
+                            <input type="number"
                                    class="form-control form-control-sm text-center border-0" value="1"
                                    data-cart-detail-index="0">
                             <div class="input-group-btn">
@@ -219,6 +223,9 @@
                     <!-- Comments Section Start -->
                     <div>
                         <h4 class="mb-5 fw-bold">Bình luận</h4>
+                        <c:if test="${comments.size() == 0}">
+                            <p>Chưa có bình luận nào</p>
+                        </c:if>
                         <c:forEach var="comment" items="${comments}">
                             <div id="comments-section" class="row g-4">
                                 <div class="col-lg-12">
@@ -240,7 +247,27 @@
                                                 </c:choose>
                                             </c:forEach>
                                         </div>
-                                        <small class="text-muted">${comment.email}</small>
+                                        <button class="btn btn-link reply-button" data-comment-id="${comment.id}">Reply</button>
+                                        <div class="reply-form" id="reply-form-${comment.id}" style="display: none;">
+                                            <form:form method="post">
+                                                <input type="hidden" id="parentCommentId" value="${comment.id}">
+                                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                                                <div class="mb-3">
+                                                    <label for="replyMessage" class="form-label">Message</label>
+                                                    <textarea class="form-control" id="replyMessage" name="message" rows="3"></textarea>
+                                                </div>
+                                                <input type="hidden" name="email" value="${sessionScope.email}">
+                                                <input type="hidden" id="rateReply" name="rate" value="${comment.rate}">
+                                                <input type="hidden" name="userName" value="${sessionScope.fullName}">
+                                                <button type="submit" class="btn btn-primary submitReply">Submit</button>
+                                            </form:form>
+                                        </div>
+                                        <c:forEach var="reply" items="${comment.replies}">
+                                            <div class="border-bottom rounded p-3 mb-3 ms-5">
+                                                <h5>${reply.userName}</h5>
+                                                <p>${reply.message}</p>
+                                            </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +323,6 @@
                     </form>
 
                 </div>
-            </div>
             <div class="col-lg-4 col-xl-3">
                 <div class="row g-4 fruite">
                     <div class="col-lg-12">
@@ -348,7 +374,7 @@
                                     <div class="d-flex justify-content-between fruite-name">
                                         <a href="#"><img width="32" height="32" src="/images/product/lg_logo.jpg"
                                                          alt="lenovo" class="fas fa-apple-alt me-2"/>LG</a>
-                                        <span>(${productCountByFactory[2].count})</span>
+                                        <span>(${productCountByFactory[4].count})</span>
                                     </div>
                                 </li>
                             </ul>
@@ -388,11 +414,11 @@
 <script>
     $(document).ready(function() {
         const csrfToken = $('#csrf').val();
-        $('.fa-star').click(function() {
+        $('.fa-star').click(function () {
             var value = $(this).data('value');
             $('#rating').val(value);
             $('.fa-star').removeClass('text-muted');
-            $('.fa-star').each(function() {
+            $('.fa-star').each(function () {
                 if ($(this).data('value') <= value) {
                     $(this).addClass('text-muted');
                 }
@@ -400,10 +426,7 @@
         });
 
 
-
-
-
-        $('.submit-comment').click(function() {
+        $('.submit-comment').click(function () {
             let userName = '${sessionScope.fullName}';
             let emailUser = '${sessionScope.email}';
             var rating = $('#rating').val();
@@ -417,7 +440,7 @@
             console.log(csrfToken);
 
             $.ajax({
-                url: '/api/products/${id}/comments',
+                url: `/api/products/` + ${id} +`/comments`,
                 type: 'POST',
                 contentType: 'application/json',
                 headers: {
@@ -427,9 +450,10 @@
                     rate: rating,
                     userName: name,
                     email: email,
-                    message: content
+                    message: content,
+                    parentCommentId: null
                 }),
-                success: function(response) {
+                success: function (response) {
                     console.log(response);
                     $.toast({
                         text: 'Đánh giá thành công',
@@ -437,15 +461,15 @@
                         bgColor: '#28a745',
                         textColor: 'white',
                         allowToastClose: true,
-                        hideAfter: 3000,
+                        hideAfter: 1000,
                         stack: 5,
                         textAlign: 'left',
                         position: 'top-right',
                         icon: 'success'
                     });
-                    location.href = '/products/${id}';
+                    location.href = '/product/${id}';
                 },
-                error: function(response) {
+                error: function (response) {
                     console.log(response.message);
                     $.toast({
                         text: 'Đánh giá thất bại',
@@ -453,7 +477,7 @@
                         bgColor: '#dc3545',
                         textColor: 'white',
                         allowToastClose: true,
-                        hideAfter: 3000,
+                        hideAfter: 1000,
                         stack: 5,
                         textAlign: 'left',
                         position: 'top-right',
@@ -462,7 +486,73 @@
                 }
             });
         });
-        // Lấy giá trị số sao đánh giá
+
+        document.querySelectorAll('.reply-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const commentId = button.getAttribute('data-comment-id');
+                const replyForm = document.getElementById(`reply-form-` + commentId);
+                replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+
+        $('.submitReply').click(function (){
+            let userName = '${sessionScope.fullName}';
+            let emailUser = '${sessionScope.email}';
+            let rating = $('#rateReply').val();
+            let name = userName ? userName : $('#name').val();
+            let email = emailUser ? emailUser : $('#email').val();
+            let content = $('#replyMessage').val();
+            let parentCommentId = $('#parentCommentId').val();
+            let id = ${product.id};
+
+            $.ajax({
+                url: `/api/products/${id}/comments`,
+                type: 'POST',
+                contentType: 'application/json',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken  // Gửi CSRF token trong header
+                },
+                data: JSON.stringify({
+                    rate: rating,
+                    userName: name,
+                    email: email,
+                    message: content,
+                    parentCommentId: parentCommentId
+                }),
+                success: function (response) {
+                    console.log(response);
+                    $.toast({
+                        text: 'Đánh giá thành công',
+                        showHideTransition: 'slide',
+                        bgColor: '#28a745',
+                        textColor: 'white',
+                        allowToastClose: true,
+                        hideAfter: 1000,
+                        stack: 5,
+                        textAlign: 'left',
+                        position: 'top-right',
+                        icon: 'success'
+                    });
+                    location.href = '/product/${id}';
+                },
+                error: function (response) {
+                    console.log(response.message);
+                    $.toast({
+                        text: 'Đánh giá thất bại',
+                        showHideTransition: 'slide',
+                        bgColor: '#dc3545',
+                        textColor: 'white',
+                        allowToastClose: true,
+                        hideAfter: 1000,
+                        stack: 5,
+                        textAlign: 'left',
+                        position: 'top-right',
+                        icon: 'error'
+                    });
+                }
+            })
+        })
+
 
     });
 </script>

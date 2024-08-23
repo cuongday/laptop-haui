@@ -114,11 +114,11 @@
 
     // Modal Video
     $(document).ready(function () {
-        var $videoSrc;
-        $('.btn-play').click(function () {
-            $videoSrc = $(this).data("src");
-        });
-        console.log($videoSrc);
+        // var $videoSrc;
+        // $('.btn-play').click(function () {
+        //     $videoSrc = $(this).data("src");
+        // });
+        // console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
@@ -162,7 +162,7 @@
     // });
     $('.quantity button').on('click', function () {
         let change = 0;
-
+        const quantityP = $('#quantityP').val();
         var button = $(this);
         var oldValue = button.parent().parent().find('input').val();
         if (button.hasClass('btn-plus')) {
@@ -392,11 +392,12 @@
             })
             return;
         }
-
         const productId = $(this).attr('data-product-id');
         const token = $("meta[name='_csrf']").attr("content");
         const header = $("meta[name='_csrf_header']").attr("content");
         const quantity = $("#cartDetails0\\.quantity").val();
+
+
         $.ajax({
             url: `${window.location.origin}/api/add-product-to-cart`,
             beforeSend: function (xhr) {
@@ -420,7 +421,15 @@
 
             },
             error: function (response) {
-                alert("có lỗi xảy ra, check code đi ba :v")
+                if(response.status === 400){
+                    $.toast({
+                        heading: 'Lỗi thao tác',
+                        text: 'Số lượng sản phẩm không đủ',
+                        position: 'top-right',
+                        icon: 'error'
+                    })
+                    return;
+                }
                 console.log("error: ", response);
             }
 

@@ -2,9 +2,43 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Navbar start -->
 
+<style>
+    .text-running {
+        display: inline-block;
+        opacity: 0;
+        animation: textAppear 0.5s ease-in-out forwards, textRunning 4s linear infinite, textDisappear 4s linear infinite;
+        transform-origin: right center;
+    }
+
+    @keyframes textAppear {
+        0% {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes textRunning {
+        0% { transform: translateX(50%); }
+        100% { transform: translateX(-25%); }
+    }
+
+    @keyframes textDisappear {
+        0%, 75% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+</style>
+
 <div class="container-fluid fixed-top" style = "padding: 0px">
-    <div class="top_slide">
-        <p class = "top_banner"> Chào đón tân sinh viên 2024, LaptopHaui tung ngàn Deal shock! </p>
+    <div class="top_slide ">
+        <p class = "top_banner text-running">Hà Nội: 298 Đ. Cầu Diễn, Minh Khai, Bắc Từ Liêm | 168 Thái Hà | 88 Cầu Giấy</p>
     </div>
     <div class="container px-0">
         <nav class="navbar navbar-light bg-white navbar-expand-xl">

@@ -19,7 +19,7 @@ public class CommentController {
     @PostMapping("/api/products/{productId}/comments")
     public ResponseEntity<Comment> addComment(@PathVariable Long productId,
                                                @RequestBody CommentRequest commentRequest) {
-        Comment comment = commentService.addComment(commentRequest.getUserName(), productId, commentRequest.getEmail(), commentRequest.getMessage(), commentRequest.getRate());
+        Comment comment = commentService.addComment(commentRequest.getUserName(), productId, commentRequest.getEmail(), commentRequest.getMessage(), commentRequest.getRate(), commentRequest.getParentCommentId());
         return ResponseEntity.ok(comment);
     }
 

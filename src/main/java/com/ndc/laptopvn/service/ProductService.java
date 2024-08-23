@@ -203,6 +203,7 @@ public class ProductService {
     public void handleUpdateCartBeforeCheckout(List<CartDetail> cartDetails) {
         for (CartDetail cartDetail : cartDetails) {
             Optional<CartDetail> cdOptional = this.cartDetailRepository.findById(cartDetail.getId());
+
             if (cdOptional.isPresent()) {
                 CartDetail currentCartDetail = cdOptional.get();
                 currentCartDetail.setQuantity(cartDetail.getQuantity());
@@ -274,6 +275,18 @@ public class ProductService {
 
     public Page<Product> getAllProducts(String name, String factory, Pageable pageable) {
         return productRepository.filterProductByNameAndFactory(name, factory, pageable);
+    }
+
+    public double getAvgRate(Product product) {
+        List<Comment> comments = product.getComments();
+        double totalRate = 0;
+        int count = 0;
+        for(Comment comment : comments){
+            totalRate += comment.getRate();
+            count++;
+        }
+        double avgRate = totalRate != 0 ? totalRate / count : 0;
+        return avgRate;
     }
 
 
