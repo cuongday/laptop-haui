@@ -40,6 +40,7 @@ public class Product {
     private long sold;
     private String factory;
     private String target;
+    
 
     private String processor;
     private String ram;
